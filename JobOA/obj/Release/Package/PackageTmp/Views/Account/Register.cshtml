@@ -1,0 +1,141 @@
+﻿@model JobOA.Model.Employee
+@using JobOA.Model
+
+@{
+    ViewBag.Title = "JobOA—员工注册";
+    List<Role> roleList=ViewBag.role as List<Role>;
+    List<Department> departmentList=ViewData["department"] as List<Department>;
+}
+
+@section css{
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/register.css")"/>
+}
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/ChineseToPinYin.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/register.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/Modal.js")"></script>
+    <script type="text/javascript">
+        var mess = "@ViewData["mess"]";
+        var confirmFun = function () {
+            if (mess.search("成功")) {
+                location.href = "/";
+            }
+        }
+        if (typeof mess!=="undefined"&&mess !== "") {
+            var modal = new Modal();
+            modal.alert(mess,confirmFun);
+        }
+    </script>
+}
+<div class="header">
+    <div class="am-g">
+        <div class="am-u-sm-4"><img src="@Url.Content("~/Content/images/oaui/web_ico.png")" width="300" height="150" alt="JOB OA" title="Job OA" class="am-show-lg-only" /></div>
+        <div class="am-u-sm-8 am-u-lg-4">
+            <h1>JOB OA</h1>
+            <p>Job Office Automation<br />利用技术手段提高办公效率</p>
+        </div>
+        <div class="am-u-sm-4"><button id="goLogin" class="am-btn am-btn-secondary">已有账号，转到登录</button></div>
+    </div>
+    <hr />
+</div>
+<div class="am-g">
+    <div class="am-u-lg-8 am-u-md-9 am-u-sm-12 am-u-sm-centered">
+        <form id="form-with-tooltip" action="/Account/Register" class="am-form am-container" enctype="multipart/form-data" method="post">
+            <div class="am-g">
+                <section class="am-u-lg-6">
+                    <h3>员工注册</h3>
+                    <hr />
+                    <label for="doc-ta-1">自我介绍</label>
+                    @Html.TextAreaFor(m => m.Introduction, new { rows = "5", id = "doc-ta-1" })
+                </section>
+                <div class="am-u-lg-6 am-center">
+                    <section id="photo">
+                        <img src="@Url.Content("~/Content/images/oaui/defalut.jpg")" width="225" height="224" />
+                        <div id="coverFile">
+                            <button type="button" class="am-btn am-btn-danger am-fl">
+                                <i class="am-icon-cloud-upload"></i> 头像
+                            </button>
+                            <input class="am-form-field am-fl" style="width:140px;height:38px;" type="text" placeholder="未选择任何文件" readonly>
+                        </div>
+                        <input id="headPictureFile" type="file" name="headPictureFile" style="opacity:0;" />
+                        <input id="headPicture" type="hidden" name="HeadPicture" />
+                        <span style="color:#FFF;">@Html.ValidationMessageFor(m => m.HeadPicture)</span>
+                    </section>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-lg-6">
+                    <label for="phoneNum">*账号（手机号）:</label>
+                    @Html.TextBoxFor(m => m.UserName, new { id = "phoneNum", placeholder = "请输入11位手机号", minlength = "11", maxlength = "11", pattern = "^\\d{11}$" })
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessageFor(m => m.UserName)</span>
+                </div>
+                <div class="am-u-lg-6">
+                    <label for="phoneCheck">*手机号确认:</label>
+                    @if (ViewData["phoneCode"] != null)
+                    { 
+                        <input type="text" name="phoneCheck" id="phoneCheck" placeholder="请输入手机短信里的验证码" require />
+                    }
+                    else
+                    {
+                    <button type="button" class="am-btn am-btn-secondary am-btn-block" id="getPhoneCheck">获取手机验证码</button>
+                    }
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessage("phoneCheck")</span>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-lg-6">
+                    <label for="password">*密码:</label>
+                    @Html.PasswordFor(m => m.Password, new { id = "password", placeholder = "请设置大于等于6位的密码", minlength = "6", maxlength = "255" })
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessageFor(m => m.Password)</span>
+                </div>
+                <div class="am-u-lg-6">
+                    <label for="rpassword">*重复密码:</label>
+                    <input type="password" name="rpwd" id="rpassword" placeholder="请再次确认上面的密码" data-equal-to="#password" />
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessage("repeatPassword")</span>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-lg-6">
+                    <label for="trueName">*真实姓名:</label>
+                    @Html.TextBoxFor(m => m.RealName, new { id = "trueName", placeholder = "请输入自己的真实姓名方便开展工作", maxlength = "20" })
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessageFor(m => m.RealName)</span>
+                </div>
+                <div class="am-u-lg-6">
+                    <label for="email">邮箱:</label>
+                    @Html.TextBoxFor(m => m.Email, new { type = "email", placeholder = "邮箱用于工作任务通知" })
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessageFor(m => m.Email)</span>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-lg-6">
+                    <label for="emailCheck" style="margin:10px 0px 5px 0px">邮箱确认:</label>
+                    @if (ViewData["emailCode"] != null)
+                    { 
+                        <input type="text" name="emailCheck" id="emailCheck" placeholder="请输入邮箱里的验证码" require />
+                    }
+                    else
+                    {
+                        <button type="button" class="am-btn am-btn-secondary am-btn-block" id="getEmailCheck">获取邮箱验证码</button>
+                    }
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessage("emailCheck")</span>
+                </div>
+                <section class="am-u-lg-6">
+                    <label>*所属部门：</label>
+                    <select name="departmentId" data-am-selected="{btnSize: 'md',btnWidth:'100%', btnStyle: 'secondary',searchBox:1,maxHeight: 100,dropUp: 1}">
+                        @foreach (Department d in departmentList)
+                        {
+                            <option value="@d.Id">@d.Name</option>
+                        }
+                    </select>
+                    <span style="color:#FFF;">&nbsp;@Html.ValidationMessageFor(m => m.DepartmentId)</span>
+                </section>
+            </div>
+            <div class="am-cf">
+                <input id="submitBtn" type="submit" name="" value="立即注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+                <input type="reset" name="" value="重新填写" class="am-btn am-btn-default am-btn-sm am-fl">
+            </div>
+        </form>
+            <hr>
+            <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+</div>
+</div>

@@ -1,0 +1,53 @@
+﻿
+.header {
+    text-align: center;
+}
+.header h1 {
+    font-size: 200%;
+    color: #333;
+    margin-top: 30px;
+}
+.header p {
+    font-size: 14px;
+}
+#photo{
+    position:relative;
+    width:230px;
+}
+#coverFile{
+    position:absolute;
+    top:229px;
+    left:0px;
+    z-index:2;
+}
+#photo > input {
+    margin:10px 0px;
+}
+form section{
+    margin:10px 0px;
+}
+#validContainer{
+    position:relative;
+}
+#validContainer .valid{
+    position:absolute;
+    left:10px;
+    top:-10px;
+}
+#validContainer p{
+    color:#FFF;
+    padding:10px 20px;
+    margin:0px;
+    background-color:#ff6a00;
+}
+#validContainer span{
+    margin:0px 0px 0px 50%;
+    display:block;
+    background-repeat:no-repeat;
+    width:20px;
+    height:10px;
+    background-image:url(../images/oaui/arrow.png);
+}
+body{
+    background-image:url(../images/oaui/wenlubackground.jpg);
+}

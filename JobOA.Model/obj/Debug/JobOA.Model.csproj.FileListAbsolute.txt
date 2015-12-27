@@ -1,0 +1,12 @@
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\JobOA.Model.dll.config
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\JobOA.Model.dll
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\JobOA.Model.pdb
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\EntityFramework.dll
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\EntityFramework.xml
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\C#.Net\JobOA\JobOA.Model\obj\Debug\JobOA.Model.dll
+F:\C#.Net\JobOA\JobOA.Model\obj\Debug\JobOA.Model.pdb
+F:\C#.Net\JobOA\JobOA.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\C#.Net\JobOA\JobOA.Model\obj\Debug\JobOA.Model.csprojResolveAssemblyReference.cache

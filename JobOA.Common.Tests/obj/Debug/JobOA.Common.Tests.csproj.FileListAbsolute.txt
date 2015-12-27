@@ -1,0 +1,9 @@
+F:\C#.Net\JobOA\JobOA.Common.Tests\bin\Debug\JobOA.Common.Tests.dll
+F:\C#.Net\JobOA\JobOA.Common.Tests\bin\Debug\JobOA.Common.Tests.pdb
+F:\C#.Net\JobOA\JobOA.Common.Tests\bin\Debug\JobOA.Common.dll
+F:\C#.Net\JobOA\JobOA.Common.Tests\bin\Debug\nunit.framework.dll
+F:\C#.Net\JobOA\JobOA.Common.Tests\bin\Debug\JobOA.Common.pdb
+F:\C#.Net\JobOA\JobOA.Common.Tests\bin\Debug\nunit.framework.xml
+F:\C#.Net\JobOA\JobOA.Common.Tests\obj\Debug\JobOA.Common.Tests.csprojResolveAssemblyReference.cache
+F:\C#.Net\JobOA\JobOA.Common.Tests\obj\Debug\JobOA.Common.Tests.dll
+F:\C#.Net\JobOA\JobOA.Common.Tests\obj\Debug\JobOA.Common.Tests.pdb

@@ -1,0 +1,5 @@
+F:\C#.Net\JobOA\JobOA.Common\bin\Debug\JobOA.Common.dll
+F:\C#.Net\JobOA\JobOA.Common\bin\Debug\JobOA.Common.pdb
+F:\C#.Net\JobOA\JobOA.Common\obj\Debug\JobOA.Common.csprojResolveAssemblyReference.cache
+F:\C#.Net\JobOA\JobOA.Common\obj\Debug\JobOA.Common.dll
+F:\C#.Net\JobOA\JobOA.Common\obj\Debug\JobOA.Common.pdb

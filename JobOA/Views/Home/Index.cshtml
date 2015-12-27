@@ -1,0 +1,224 @@
+﻿@model JobOA.Model.OAUi
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if lte IE 7 ]><html class="no-js ie lte7 lte8 lte9 "><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8 lte8 lte9 "><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9 lte9 "><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Job OA 全称Job Office animation 利用技术手段提高公司工作安排、下达、执行、提交、汇报、审核、验收的办事效率">
+    <meta name="keywords" content="Job, OA, 办事, 办公, 工作效率, Office, Animation, 技术手段, 工作安排, 工作下达,工作执行, 工作提交, 工作汇报, 工作审核,工作验收">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>JobOA—提高办公效率</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" type="image/png" href="@Url.Content("~/Content/images/oaui/oa.png")">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/assets/css/amazeui.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/assets/css/amaze.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/homeIndex.css")">
+    <link rel="stylesheet" href="~/Content/css/loginAlert.css">
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="@Url.Content("~/Scripts/assets/js/jquery.min.js")"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="@Url.Content("~/Scripts/assets/js/modernizr.js")"></script>
+        <script src="@Url.Content("~/Scripts/assets/js/amazeui.ie8polyfill.min.js")"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/assets/js/amazeui.min.js")"></script>
+</head>
+<body class="amz-index" data-amui="2.x">
+    <!--[if lte IE 9 ]>
+      <div class="am-alert am-alert-danger ie-warning" data-am-alert>
+      <button type="button" class="am-close">&times;</button>
+      <div class="am-container">
+        OA系统提醒：你的浏览器太古董了，妹子无爱，
+      <a href="http://browsehappy.com/" target="_blank">速速点击换一个</a>！</div></div>
+    <![endif]-->
+    <section id="loginBox" class="am-g">
+        <div id="cover" class="am-u-sm-12">&nbsp;</div>
+        <div id="loginAlert" class="am-u-sm-10 am-u-md-7 am-u-lg-4 am-u-sm-centered am-nbfc">
+            <i class="am-icon-md am-icon-close am-fr am-close"></i>
+            <div id="title" class="am-nbfc" style="clear:both;">
+                <h3 class="am-fl am-text-xxl">员工登录</h3>
+                <p class="am-fr">还没有账号<a href="/Account/Register">立即注册</a></p>
+            </div>
+            <p>手机号码登录<span id="loginMess" class="am-inline-block am-text-danger am-fr"></span></p>
+            <form action="" method="post">
+                <p><input id="userName" type="tel" name="phone" placeholder="手机号码/用户名" /></p>
+                <p><input id="password" type="password" name="password" placeholder="密码" /></p>
+                <div class="am-nbfc">
+                    <input id="goLogin" type="button" class="am-btn am-btn-success am-fl" value="登录"/>
+                    <p class="am-fl" style="margin:10px 10px;">
+                        <input id="remember" type="checkbox" name="remember" value="1" style="width:15px;height:15px;" />保持登录
+                    </p>
+                    <input type="button" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+                </div>
+            </form>
+        </div>
+    </section>
+    <header id="amz-header" name="top">
+        <div class="amz-container am-cf">
+            <h1><img src="@Url.Content("~/Content/images/oaui/allWeb_ico.png")" height="50" width="150" alt="JOBOA" /><!-- <span class="am-badge am-badge-danger">2.4</span>--></h1>
+            <button class="am-btn am-btn-primary am-show-sm-only" data-am-collapse="{target: '.amz-header-nav'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+            <nav>
+                <ul class="amz-header-nav am-collapse">
+                    <li id="loginBtn"><a href="javascript:void(0)"><span class="am-icon-user"></span> 登录</a> </li>
+                    <li id="userMess" style="display:none;">
+                        <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
+                            <img src="" width="40" height="40" class="am-img-thumbnail am-circle" /> <span>coco/管理员 </span><i class="am-icon-caret-down"></i>
+                        </a>
+                        <ol id="oa-dropdown-content" style="display:none;">
+                            <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+                            <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                            <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                        </ol>
+                    </li>
+                    <li><a href="/Account/Register"><span class="am-icon-pencil"></span> 注册</a> </li>
+                    <li class="nav-react"><a href="http://amazeui.org/react/" target="_blank"><strong>开始工作</strong><span class="am-badge am-badge-warning">New</span></a></li>
+                    <li class="am-show-lg-only"><a href="javascript:" id="searchBtn" target="_blank">搜索工作任务：</a></li>
+                    <li class="amz-cse">
+                        <form action="#" method="get" target="_blank" class="cse-form">
+                            <input type="hidden" name="s" value="13988471460650623274">
+                            <input type="hidden" name="entry" value="1">
+                            <input type="text" required name="q" placeholder="按任务名搜索" autocomplete="off">
+                            <button><span id="search" class="am-icon-search"></span></button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="amz-home">
+        <section id="amz-hero">
+            <!--显示轮番介绍图片-->
+            @Html.Display("slider", "Slider")
+        </section>
+        <section class="amz-features">
+            <div class="am-g am-g-fixed">
+                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation: &#x27;slide-top&#x27;, delay: 500}">
+                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/foundation.png")" alt="foundation" />
+                    <h2>为移动而生</h2>
+                    <p>Amaze UI 以移动优先（Mobile first）为理念，从小屏逐步扩展到大屏，最终实现所有屏幕适配，适应移动互联潮流。</p>
+                </div>
+                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation:&#x27;slide-top&#x27;, delay: 500}">
+                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/web.png")" alt="web" />
+                    <h2>组件丰富，模块化</h2>
+                    <p>Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。</p>
+                </div>
+            </div>
+            <div class="am-g am-g-fixed">
+                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation:&#x27;slide-right&#x27;, delay: 1000}">
+                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/chinese.png")" alt="chinese" />
+                    <h2>本地化支持</h2>
+                    <p>相比国外框架，Amaze UI 关注中文排版，根据用户代理调整字体，实现更好的中文排版效果；兼顾国内主流浏览器及 App 内置浏览器兼容支持。</p>
+                </div>
+                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation:&#x27;slide-bottom&#x27;, delay: 1500}">
+                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/mobile.png")" alt="mobile" />
+                    <h2>轻量级，高性能</h2>
+                    <p>Amaze UI 面向 HTML5 开发，使用 CSS3 来做动画交互，平滑、高效，更适合移动设备，让 Web 应用更快速载入。</p>
+                </div>
+            </div>
+        </section>
+        <section class="amz-credits">
+            <div class="amz-container">
+                <header>
+                    <h1 data-am-scrollspy="{animation:'fade'}">站在巨人的肩膀上</h1>
+                    <h2 data-scrollspy="{animation:'slide-bottom', delay: 500}">Amaze UI 汲取了很多优秀的社区资源，通过开源的形式来回馈社区。</h2>
+                </header>
+            </div>
+            <div class="am-g am-g-fixed amz-credits-list">
+                <div class="col-md-4 am-u-md-4" data-scrollspy="{animation:'scale-up', delay: 1000}">
+                    <h2>MIT License</h2>
+                    <p>Amaze UI 使用 <a href="#" target="_blank">MIT 许可证</a>发布，用户可以自由使用、复制、修改、合并、出版发行、散布、再授权及贩售 Amaze UI 及其副本。</p>
+                </div>
+                <div class="col-md-4 am-u-md-4" data-scrollspy="{animation:'scale-up', delay: 1000}">
+                    <h2>Heroes</h2>
+                    <p><a href="#" target="_blank">参考、使用的项目</a>：jQuery, Zepto.js, Seajs, LESS, normalize.css, FontAwesome, Bootstrap, Foundation, UIKit, Pure, Framework7, etc.</p>
+                </div>
+                <div class="col-md-4 am-u-md-4" data-scrollspy="{animation:'scale-up', delay: 1000}">
+                    <h2>Credits</h2>
+                    <p>我们追求卓越，然时间、经验、能力有限。Amaze UI 有很多不足的地方，希望大家包容、不吝赐教，给我们提意见、建议。<a href="#" target="_blank">感谢你们</a>！</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="amz-footer">
+        <div class="am-g am-g-fixed">
+            <div class="col-md-4 col-md-push-8 am-u-md-4 am-u-md-push-8">
+                <ul class="amz-social">
+                    <li><a href="javascript:void(0)" title="QQ通信"><span class="am-icon-qq"></span></a></li>
+                    <li><a href="javascript:void(0)" title="微博" target="_blank"><span class="am-icon-weibo"></span></a></li>
+                    <li><a href="javascript:void(0)" title="微信通信" data-am-modal><span class="am-icon-wechat"></span></a></li>
+                </ul>
+            </div>
+            <div class="col-md-8 col-md-pull-4 am-u-md-8 am-u-md-pull-4">
+                <h2 class="amz-fd"><img src="@Url.Content("~/Content/images/oaui/allWeb_ico.png")" height="50" width="150" alt="JOBOA" /></h2>
+                <ul class="amz-links">
+                    <li href="javascript:void(0)" class="am-icon-heart">&nbsp;利用技术手段提高办公效率</li>
+                </ul>
+                <p class="amz-cp">&copy; 2015 AllMobilize, Inc. Licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. Developed with <a href="http://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a>.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="am-wechat">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"><a href="" class="am-close am-close-spin" data-am-modal-close>&times;</a></div>
+            <div class="am-modal-bd">
+                <img src="@Url.Content("~/Content/images/oaui/qr-ui.jpg")" alt="Amaze UI 微信" /><br />
+                在微信上关注我们
+            </div>
+        </div>
+    </div>
+    <div class="amz-toolbar" id="amz-toolbar">
+     <a href="#top" data-am-smooth-scroll title="回到顶部" class="am-icon-btn am-icon-arrow-up" id="amz-go-top"></a>
+     <a href="#" title="常见问题" class="am-icon-faq am-icon-btn am-icon-question-circle"></a> 
+    </div>
+    <script src="@Url.Content("~/Scripts/js/homeIndex.js")"></script>
+    <script>
+        //设置显示返回顶部按钮显示和隐藏
+        window.onscroll = function () {
+            var s = document.documentElement.scrollTop || document.body.scrollTop;
+            var top_div = document.getElementById("amz-go-top");
+            if (s >= 300) {
+                $("#amz-go-top").addClass("am-active");
+            } else {
+                $("#amz-go-top").removeClass("am-active");
+            }
+        }
+
+        $(document).ready(function (e) {
+            //控制搜索工作任务按钮的显示和隐藏
+            $(".amz-cse").click(function () {
+                $(this).addClass('am-active');
+            });
+            $("#searchBtn").click(function () {
+                $(".amz-cse").toggleClass('am-active');
+            });
+            //点击登录按钮显示登录框,并进行背景遮罩
+            $("#loginBtn").click(function () {
+                $("#cover").css("height", document.body.clientHeight + "px");
+                $("#loginAlert").show(100);
+                $("#loginAlert").css("top", "0px");
+                $("#cover").fadeIn(500);
+            });
+            //点击登录框的关闭按钮,并解除背景遮罩
+            $("#loginAlert").children(".am-close").click(function () {
+                $("#loginAlert").hide(1000);
+                $("#loginAlert").css("top", "-600px");
+                $("#cover").fadeOut(500);
+            });
+        });
+    </script>
+</body>
+</html>
