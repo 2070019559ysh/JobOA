@@ -49,51 +49,6 @@ namespace JobOA.Auxiliary
         }
 
         /// <summary>
-        /// 摘要: 
-        //     检索指定请求上下文和控制器类型的控制器实例。
-        //
-        // 参数: 
-        //   requestContext:
-        //     HTTP 请求的上下文，其中包括 HTTP 上下文和路由数据。
-        //
-        //   controllerType:
-        //     控制器的类型。
-        //
-        // 返回结果: 
-        //     控制器实例。
-        //
-        // 异常: 
-        //   System.Web.HttpException:
-        //     controllerType 为 null。
-        //
-        //   System.ArgumentException:
-        //     无法分配 controllerType。
-        //
-        //   System.InvalidOperationException:
-        //     无法创建 controllerType 的实例。
-        /// </summary>
-        /// <param name="requestContext">HTTP 请求的上下文，其中包括 HTTP 上下文和路由数据。</param>
-        /// <param name="controllerType">控制器的类型。</param>
-        /// <returns>控制器实例。</returns>
-        //protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
-        //{
-        //    if (controllerType == null)
-        //    {
-        //        //找不到控制器，重定向到指定文件并终止当前请求
-        //        requestContext.HttpContext.Response.Redirect("~/ErrorCatch/FileNotFound",true);
-        //    }
-        //    try
-        //    {
-        //        return controllerType == null ? null : (IController)ninjectKernel.Get(controllerType);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _exceptionLog.RecordLog(logFileName, DateTime.Now + " 发生异常：" + ex.Message);
-        //        return null;
-        //    }
-        //}
-
-        /// <summary>
         /// 添加此层的接口对具体实现类的绑定
         /// </summary>
         private void AddBindings()

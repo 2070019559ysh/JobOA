@@ -173,8 +173,8 @@ namespace JobOA.Controllers
                     true,//存储在持久性cookie中
                     employee.RoleIds//用户的角色 每个以“,”分割
                     );
-                FormsAuthentication.Encrypt(authenticationTicket);//为了安全，进行加密
-                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName);
+                string ticketContent=FormsAuthentication.Encrypt(authenticationTicket);//为了安全，进行加密
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticketContent);
                 cookie.HttpOnly = true;//客户端js不需要读取到这个Cookie，只允许服务器端读取
                 Response.Cookies.Add(cookie);//响应给客户端
                 string[] roleIds=new string[0];

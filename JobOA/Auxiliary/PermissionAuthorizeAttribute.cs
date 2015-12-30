@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Ninject;
 using JobOA.BLL;
 using JobOA.Model;
+using System.Web.Security;
 
 namespace JobOA.Auxiliary
 {
@@ -61,8 +62,12 @@ namespace JobOA.Auxiliary
             }
             //已经登录，继续确定用户的访问权限
             var roles = GetRolesByResource(filterContext);
-            //有权访问的角色中任何一个是当前用户具有的，就有权访问，否则没权限访问
-            if (!roles.Any(role => filterContext.HttpContext.User.IsInRole(role)))
+            HttpCookie ticketContent=filterContext.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket ticket=FormsAuthentication.Decrypt(ticketContent.Value);
+            string[] userData=ticket.UserData.Split(',');//当前用户的角色
+            string passRole=roles.FirstOrDefault(role=>userData.Contains(role));
+            //有权访问的角色中其中一个是当前用户具有的，就有权访问，否则没权限访问
+            if (passRole==null)
             {
                 // 登录但没权限
                 filterContext.HttpContext.Response.Redirect(NoAuthority);
