@@ -56,14 +56,21 @@
                     $("#goLogin").removeClass("am-disabled");
                     if (data.result) {
                         $loginMess.text("登录成功");
-                        $("#loginAlert").hide(1000);
-                        $("#loginAlert").css("top", "-600px");
-                        $("#cover").fadeOut(500);
-                        $("#loginBtn").hide();
-                        var $aTag = $("#userMess").children(":eq(0)");
-                        $aTag.find("img").attr("src", data.headPicture);
-                        $aTag.find("span").text(data.name);
-                        $("#userMess").show();
+                        if ($("#loginAlert").length === 0) {
+                            //当前页面没有登录框，则直接跳转首页
+                            location.href = "/";
+                            var modal = new Modal();
+                            modal.loading("JobOA系统提示", "正在为您跳转到首页");
+                        } else {
+                            $("#loginAlert").hide(1000);
+                            $("#loginAlert").css("top", "-600px");
+                            $("#cover").fadeOut(500);
+                            $("#loginBtn").hide();
+                            var $aTag = $("#userMess").children(":eq(0)");
+                            $aTag.find("img").attr("src", data.headPicture);
+                            $aTag.find("span").text(data.name);
+                            $("#userMess").show();
+                        }
                     } else {
                         $loginMess.text("用户名或密码错误！请求登录失败");
                     }

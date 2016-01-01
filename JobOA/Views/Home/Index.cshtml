@@ -1,5 +1,8 @@
 ﻿@model JobOA.Model.OAUi
 
+@using JobOA.Model
+@using JobOA.BLL
+
 @{
     Layout = null;
 }
@@ -73,17 +76,38 @@
             <button class="am-btn am-btn-primary am-show-sm-only" data-am-collapse="{target: '.amz-header-nav'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
             <nav>
                 <ul class="amz-header-nav am-collapse">
-                    <li id="loginBtn"><a href="javascript:void(0)"><span class="am-icon-user"></span> 登录</a> </li>
-                    <li id="userMess" style="display:none;">
-                        <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
-                            <img src="" width="40" height="40" class="am-img-thumbnail am-circle" /> <span>coco/管理员 </span><i class="am-icon-caret-down"></i>
-                        </a>
-                        <ol id="oa-dropdown-content" style="display:none;">
-                            <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-                            <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                            <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-                        </ol>
-                    </li>
+                    @{
+                        //获取已登录的员工信息
+                        if (ViewBag.Employee!=null&&ViewBag.Employee is Employee)
+                        {
+                            Employee employee =ViewBag.Employee as Employee;
+                            <li id="userMess">
+                                <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
+                                    <img src="@employee.HeadPicture" width="40" height="40" class="am-circle" /> <span>@employee.RealName</span><i class="am-icon-caret-down"></i>
+                                </a>
+                                <ol id="oa-dropdown-content" style="display:none;">
+                                    <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+                                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                                </ol>
+                            </li>
+                        }
+                        else
+                        {
+                            <li id="loginBtn"><a href="javascript:void(0)"><span class="am-icon-user"></span> 登录</a> </li>
+                            <li id="userMess" style="display:none;">
+                                <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
+                                    <img src="" width="40" height="40" class="am-circle" /> <span>coco/管理员 </span><i class="am-icon-caret-down"></i>
+                                </a>
+                                <ol id="oa-dropdown-content" style="display:none;">
+                                    <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+                                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                                </ol>
+                            </li>
+                        }
+                    }
+                    
                     <li><a href="/Account/Register"><span class="am-icon-pencil"></span> 注册</a> </li>
                     <li class="nav-react"><a href="http://amazeui.org/react/" target="_blank"><strong>开始工作</strong><span class="am-badge am-badge-warning">New</span></a></li>
                     <li class="am-show-lg-only"><a href="javascript:" id="searchBtn" target="_blank">搜索工作任务：</a></li>
