@@ -60,7 +60,38 @@ namespace JobOA.BLL.Implement
             AccessPath accessPath=AccessPathService.SearchAccessPathByPath(httpMethod, path);
             List<Role> roleList = null;
             Permission perm=PermissionService.SearchPermissionByPathId(accessPath.AccessPathId);
-            roleList = RoleService.SearchRoleByPermissionId(perm.Id);
+            roleList = SearchRoleByPermissionId(perm.Id);
+            return roleList;
+        }
+
+        /// <summary>
+        /// 通过权限Id查找所有关联的角色
+        /// </summary>
+        /// <param name="permissionId">权限Id</param>
+        /// <returns>所有关联的角色</returns>
+        private List<Role> SearchRoleByPermissionId(int permissionId)
+        {
+            string permId = permissionId.ToString();
+            List<Role> roleList = SearchAllRole();
+            if (roleList == null) roleList = new List<Role>();
+            //遍历所有角色，删除与指定权限Id无关的角色
+            for (int i = 0; i < roleList.Count; i++)
+            {
+                if (roleList[i].PermissionIds == null)
+                {
+                    roleList.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    string[] roleIds = roleList[i].PermissionIds.Split(',');
+                    if (!roleIds.Contains(permId))
+                    {
+                        roleList.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
             return roleList;
         }
 
