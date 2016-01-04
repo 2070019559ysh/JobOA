@@ -169,7 +169,7 @@ namespace JobOA.Controllers
                     1, //身份验证票据版本号
                     employee.UserName,//关联的用户名
                     DateTime.Now,//发表时间
-                    DateTime.Now.AddHours(1.0),//过期时间
+                    DateTime.Now.AddYears(1),//过期时间
                     true,//存储在持久性cookie中
                     employee.RoleIds//用户的角色 每个以“,”分割
                     );

@@ -55,8 +55,10 @@
   <ItemGroup>
     <Compile Include="IDepartmentManager.cs" />
     <Compile Include="IEmployeeManager.cs" />
+    <Compile Include="IMajorTaskManager.cs" />
     <Compile Include="Implement\DepartmentManager.cs" />
     <Compile Include="Implement\EmployeeManager.cs" />
+    <Compile Include="Implement\MajorTaskManager.cs" />
     <Compile Include="Implement\OAUiManager.cs" />
     <Compile Include="Implement\RoleManager.cs" />
     <Compile Include="IOAUiManager.cs" />

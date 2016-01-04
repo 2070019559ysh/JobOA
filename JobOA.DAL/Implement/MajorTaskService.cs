@@ -1,4 +1,5 @@
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,44 @@ namespace JobOA.DAL.Implement
                                 where m.Name.Contains(name)
                                 select m;
                 return majorTask.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 根据查询任务条件查找所有主任务
+        /// </summary>
+        /// <param name="searchCondition">查询任务条件</param>
+        /// <returns>所有主任务的集合</returns>
+        public List<MajorTask> SearchAllMajorTask(SearchTaskCondition searchCondition)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var majorTask = from m in dbContext.MajorTask
+                                join p in dbContext.Project on m.ProjectId equals p.Id
+                                join e in dbContext.Employee on m.ExePersonId equals e.Id
+                                where m.Name.Contains(searchCondition.TaskName) 
+                                && e.DepartmentId==searchCondition.DepantmentId
+                                && p.Id==searchCondition.ProjectId
+                                select m;
+                var majorTasks = majorTask.Skip((searchCondition.PageIndex - 1) 
+                    * searchCondition.PageMax).Take(searchCondition.PageMax);
+                return majorTasks.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 根据分页查找所有主任务
+        /// </summary>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageMax">每页最大记录数</param>
+        /// <returns>当前页所有主任务的集合</returns>
+        public List<MajorTask> SearchAllMajorTask(int pageIndex,int pageMax)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var majorTask = from m in dbContext.MajorTask select m;
+                var majorTasks = majorTask.Skip((pageIndex - 1) * pageMax).Take(pageMax);
+                return majorTasks.ToList();
             }
         }
 
