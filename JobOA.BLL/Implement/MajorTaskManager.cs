@@ -14,7 +14,7 @@ namespace JobOA.BLL.Implement
     /// <summary>
     /// 主任务业务逻辑类
     /// </summary>
-    public class MajorTaskManager
+    public class MajorTaskManager:IMajorTaskManager
     {
         /// <summary>
         /// 依赖注入主任务关联数据库服务类
@@ -68,14 +68,40 @@ namespace JobOA.BLL.Implement
         /// <summary>
         /// 根据查询任务条件查找所有主任务
         /// </summary>
-        /// <param name="searchCondition">查询任务条件</param>
+        /// <param name="search">查询任务条件,格式：pageIndex,pageSize,projectId,departmentId,name</param>
         /// <returns>所有主任务的集合</returns>
-        public List<MajorTask> SearchAllMajorTask(SearchTaskCondition searchCondition)
+        public List<MajorTask> SearchAllMajorTask(string search)
         {
             List<MajorTask> majorTaskList = null;
             try
             {
-                majorTaskList = MajorTaskService.SearchAllMajorTask(searchCondition);
+                //查询条件参数
+                string[] searchCnds = new string[] { "1", "10" };
+                if (search != null) searchCnds = search.Split(',');
+                if (searchCnds.Length != 2 || searchCnds.Length != 5)
+                    searchCnds = new string[] { "1", "10" };
+                int pageIndex = 1, pageSize = 10;
+                int.TryParse(searchCnds[0], out pageIndex);
+                int.TryParse(searchCnds[1], out pageSize);
+                SearchTaskCondition searchCondition = new SearchTaskCondition()
+                {
+                    PageIndex = pageIndex,
+                    PageMax = pageSize
+                };
+                if (searchCnds.Length == 2)
+                {
+                    majorTaskList = MajorTaskService.SearchAllMajorTask(pageIndex,pageSize);
+                }
+                else
+                {
+                    int projectId = 1, departmentId = 1;
+                    int.TryParse(searchCnds[2], out projectId);
+                    int.TryParse(searchCnds[3], out departmentId);
+                    searchCondition.ProjectId = projectId;
+                    searchCondition.DepantmentId = departmentId;
+                    searchCondition.TaskName = searchCnds[4];
+                    majorTaskList = MajorTaskService.SearchAllMajorTask(searchCondition);
+                }
             }
             catch (Exception ex)
             {

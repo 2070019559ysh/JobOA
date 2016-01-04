@@ -61,6 +61,7 @@ namespace JobOA.Auxiliary
             ninjectKernel.Bind<IEmployeeManager>().To<EmployeeManager>();
             //.WithConstructorArgument(HttpContext.Current.Server.MapPath("~/"));
             ninjectKernel.Bind<IOAUiManager>().To<OAUiManager>();
+            ninjectKernel.Bind<IMajorTaskManager>().To<MajorTaskManager>();
         }
 
         public object GetService(Type serviceType)
