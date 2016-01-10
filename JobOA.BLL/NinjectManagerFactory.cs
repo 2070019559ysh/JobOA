@@ -32,6 +32,7 @@ namespace JobOA.BLL
             ninjectKernel.Bind<IOAUiService>().To<OAUiService>();
             ninjectKernel.Bind<IPermissionService>().To<PermissionService>();
             ninjectKernel.Bind<IMajorTaskService>().To<MajorTaskService>();
+            ninjectKernel.Bind<IProjectService>().To<ProjectService>();
         }
     }
 }

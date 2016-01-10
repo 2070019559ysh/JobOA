@@ -18,6 +18,7 @@ namespace JobOA.Controllers
         [Inject]
         public IDepartmentManager DepartmentManager { get; set; }
 
+        [Inject]
         public IProjectManager ProjectManager { get; set; }
         //
         // GET: /AdminTask/

@@ -60,8 +60,10 @@
     <Compile Include="Implement\EmployeeManager.cs" />
     <Compile Include="Implement\MajorTaskManager.cs" />
     <Compile Include="Implement\OAUiManager.cs" />
+    <Compile Include="Implement\ProjectManager.cs" />
     <Compile Include="Implement\RoleManager.cs" />
     <Compile Include="IOAUiManager.cs" />
+    <Compile Include="IProjectManager.cs" />
     <Compile Include="IRoleManager.cs" />
     <Compile Include="NinjectManagerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

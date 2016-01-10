@@ -40,6 +40,7 @@ namespace JobOA.DAL.Implement
             {
                 var majorTask = from m in dbContext.MajorTask
                                 where m.Name.Contains(name)
+                                orderby m.CreateTime descending
                                 select m;
                 return majorTask.ToList();
             }
@@ -60,6 +61,7 @@ namespace JobOA.DAL.Implement
                                 where m.Name.Contains(searchCondition.TaskName) 
                                 && e.DepartmentId==searchCondition.DepantmentId
                                 && p.Id==searchCondition.ProjectId
+                                orderby m.CreateTime descending
                                 select m;
                 var majorTasks = majorTask.Skip((searchCondition.PageIndex - 1) 
                     * searchCondition.PageMax).Take(searchCondition.PageMax);
@@ -77,7 +79,9 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                var majorTask = from m in dbContext.MajorTask select m;
+                var majorTask = from m in dbContext.MajorTask
+                                orderby m.CreateTime descending
+                                select m;
                 var majorTasks = majorTask.Skip((pageIndex - 1) * pageMax).Take(pageMax);
                 return majorTasks.ToList();
             }

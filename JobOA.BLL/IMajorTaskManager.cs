@@ -32,7 +32,7 @@ namespace JobOA.BLL
         /// </summary>
         /// <param name="search">查询任务条件,格式：pageIndex,pageSize,projectId,departmentId,name</param>
         /// <returns>所有主任务的集合</returns>
-        public List<MajorTask> SearchAllMajorTask(string search);
+        List<MajorTask> SearchAllMajorTask(string search);
 
         /// <summary>
         /// 根据分页查找所有主任务
