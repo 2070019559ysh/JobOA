@@ -1,6 +1,12 @@
-﻿@{
+﻿@using JobOA.Model
+
+@{
     ViewBag.Title = "JobOA—任务管理";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+
+    List<Project> projectList = ViewBag.Project??new List<Project>();
+    List<Department> departmentList = ViewBag.Department ?? new List<Department>();
+    List<MajorTask> majorTask = ViewBag.MajorTask;
 }
 
 @section css{

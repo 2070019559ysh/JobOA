@@ -34,7 +34,10 @@ namespace JobOA.Controllers
             //查找所有部门
             List<Department> departmentList = DepartmentManager.SearchAllDepartment();
             //按分页、项目、部门和模糊任务名查找主任务
-            MajorTaskManager.SearchAllMajorTask(search);
+            List<MajorTask> majorTask=MajorTaskManager.SearchAllMajorTask(search);
+            ViewBag.Project = projectList;
+            ViewBag.Department = departmentList;
+            ViewBag.MajorTask = majorTask;
             return View();
         }
 
