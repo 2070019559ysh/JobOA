@@ -30,9 +30,11 @@ namespace JobOA.BLL
         /// <summary>
         /// 根据查询任务条件查找所有主任务
         /// </summary>
-        /// <param name="search">查询任务条件,格式：pageIndex,pageSize,projectId,departmentId,name</param>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">每页最大记录数</param>
+        /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
         /// <returns>所有主任务的集合</returns>
-        List<MajorTask> SearchAllMajorTask(string search);
+        List<MajorTask> SearchAllMajorTask(int pageIndex, int pageSize, string search);
 
         /// <summary>
         /// 根据分页查找所有主任务

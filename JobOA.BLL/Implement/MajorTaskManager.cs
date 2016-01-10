@@ -68,38 +68,45 @@ namespace JobOA.BLL.Implement
         /// <summary>
         /// 根据查询任务条件查找所有主任务
         /// </summary>
-        /// <param name="search">查询任务条件,格式：pageIndex,pageSize,projectId,departmentId,name</param>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">每页最大记录数</param>
+        /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
         /// <returns>所有主任务的集合</returns>
-        public List<MajorTask> SearchAllMajorTask(string search)
+        public List<MajorTask> SearchAllMajorTask(int pageIndex,int pageSize,string search)
         {
             List<MajorTask> majorTaskList = null;
             try
             {
-                //查询条件参数
-                string[] searchCnds = new string[] { "1", "10" };
-                if (search != null) searchCnds = search.Split(',');
-                if (searchCnds.Length != 2 || searchCnds.Length != 5)
-                    searchCnds = new string[] { "1", "10" };
-                int pageIndex = 1, pageSize = 10;
-                int.TryParse(searchCnds[0], out pageIndex);
-                int.TryParse(searchCnds[1], out pageSize);
-                SearchTaskCondition searchCondition = new SearchTaskCondition()
-                {
-                    PageIndex = pageIndex,
-                    PageMax = pageSize
-                };
-                if (searchCnds.Length == 2)
-                {
+                if (String.IsNullOrEmpty(search))
+                {   //没有查询条件参数，直接按分页查询
                     majorTaskList = MajorTaskService.SearchAllMajorTask(pageIndex,pageSize);
                 }
                 else
                 {
+                    //处理出查询条件
+                    string[] searchCnds;
+                    searchCnds = search.Split(',');
+                    if (searchCnds.Length < 2)//确保2个查询条件
+                        searchCnds = new string[] { "1", "1" };
                     int projectId = 1, departmentId = 1;
-                    int.TryParse(searchCnds[2], out projectId);
-                    int.TryParse(searchCnds[3], out departmentId);
-                    searchCondition.ProjectId = projectId;
-                    searchCondition.DepantmentId = departmentId;
-                    searchCondition.TaskName = searchCnds[4];
+                    int.TryParse(searchCnds[0], out projectId);
+                    int.TryParse(searchCnds[1], out departmentId);
+                    //创建条件信息的对象
+                    SearchTaskCondition searchCondition = new SearchTaskCondition()
+                    {
+                        PageIndex = pageIndex,
+                        PageMax = pageSize,
+                        ProjectId = projectId,
+                        DepantmentId = departmentId,
+                    }; 
+                    if (searchCnds.Length == 2)
+                    {   //刚好两个查询条件，第三个默认
+                        searchCondition.TaskName = String.Empty;
+                    }
+                    else
+                    {   //第三个查询条件
+                        searchCondition.TaskName = searchCnds[2];
+                    }
                     majorTaskList = MajorTaskService.SearchAllMajorTask(searchCondition);
                 }
             }

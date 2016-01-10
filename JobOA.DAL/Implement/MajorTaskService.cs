@@ -22,7 +22,8 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                var majorTask = from m in dbContext.MajorTask
+                dbContext.Configuration.LazyLoadingEnabled = false;
+                var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
                               where m.Id == id
                               select m;
                 return majorTask.SingleOrDefault();
@@ -38,7 +39,8 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                var majorTask = from m in dbContext.MajorTask
+                dbContext.Configuration.LazyLoadingEnabled = false;
+                var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
                                 where m.Name.Contains(name)
                                 orderby m.CreateTime descending
                                 select m;
@@ -55,7 +57,8 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                var majorTask = from m in dbContext.MajorTask
+                dbContext.Configuration.LazyLoadingEnabled = false;
+                var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
                                 join p in dbContext.Project on m.ProjectId equals p.Id
                                 join e in dbContext.Employee on m.ExePersonId equals e.Id
                                 where m.Name.Contains(searchCondition.TaskName) 
@@ -79,7 +82,8 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                var majorTask = from m in dbContext.MajorTask
+                dbContext.Configuration.LazyLoadingEnabled = false;
+                var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
                                 orderby m.CreateTime descending
                                 select m;
                 var majorTasks = majorTask.Skip((pageIndex - 1) * pageMax).Take(pageMax);

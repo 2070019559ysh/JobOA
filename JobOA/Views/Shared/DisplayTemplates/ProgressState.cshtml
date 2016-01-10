@@ -1,0 +1,26 @@
+﻿@using JobOA.Model
+
+@{
+    int state = Convert.ToInt32(ViewData["state"]);
+    ProgressState progress=(ProgressState)state;
+    if (progress == ProgressState.Acceptance)
+    {
+        <span>已验收</span>
+    }
+    else if (progress == ProgressState.AcceptanceNotThrough)
+    {
+        <span>已验不通过</span>
+    }
+    else if (progress == ProgressState.Completed)
+    {
+        <span>已完成</span>
+    }
+    else if (progress == ProgressState.NotFinished)
+    {
+        <span>未完成</span>
+    }
+    else
+    {
+        <span>已结束</span>
+    }
+}

@@ -300,6 +300,8 @@
     <Content Include="Views\ErrorCatch\FileNotFound.cshtml" />
     <Content Include="Views\Shared\AdminViewMaster.cshtml" />
     <Content Include="Views\AdminTask\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProgressState.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

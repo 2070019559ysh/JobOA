@@ -1,4 +1,5 @@
 ﻿@using JobOA.Model
+@using JobOA.Model.ViewModel
 
 @{
     ViewBag.Title = "JobOA—任务管理";
@@ -6,7 +7,14 @@
 
     List<Project> projectList = ViewBag.Project??new List<Project>();
     List<Department> departmentList = ViewBag.Department ?? new List<Department>();
-    List<MajorTask> majorTask = ViewBag.MajorTask;
+    List<MajorTask> majorTaskList = ViewBag.MajorTask;
+    Pager pager = ViewBag.Pager;
+    string[] remarks = pager.Remarks.Split(',');//查询条件
+    int projectId = Convert.ToInt32(remarks[0]);
+    int departmentId = Convert.ToInt32(remarks[1]);
+    string search = remarks[2];
+    string nowProject = String.Empty;//当前项目名
+    string nowDepartment = String.Empty;//当前部门名
 }
 
 @section css{
@@ -23,19 +31,35 @@
     <div class="am-u-sm-12 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
         项目：
         <select id="project" data-am-selected="{searchBox:1,btnStyle: 'success',dropUp:0,maxHeight: 200}">
-            <option value="a">Apple</option>
-            <option value="b">Banana</option>
-            <option value="o">Orange</option>
-            <option value="m">Mango</option>
+            @foreach (Project project in projectList)
+            {
+                if (projectId == project.Id)
+                {
+                    nowProject = project.Name;
+                    <option selected="selected" value="@project.Id">@project.Name</option>
+                }
+                else
+                {
+                    <option value="@project.Id">@project.Name</option>
+                }
+            }
         </select>
     </div>
     <div class="am-u-sm-12 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
         部门：
         <select id="department" data-am-selected="{searchBox:1,btnStyle: 'success',dropUp:0,maxHeight: 200}">
-            <option value="a">Apple</option>
-            <option value="b">Banana</option>
-            <option value="o">Orange</option>
-            <option value="m">Mango</option>
+            @foreach (Department department in departmentList)
+            {
+                if (departmentId == department.Id)
+                {
+                    nowDepartment = department.Name;
+                    <option selected="selected" value="@department.Id">@department.Name</option>
+                }
+                else
+                {
+                    <option value="@department.Id">@department.Name</option>
+                }
+            }
         </select>
     </div>
     <div class="am-u-sm-12 am-u-md-6 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
@@ -58,101 +82,55 @@
     <div class="am-u-sm-12">
         <div class="am-panel am-panel-primary am-margin-top">
             <header class="am-panel-hd">
-                <h3 class="am-panel-title">XXX项目的XXX部门的主任务</h3>
+                <h3 class="am-panel-title">@nowProject 项目的 @nowDepartment 部门的主任务</h3>
             </header>
             <!--<div class="am-panel-bd"></div>-->
             <ul class="am-list">
-                <li class="am-padding">
-                    <h4>与老板、客户沟通了解需求</h4>
-                    <em>ID:1</em>
-                    <section class="am-g">
-                        <span class="am-u-sm-12 am-u-lg-4">执行人：林豆豆</span>
-                        <span class="am-u-sm-12 am-u-lg-4">安排人：杨为难</span>
-                        <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：陈丽</span>
-                    </section>
-                    <section class="am-g">
-                        <span class="am-u-sm-12 am-u-lg-4">创建时间：2016年1月2日20:19:23</span>
-                        <span class="am-u-sm-12 am-u-lg-4">开始时间：2016年1月2日20:19:31</span>
-                        <span class="am-u-sm-12 am-u-lg-4">结束时间：2016年1月2日20:19:44</span>
-                        <span class="am-u-sm-12 am-u-lg-4 am-u-end">实际完成时间：2016年1月2日20:19:48</span>
-                    </section>
-                    <section class="am-g">
-                        <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
-                            附件：EasyBuild.rar
-                            <button type="button" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-download"></span>下载附件</button>
-                        </div>
-                        <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
-                            <span class="am-block am-fl">操作：</span>
-                            <div class="am-btn-toolbar am-fl">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                    <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-tasks"></span> 子任务</button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                @foreach (MajorTask majorTask in majorTaskList)
+                {
+                    <li class="am-padding">
+                        <h4>@majorTask.Name</h4>
+                        <em>ID:1</em>
+                        <section class="am-g">
+                            <span class="am-u-sm-12 am-u-lg-4">执行人：@majorTask.ExeEmployee.RealName</span>
+                            <span class="am-u-sm-12 am-u-lg-4">安排人：@majorTask.ArrangeEmployee.RealName</span>
+                            <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：@majorTask.CheckEmployee.RealName</span>
+                        </section>
+                        <section class="am-g">
+                            <span class="am-u-sm-12 am-u-lg-4">创建时间：@majorTask.CreateTime</span>
+                            <span class="am-u-sm-12 am-u-lg-4">开始时间：@majorTask.StartTime</span>
+                            <span class="am-u-sm-12 am-u-lg-4">结束时间：@majorTask.CompleteTime</span>
+                            <span class="am-u-sm-12 am-u-lg-4 am-u-end">实际完成时间：@majorTask.CommitTime</span>
+                        </section>
+                        <section class="am-g">
+                            <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
+                                附件：@majorTask.Attachment
+                                <button type="button" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-download"></span>下载附件</button>
+                            </div>
+                            <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
+                                <span class="am-block am-fl">操作：</span>
+                                <div class="am-btn-toolbar am-fl">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                        <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-tasks"></span> 子任务</button>
+                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section>
-                        任务状态：未完成
-                        <div class="am-progress">
-                            <div class="am-progress-bar am-progress-bar-secondary" style="width: 57%">57%</div>
-                        </div>
-                    </section>
-                </li>
-                <li class="am-padding">
-                    <h4>与老板、客户沟通了解需求</h4>
-                    <em>ID:1</em>
-                    <section class="am-g">
-                        <span class="am-u-sm-12 am-u-lg-4">执行人：林豆豆</span>
-                        <span class="am-u-sm-12 am-u-lg-4">安排人：杨为难</span>
-                        <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：陈丽</span>
-                    </section>
-                    <section class="am-g">
-                        <span class="am-u-sm-12 am-u-lg-4">创建时间：2016年1月2日20:19:23</span>
-                        <span class="am-u-sm-12 am-u-lg-4">开始时间：2016年1月2日20:19:31</span>
-                        <span class="am-u-sm-12 am-u-lg-4">结束时间：2016年1月2日20:19:44</span>
-                        <span class="am-u-sm-12 am-u-lg-4 am-u-end">实际完成时间：2016年1月2日20:19:48</span>
-                    </section>
-                    <section class="am-g">
-                        <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
-                            附件：EasyBuild.rar
-                            <button type="button" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-download"></span>下载附件</button>
-                        </div>
-                        <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
-                            <span class="am-block am-fl">操作：</span>
-                            <div class="am-btn-toolbar am-fl">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                    <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-tasks"></span> 子任务</button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
-                                </div>
+                        </section>
+                        <section>
+                            @{ViewData["state"] = majorTask.State;}
+                            任务状态：@Html.Display("progressState", "ProgressState")
+                            <div class="am-progress">
+                                <div class="am-progress-bar am-progress-bar-secondary" style="width: 57%">57%</div>
                             </div>
-                        </div>
-                    </section>
-                    <section>
-                        任务状态：未完成
-                        <div class="am-progress">
-                            <div class="am-progress-bar am-progress-bar-secondary" style="width: 57%">57%</div>
-                        </div>
-                    </section>
-                </li>
+                        </section>
+                    </li>
+                }
             </ul>
-            <footer class="am-panel-footer">XXX项目的XXX部门的主任务</footer>
+            <footer class="am-panel-footer">@nowProject 项目的 @nowDepartment 部门的主任务</footer>
         </div>
-        <div class="am-cf">
-            共 15 条记录
-            <div class="am-fr">
-                <ul class="am-pagination">
-                    <li class="am-disabled"><a href="#">&lt;&lt;</a></li>
-                    <li class="am-active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;&gt;</a></li>
-                </ul>
-            </div>
-        </div>
+        @Html.Display("pager","Pager")
         <hr />
         <p>注：.....</p>
     </div>
