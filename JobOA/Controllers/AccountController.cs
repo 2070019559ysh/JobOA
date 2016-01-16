@@ -262,5 +262,17 @@ namespace JobOA.Controllers
             bool unique = (employee == null);
             return Json(new { isUnique = unique }, JsonRequestBehavior.DenyGet);
         }
+
+        /// <summary>
+        /// 显示员工登录信息
+        /// </summary>
+        /// <returns>员工登录信息</returns>
+        [AllowAnonymous]
+        [HttpPost]
+        public JsonResult EmployeeMess()
+        {
+            Employee employee=EmployeeManager.SearchEmployeeByUserName(User.Identity.Name);
+            return Json(employee, JsonRequestBehavior.DenyGet);
+        }
     }
 }

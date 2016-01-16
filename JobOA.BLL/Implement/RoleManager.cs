@@ -58,9 +58,12 @@ namespace JobOA.BLL.Implement
         public List<Role> SearchRolesByPath(string httpMethod, string path)
         {
             AccessPath accessPath=AccessPathService.SearchAccessPathByPath(httpMethod, path);
-            List<Role> roleList = null;
-            Permission perm=PermissionService.SearchPermissionByPathId(accessPath.AccessPathId);
-            roleList = SearchRoleByPermissionId(perm.Id);
+            List<Role> roleList = new List<Role>();
+            if (accessPath != null)
+            {
+                Permission perm = PermissionService.SearchPermissionByPathId(accessPath.AccessPathId);
+                roleList = SearchRoleByPermissionId(perm.Id);
+            }
             return roleList;
         }
 

@@ -51,8 +51,9 @@ namespace JobOA.Controllers
                 search = String.Join(",", searchCnds);
             }
             List<MajorTask> majorTaskList = MajorTaskManager.SearchAllMajorTask(pageIndex.Value,pageSize.Value,search);
+            int count = MajorTaskManager.SearchAllMajorTaskCount(pageIndex.Value, pageSize.Value, search);
             //视图数据
-            Pager pager = new Pager(pageIndex.Value, pageSize.Value, majorTaskList.Count);
+            Pager pager = new Pager(pageIndex.Value, pageSize.Value, count);
             pager.Remarks = search+",";//保存查询条件
             ViewBag.Project = projectList;
             ViewBag.Department = departmentList;

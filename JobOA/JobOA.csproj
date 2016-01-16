@@ -158,6 +158,7 @@
     <Content Include="Content\images\oaui\foundation.png" />
     <Content Include="Content\images\oaui\mascot.png" />
     <Content Include="Content\images\oaui\mobile.png" />
+    <Content Include="Content\images\oaui\oa.ico" />
     <Content Include="Content\images\oaui\oa.png" />
     <Content Include="Content\images\oaui\pic1.gif" />
     <Content Include="Content\images\oaui\qr-ui.jpg" />
@@ -273,9 +274,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\js\ChineseToPinYin.js" />
+    <Content Include="Scripts\js\chineseToPinYin.js" />
     <Content Include="Scripts\js\homeIndex.js" />
-    <Content Include="Scripts\js\Modal.js" />
+    <Content Include="Scripts\js\modal.js" />
+    <Content Include="Scripts\js\masterHeadPicture.js" />
     <Content Include="Scripts\js\register.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
@@ -302,6 +304,7 @@
     <Content Include="Views\AdminTask\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProgressState.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Pager.cshtml" />
+    <Content Include="Views\Account\EmployeeMess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

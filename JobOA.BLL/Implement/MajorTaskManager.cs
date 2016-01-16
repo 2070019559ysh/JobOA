@@ -23,6 +23,12 @@ namespace JobOA.BLL.Implement
         public IMajorTaskService MajorTaskService { get; set; }
 
         /// <summary>
+        /// 依赖注入员工信息关联数据库服务类
+        /// </summary>
+        [Inject]
+        public IEmployeeService EmployeeService { get; set; }
+
+        /// <summary>
         /// 异常处理对象
         /// </summary>
         private readonly ExceptionLog _exceptionLog = new ExceptionLog();
@@ -77,12 +83,8 @@ namespace JobOA.BLL.Implement
             List<MajorTask> majorTaskList = null;
             try
             {
-                if (String.IsNullOrEmpty(search))
-                {   //没有查询条件参数，直接按分页查询
-                    majorTaskList = MajorTaskService.SearchAllMajorTask(pageIndex,pageSize);
-                }
-                else
-                {
+                if (!String.IsNullOrEmpty(search))
+                {   
                     //处理出查询条件
                     string[] searchCnds;
                     searchCnds = search.Split(',');
@@ -108,6 +110,22 @@ namespace JobOA.BLL.Implement
                         searchCondition.TaskName = searchCnds[2];
                     }
                     majorTaskList = MajorTaskService.SearchAllMajorTask(searchCondition);
+                    //查找关联员工信息
+                    majorTaskList.ForEach(majorTask =>
+                    {
+                        if (majorTask.ArrangeEmployee == null)
+                        {
+                            majorTask.ArrangeEmployee=EmployeeService.SearchEmployeeById(majorTask.ArrangePersonId);
+                        }
+                        if (majorTask.CheckEmployee == null)
+                        {
+                            majorTask.CheckEmployee=EmployeeService.SearchEmployeeById(majorTask.CheckPersonId);
+                        }
+                        if (majorTask.ExeEmployee == null)
+                        {
+                            majorTask.ExeEmployee = EmployeeService.SearchEmployeeById(majorTask.ExePersonId);
+                        }
+                    });
                 }
             }
             catch (Exception ex)
@@ -115,6 +133,47 @@ namespace JobOA.BLL.Implement
                 _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
             }
             return majorTaskList;
+        }
+
+        /// <summary>
+        /// 根据条件查找主任务总记录数
+        /// </summary>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">每页最大记录数</param>
+        /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
+        /// <returns>满足条件的主任务总记录数</returns>
+        public int SearchAllMajorTaskCount(int pageIndex, int pageSize, string search)
+        {
+            int count = 0;
+            if (!String.IsNullOrEmpty(search))
+            {   
+                //处理出查询条件
+                string[] searchCnds;
+                searchCnds = search.Split(',');
+                if (searchCnds.Length < 2)//确保2个查询条件
+                    searchCnds = new string[] { "1", "1" };
+                int projectId = 1, departmentId = 1;
+                int.TryParse(searchCnds[0], out projectId);
+                int.TryParse(searchCnds[1], out departmentId);
+                //创建条件信息的对象
+                SearchTaskCondition searchCondition = new SearchTaskCondition()
+                {
+                    PageIndex = pageIndex,
+                    PageMax = pageSize,
+                    ProjectId = projectId,
+                    DepantmentId = departmentId,
+                };
+                if (searchCnds.Length == 2)
+                {   //刚好两个查询条件，第三个默认
+                    searchCondition.TaskName = String.Empty;
+                }
+                else
+                {   //第三个查询条件
+                    searchCondition.TaskName = searchCnds[2];
+                }
+                count = MajorTaskService.SearchAllMajorTaskCount(searchCondition);
+            }
+            return count;
         }
 
         /// <summary>

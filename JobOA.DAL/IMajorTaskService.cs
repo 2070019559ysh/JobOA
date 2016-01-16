@@ -35,6 +35,13 @@ namespace JobOA.DAL
         List<MajorTask> SearchAllMajorTask(SearchTaskCondition searchCondition);
 
         /// <summary>
+        /// 根据查询任务条件查找所有主任务的记录总数
+        /// </summary>
+        /// <param name="searchCondition">查询任务条件</param>
+        /// <returns>符合条件的主任务记录数量</returns>
+        int SearchAllMajorTaskCount(SearchTaskCondition searchCondition);
+
+        /// <summary>
         /// 根据分页查找所有主任务
         /// </summary>
         /// <param name="pageIndex">当前页</param>
