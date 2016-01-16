@@ -9,13 +9,14 @@ using JobOA.Common;
 using System.Configuration;
 using System.Reflection;
 using System.Web.Http.Dependencies;
+using System.Web.Routing;
 
 namespace JobOA.Auxiliary
 {
     /// <summary>
     /// 表示依赖关系注入容器。定义可简化服务位置和依赖关系解析的方法。
     /// </summary>
-    public class NinjectControllerFactory:IDependencyResolver, System.Web.Mvc.IDependencyResolver
+    public class NinjectControllerFactory : System.Web.Mvc.DefaultControllerFactory,IDependencyResolver, System.Web.Mvc.IDependencyResolver
     {
         private IKernel ninjectKernel;
 
@@ -42,16 +43,30 @@ namespace JobOA.Auxiliary
             ninjectKernel.Bind<IProjectManager>().To<ProjectManageer>();
         }
 
+        /// <summary>
+        /// 提供获取注入接口的实际实现类
+        /// </summary>
+        /// <param name="serviceType"></param>
+        /// <returns></returns>
         public object GetService(Type serviceType)
         {
             return this.ninjectKernel.TryGet(serviceType);
         }
 
+        /// <summary>
+        /// 提供获取多个注入接口的实际实现类
+        /// </summary>
+        /// <param name="serviceType"></param>
+        /// <returns></returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
             return this.ninjectKernel.GetAll(serviceType);
         }
 
+        /// <summary>
+        /// 获取依赖项范围
+        /// </summary>
+        /// <returns></returns>
         public IDependencyScope BeginScope()
         {
             return this; 
@@ -60,6 +75,21 @@ namespace JobOA.Auxiliary
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 创建任何控制器实例都执行此方法获取，同时对控制器判断是否存在，不存在会重定向到404页面
+        /// </summary>
+        /// <param name="requestContext">请求上下文</param>
+        /// <param name="controllerType">要获取的控制器类型</param>
+        /// <returns>控制器实例</returns>
+        protected override System.Web.Mvc.IController GetControllerInstance(RequestContext requestContext,Type controllerType)
+        {
+            if (controllerType == null)
+            {
+                requestContext.HttpContext.Response.Redirect("~/ErrorCatch/FileNotFound",true);
+            }
+            return controllerType == null ? null : (System.Web.Mvc.IController)ninjectKernel.Get(controllerType);
         }
     }
 }

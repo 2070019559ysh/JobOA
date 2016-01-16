@@ -24,6 +24,7 @@ namespace JobOA
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //设置Controller工厂,告诉MVC用我们的NinjectControllerFactory类来创建Controller对象
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             // MVC 依赖
             DependencyResolver.SetResolver(new NinjectControllerFactory());
         }

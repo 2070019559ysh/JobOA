@@ -10,12 +10,13 @@ namespace JobOA.Controllers
     {
         //
         // GET: /ErrorCatch/
-
+        [AllowAnonymous]
         public ActionResult Error()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ViewResult FileNotFound()
         {
             return View();
