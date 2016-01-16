@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace JobOA.Controllers
 {
-    public class ProjectController : Controller
+    public class AdminHomeController : Controller
     {
         //
-        // GET: /Project/
+        // GET: /AdminHome/
 
         public ActionResult Index()
         {

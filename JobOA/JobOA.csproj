@@ -137,16 +137,18 @@
     <Compile Include="Auxiliary\NinjectControllerFactory.cs" />
     <Compile Include="Auxiliary\PermissionAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AdminTaskController.cs" />
     <Compile Include="Controllers\ErrorCatchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\AdminProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\adminHome.css" />
     <Content Include="Content\css\loginAlert.css" />
     <Content Include="Content\css\register.css" />
     <Content Include="Content\images\oaui\allWeb_ico.png" />
@@ -305,8 +307,8 @@
     <Content Include="Views\AdminTask\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProgressState.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Pager.cshtml" />
-    <Content Include="Views\Account\EmployeeMess.cshtml" />
-    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\AdminProject\Index.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

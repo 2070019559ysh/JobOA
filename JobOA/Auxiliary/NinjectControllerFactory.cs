@@ -46,8 +46,8 @@ namespace JobOA.Auxiliary
         /// <summary>
         /// 提供获取注入接口的实际实现类
         /// </summary>
-        /// <param name="serviceType"></param>
-        /// <returns></returns>
+        /// <param name="serviceType">serviceType</param>
+        /// <returns>object</returns>
         public object GetService(Type serviceType)
         {
             return this.ninjectKernel.TryGet(serviceType);
@@ -56,8 +56,8 @@ namespace JobOA.Auxiliary
         /// <summary>
         /// 提供获取多个注入接口的实际实现类
         /// </summary>
-        /// <param name="serviceType"></param>
-        /// <returns></returns>
+        /// <param name="serviceType">serviceType</param>
+        /// <returns>object集合</returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
             return this.ninjectKernel.GetAll(serviceType);
@@ -66,7 +66,7 @@ namespace JobOA.Auxiliary
         /// <summary>
         /// 获取依赖项范围
         /// </summary>
-        /// <returns></returns>
+        /// <returns>依赖项范围对象</returns>
         public IDependencyScope BeginScope()
         {
             return this; 
