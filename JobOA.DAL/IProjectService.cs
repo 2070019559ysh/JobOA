@@ -19,6 +19,12 @@ namespace JobOA.DAL
         Project SearchProjectById(int id);
 
         /// <summary>
+        /// 查找所有项目
+        /// </summary>
+        /// <returns>所有项目的集合</returns>
+        List<Project> SearchAllProject();
+
+        /// <summary>
         /// 添加项目信息
         /// </summary>
         /// <param name="project">项目信息</param>

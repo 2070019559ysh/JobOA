@@ -19,13 +19,6 @@ namespace JobOA.DAL
         Role SearchRoleById(int id);
 
         /// <summary>
-        /// 通过权限Id查找所有关联的角色
-        /// </summary>
-        /// <param name="permissionId">权限Id</param>
-        /// <returns>所有关联的角色</returns>
-        List<Role> SearchRoleByPermissionId(int permissionId);
-
-        /// <summary>
         /// 查找所有角色信息
         /// </summary>
         /// <returns>所有角色信息列表</returns>

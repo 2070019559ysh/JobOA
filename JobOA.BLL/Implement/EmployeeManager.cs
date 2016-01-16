@@ -81,6 +81,15 @@ namespace JobOA.BLL.Implement
             try
             {
                 employee=EmployeeService.SearchEmployeeByUserName(userName);
+                if (String.IsNullOrEmpty(employee.HeadPicture))
+                {
+                    //没有头像，使用默认头像
+                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
+                }
+                else
+                {
+                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
+                }
             }
             catch (Exception ex)
             {

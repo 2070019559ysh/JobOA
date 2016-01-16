@@ -21,15 +21,6 @@ namespace JobOA.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 Employee employee=EmployeeManager.SearchEmployeeByUserName(User.Identity.Name);
-                if (String.IsNullOrEmpty(employee.HeadPicture))
-                {
-                    //没有头像，使用默认头像
-                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
-                }
-                else
-                {
-                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
-                }
                 ViewBag.Employee = employee;
             }
             return View();

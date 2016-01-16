@@ -13,37 +13,14 @@ using System.Web.Http.Dependencies;
 namespace JobOA.Auxiliary
 {
     /// <summary>
-    /// 扩展默认控制器工厂类。默认情况下，ASP.NET MVC使用内置的Controller工厂类 DefaultControllerFactory来创建某个请求对应的Controller实例
+    /// 表示依赖关系注入容器。定义可简化服务位置和依赖关系解析的方法。
     /// </summary>
     public class NinjectControllerFactory:IDependencyResolver, System.Web.Mvc.IDependencyResolver
     {
         private IKernel ninjectKernel;
 
-        /// <summary>
-        /// 异常处理对象
-        /// </summary>
-        private readonly ExceptionLog _exceptionLog = new ExceptionLog();
-
-        /// <summary>
-        /// 配置文件中指定的日志文件名
-        /// </summary>
-        private string logFileName;
-
         public NinjectControllerFactory()
         {
-            if (ConfigurationManager.AppSettings["LogFileName"] != null)
-            {
-                logFileName = ConfigurationManager.AppSettings["LogFileName"].ToString();
-            }
-            else
-            {
-                //配置文件中不指定系统日志文件，则使用默认文件
-                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                //取得值file:///D:/C#/PathTest/TestProject1/bin/Debug/TestProject1.DLL
-                //去掉头八个字符file///
-                codeBase = codeBase.Substring(8, codeBase.Length - 8);
-                logFileName = codeBase.Remove(codeBase.IndexOf("/bin")) + "/JobOAException/JobOA.log";
-            }
             ninjectKernel = new StandardKernel();
             AddBindings();
         }
@@ -61,6 +38,8 @@ namespace JobOA.Auxiliary
             ninjectKernel.Bind<IEmployeeManager>().To<EmployeeManager>();
             //.WithConstructorArgument(HttpContext.Current.Server.MapPath("~/"));
             ninjectKernel.Bind<IOAUiManager>().To<OAUiManager>();
+            ninjectKernel.Bind<IMajorTaskManager>().To<MajorTaskManager>();
+            ninjectKernel.Bind<IProjectManager>().To<ProjectManageer>();
         }
 
         public object GetService(Type serviceType)

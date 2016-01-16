@@ -1,0 +1,17 @@
+diff a/JobOA.BLL/Implement/EmployeeManager.cs b/JobOA.BLL/Implement/EmployeeManager.cs	(rejected hunks)
+@@ -38,6 +38,15 @@
+             try
+             {
+                 employee = EmployeeService.SearchEmployeeById(id);
++                if (String.IsNullOrEmpty(employee.HeadPicture))
++                {
++                    //æ²¡æœ‰å¤´åƒï¼Œä½¿ç”¨é»˜è®¤å¤´åƒ
++                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
++                }
++                else
++                {
++                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
++                }
+             }
+             catch (Exception ex)
+             {

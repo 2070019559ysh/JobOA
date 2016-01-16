@@ -169,7 +169,7 @@ namespace JobOA.Controllers
                     1, //身份验证票据版本号
                     employee.UserName,//关联的用户名
                     DateTime.Now,//发表时间
-                    DateTime.Now.AddHours(1.0),//过期时间
+                    DateTime.Now.AddYears(1),//过期时间
                     true,//存储在持久性cookie中
                     employee.RoleIds//用户的角色 每个以“,”分割
                     );
@@ -261,6 +261,18 @@ namespace JobOA.Controllers
             Employee employee=EmployeeManager.SearchEmployeeByUserName(userName);
             bool unique = (employee == null);
             return Json(new { isUnique = unique }, JsonRequestBehavior.DenyGet);
+        }
+
+        /// <summary>
+        /// 显示员工登录信息
+        /// </summary>
+        /// <returns>员工登录信息</returns>
+        [AllowAnonymous]
+        [HttpPost]
+        public JsonResult EmployeeMess()
+        {
+            Employee employee=EmployeeManager.SearchEmployeeByUserName(User.Identity.Name);
+            return Json(employee, JsonRequestBehavior.DenyGet);
         }
     }
 }

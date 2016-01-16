@@ -5,10 +5,10 @@
 */
 //动态原型方法
 function Modal(title,id) {
-    if (typeof id === "undefined" || id === "") {
+    if (id) {
         id = "joboa-modal";
     }
-    if (typeof title === "undefined" || title === "") {
+    if (title) {
         title = "JobOA-系统提示";
     }
 

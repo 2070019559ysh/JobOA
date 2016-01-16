@@ -35,6 +35,7 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
+                dbContext.Configuration.ProxyCreationEnabled = false;
                 //一个员工的手机号码只能注册一个账号，以此查找唯一员工信息
                 var employee = from e in dbContext.Employee
                                where e.UserName.Equals(userName)

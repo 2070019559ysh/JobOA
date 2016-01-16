@@ -28,6 +28,20 @@ namespace JobOA.DAL.Implement
         }
 
         /// <summary>
+        /// 查找所有项目
+        /// </summary>
+        /// <returns>所有项目的集合</returns>
+        public List<Project> SearchAllProject()
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var project = from p in dbContext.Project
+                              select p;
+                return project.ToList();
+            }
+        }
+
+        /// <summary>
         /// 添加项目信息
         /// </summary>
         /// <param name="project">项目信息</param>

@@ -64,10 +64,10 @@
     <Compile Include="Role.cs" />
     <Compile Include="SubTask.cs" />
     <Compile Include="MajorTask.cs" />
+    <Compile Include="ViewModel\Pager.cs" />
+    <Compile Include="ViewModel\SearchTaskCondition.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
