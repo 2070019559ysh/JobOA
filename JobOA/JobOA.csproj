@@ -306,11 +306,11 @@
     <Content Include="Views\Shared\DisplayTemplates\ProgressState.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Pager.cshtml" />
     <Content Include="Views\Account\EmployeeMess.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Project\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
