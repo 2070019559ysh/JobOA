@@ -278,6 +278,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
+    <Content Include="Scripts\js\adminHome.js" />
     <Content Include="Scripts\js\homeIndex.js" />
     <Content Include="Scripts\js\modal.js" />
     <Content Include="Scripts\js\masterHeadPicture.js" />

@@ -4,6 +4,18 @@
 }
 .userstate li{
     padding:5px 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:12px;
+    position:relative;
+}
+.userstate li .am-btn{
+    padding:2px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:12px;
+    position:absolute;
+    z-index:1;
+    right:10px;
+    top:5px;
 }
 .userstate li>span{
     display:inline-block;
@@ -14,4 +26,11 @@
 }
 .userstate li>span:nth-of-type(2){
     color:rgb(128, 128, 128);
+}
+td .am-progress{
+    margin:0px;
+    height:15px;
+}
+td .am-progress-bar{
+    line-height:15px;
 }

@@ -15,7 +15,7 @@ using System.Security.Principal;
 
 namespace JobOA.Controllers
 {
-    [ExceptionFilter]
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         /// <summary>
@@ -43,7 +43,6 @@ namespace JobOA.Controllers
         /// </summary>
         /// <returns>登录界面</returns>
         [HttpGet]
-        [AllowAnonymous]
         public ViewResult Index()
         {
             return View("Login");
