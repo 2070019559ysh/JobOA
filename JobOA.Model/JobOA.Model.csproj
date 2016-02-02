@@ -66,6 +66,7 @@
     <Compile Include="MajorTask.cs" />
     <Compile Include="ViewModel\Pager.cs" />
     <Compile Include="ViewModel\SearchTaskCondition.cs" />
+    <Compile Include="ViewModel\StateData.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

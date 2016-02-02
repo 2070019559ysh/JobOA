@@ -1,6 +1,7 @@
 using JobOA.Common;
 using JobOA.DAL;
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,19 @@ namespace JobOA.BLL.Implement
             {
                 _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
             }
+            return projectList;
+        }
+
+        /// <summary>
+        /// 根据分页条件及pager.Remarks的项目名模糊查询所有项目信息
+        /// </summary>
+        /// <param name="pager">分页对象</param>
+        /// <returns>所有项目信息</returns>
+        public List<Project> SearchProjectByPages(Pager pager)
+        {
+            if (pager.Remarks==null) pager.Remarks = String.Empty;
+            pager.Total=ProjectService.AllProjectCount(pager.Remarks);
+            List<Project> projectList=ProjectService.SearchAllProject(pager);
             return projectList;
         }
 

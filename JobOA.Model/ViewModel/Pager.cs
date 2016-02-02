@@ -86,6 +86,11 @@ namespace JobOA.Model.ViewModel
                 {
                     _total = value;
                 }
+                _pageCount = _total % _pageSize == 0 ? _total / _pageSize : (_total / _pageSize) + 1;
+                if (_pageCount < 1) _pageCount = 1;//至少要有一页
+                _start = _pageIndex - 3 > 1 ? _pageIndex - 3 : 1;
+                _end = _pageIndex + 3 < PageCount ? _pageIndex + 3 : PageCount;
+                _hasNext = _pageIndex < PageCount;
             }
         }
         /// <summary>
@@ -135,21 +140,25 @@ namespace JobOA.Model.ViewModel
         public string Remarks { get; set; }
 
         /// <summary>
-        /// 唯一的构造函数
+        /// 实例化Pager的构造函数，接受三个参数
         /// </summary>
         /// <param name="pageIndex">当前页</param>
         /// <param name="pageSize">页显示记录数</param>
         /// <param name="total">总记录数</param>
-        public Pager(int pageIndex,int pageSize,int total) {
+        public Pager(int pageIndex,int pageSize,int total):this(pageIndex,pageSize) {
+            this.Total = total;
+        }
+        /// <summary>
+        /// 实例化Pager的构造函数，接受两个参数
+        /// </summary>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">页显示记录数</param>
+        /// <param name="total">总记录数</param>
+        public Pager(int pageIndex, int pageSize)
+        {
             this._pageIndex = pageIndex;
             this.PageSize = pageSize;
-            this.Total = total;
-            _pageCount=_total % _pageSize == 0 ? _total / _pageSize : (_total / _pageSize) + 1;
-            if (_pageCount < 1) _pageCount = 1;//至少要有一页
-            _start = _pageIndex - 3 > 1 ? _pageIndex - 3 : 1;
-            _end = _pageIndex + 3 < PageCount ? _pageIndex + 3 : PageCount;
             _hasPrev = _pageIndex > 1;
-            _hasNext = _pageIndex < PageCount;
         }
     }
 }

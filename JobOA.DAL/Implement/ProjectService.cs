@@ -1,4 +1,5 @@
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,38 @@ namespace JobOA.DAL.Implement
                 var project = from p in dbContext.Project
                               select p;
                 return project.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 查找所有项目,分页条件查询，pager.Remarks必须是项目名
+        /// </summary>
+        /// <returns>分页条件查询到的项目集合</returns>
+        public List<Project> SearchAllProject(Pager pager)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var project = from p in dbContext.Project
+                              where p.Name.Contains(pager.Remarks)
+                              orderby p.Id ascending
+                              select p;
+                IQueryable<Project> projects=project.Skip((pager.PageIndex - 1) * pager.PageSize).Take(pager.PageSize);
+                return projects.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 模糊查找指定项目名的项目记录总数
+        /// </summary>
+        /// <returns>项目记录总数</returns>
+        public int AllProjectCount(string projectName)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var project = from p in dbContext.Project
+                              where p.Name.Contains(projectName)
+                              select p;
+                return project.Count();
             }
         }
 

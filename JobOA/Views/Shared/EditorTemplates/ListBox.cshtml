@@ -1,0 +1,24 @@
+﻿@{
+    SelectList selectList = ViewData["list"] as SelectList;
+}
+<select data-am-selected="{btnSize: 'sm', btnStyle: 'secondary',maxHeight: 150}">
+    @if (selectList != null)
+    {
+        foreach (var item in selectList)
+        {
+            if (item.Selected)
+            {
+                <option selected="selected" value="@item.Value">@item.Text</option>
+            }
+            else
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        }
+
+    }
+    else
+    {
+        <option value="">无</option>
+    }
+</select>

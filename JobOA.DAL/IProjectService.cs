@@ -1,4 +1,5 @@
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,18 @@ namespace JobOA.DAL
         /// </summary>
         /// <returns>所有项目的集合</returns>
         List<Project> SearchAllProject();
+
+        /// <summary>
+        /// 查找所有项目,分页条件查询，pager.Remarks必须是项目名
+        /// </summary>
+        /// <returns>分页条件查询到的项目集合</returns>
+        List<Project> SearchAllProject(Pager pager);
+
+        /// <summary>
+        /// 模糊查找指定项目名的项目记录总数
+        /// </summary>
+        /// <returns>项目记录总数</returns>
+        int AllProjectCount(string projectName);
 
         /// <summary>
         /// 添加项目信息

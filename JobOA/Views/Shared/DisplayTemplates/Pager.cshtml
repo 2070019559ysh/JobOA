@@ -11,7 +11,7 @@
     当前 @pager.PageIndex / @pager.PageCount 页&nbsp;&nbsp; 共 @pager.Total 条记录
     <div class="am-fr">
         <ul class="am-pagination">
-            <li><a href="Index?pageIndex=1">|&lt;&lt;</a></li>
+            <li><a href="@action?pageIndex=1">|&lt;&lt;</a></li>
             <li @prev><a href="@action?pageIndex=@(Convert.ToString(pager.PageIndex-1))">&lt;&lt;</a></li>
             @for (int i = pager.Start; i <= pager.End; i++)
             {
@@ -25,7 +25,7 @@
                 }
             }
             <li @next><a href="#">&gt;&gt;</a></li>
-            <li><a href="@Convert.ToString(pager.PageCount)">&gt;&gt;|</a></li>
+            <li><a href="@action?pageIndex=@Convert.ToString(pager.PageCount)">&gt;&gt;|</a></li>
         </ul>
     </div>
 </div>

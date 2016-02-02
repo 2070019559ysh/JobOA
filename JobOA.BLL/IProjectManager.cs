@@ -1,4 +1,5 @@
 ﻿using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,13 @@ namespace JobOA.BLL
         /// </summary>
         /// <returns>所有项目的集合</returns>
         List<Project> SearchAllProject();
+
+        /// <summary>
+        /// 根据分页条件及pager.Remarks的项目名模糊查询所有项目信息
+        /// </summary>
+        /// <param name="pager">分页对象</param>
+        /// <returns>所有项目信息</returns>
+        List<Project> SearchProjectByPages(Pager pager);
 
         /// <summary>
         /// 添加项目信息

@@ -277,6 +277,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\adminProject.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
     <Content Include="Scripts\js\adminHome.js" />
     <Content Include="Scripts\js\homeIndex.js" />
@@ -310,11 +311,12 @@
     <Content Include="Views\Shared\DisplayTemplates\Pager.cshtml" />
     <Content Include="Views\AdminProject\Index.cshtml" />
     <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminProject\AddProject.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ListBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

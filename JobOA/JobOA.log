@@ -80,3 +80,7 @@
 2016/1/16 14:32:27 发生异常：尝试除以零。
 2016/1/16 14:58:19 发生异常：尝试除以零。
 2016/1/16 15:00:50 发生异常：尝试除以零。
+2016/2/1 15:35:48 发生异常：仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”。
+2016/2/1 15:36:02 发生异常：仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”。
+2016/2/2 22:46:21 发生异常：f:\C#.Net\JobOA\JobOA\Views\AdminProject\AddProject.cshtml(27): error CS1525: 无效的表达式项“>”
+2016/2/2 22:46:38 发生异常：f:\C#.Net\JobOA\JobOA\Views\AdminProject\AddProject.cshtml(27): error CS1525: 无效的表达式项“>”
