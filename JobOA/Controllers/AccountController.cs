@@ -168,14 +168,24 @@ namespace JobOA.Controllers
                     1, //身份验证票据版本号
                     employee.UserName,//关联的用户名
                     DateTime.Now,//发表时间
-                    DateTime.Now.AddYears(1),//过期时间
+                    DateTime.Now.AddMonths(1),//过期时间
                     true,//存储在持久性cookie中
                     employee.RoleIds//用户的角色 每个以“,”分割
                     );
                 string ticketContent=FormsAuthentication.Encrypt(authenticationTicket);//为了安全，进行加密
+
+                Session["user"] = employee;//记录用户信息 并修改对应客户端cookie的有效时间
+                HttpCookie sessionCookie = new HttpCookie("ASP.NET_SessionId");
+                sessionCookie.HttpOnly = false;
+                sessionCookie.Value=Request.Cookies["ASP.NET_SessionId"].Value;
+                sessionCookie.Expires = DateTime.Now.AddMonths(1);
+                Response.Cookies.Add(sessionCookie);
+
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticketContent);
-                cookie.HttpOnly = true;//客户端js不需要读取到这个Cookie，只允许服务器端读取
+                cookie.Expires = DateTime.Now.AddMonths(1);
+                cookie.HttpOnly = false;//客户端js不需要读取到这个Cookie，只允许服务器端读取
                 Response.Cookies.Add(cookie);//响应给客户端
+
                 string[] roleIds=new string[0];
                 if (employee.RoleIds != null)
                 {

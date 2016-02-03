@@ -18,7 +18,7 @@ namespace JobOA.Auxiliary
         /// <summary>
         /// 没有权限的登录地址
         /// </summary>
-        private const string NoAuthority = "/Account/Index";
+        private const string NoAuthority = "/ErrorCatch/NoPermission";
         private bool _isLogin;
 
         [Inject]

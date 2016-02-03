@@ -22,5 +22,10 @@ namespace JobOA.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ViewResult NoPermission()
+        {
+            return View();
+        }
     }
 }

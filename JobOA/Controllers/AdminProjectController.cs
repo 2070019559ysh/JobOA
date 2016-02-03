@@ -35,6 +35,10 @@ namespace JobOA.Controllers
             return View(projectList);
         }
 
+        /// <summary>
+        /// 进入添加项目页面，给页面传递状态列表数据
+        /// </summary>
+        /// <returns>添加项目页面</returns>
         [HttpGet]
         public ActionResult AddProject()
         {
