@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "JobOA—公司项目管理主页";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+    Pager pager = ViewData["Pager"] as Pager;
 }
 
 @section css{
@@ -29,14 +30,14 @@
     </div>
     <div class="am-u-sm-12 am-u-md-3">
         <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field">
+            <input id="search-text" type="text" class="am-form-field" placeholder="按项目名模糊搜索" value="@pager.Remarks"/>
             <span class="am-input-group-btn">
-                <button class="am-btn am-btn-default" type="button">搜索</button>
+                <button id="search-btn" class="am-btn am-btn-default" type="button">搜索</button>
             </span>
         </div>
     </div>
 </div>
-
+<input id="mess" type="hidden" value="@TempData["mess"]"/>
 <div class="am-g">
     <div class="am-u-sm-12">
         <table class="am-table am-table-bd am-table-striped admin-content-table">

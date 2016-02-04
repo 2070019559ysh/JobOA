@@ -14,7 +14,7 @@ function Modal(title,id) {
 
     var template = '<div class="am-modal am-modal-confirm" tabindex="-1" id="'+id+'">' +
                 '<div class="am-modal-dialog">' +
-                    '<div class="am-modal-hd">JobOA</div>' +
+                    '<div class="am-modal-hd">JobOA系统提示</div>' +
                     '<div class="am-modal-bd">' +
                       '你，确定要删除这条记录吗？' +
                     '</div>' +

@@ -313,6 +313,8 @@
     <Content Include="Views\AdminHome\Index.cshtml" />
     <Content Include="Views\AdminProject\AddProject.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ListBox.cshtml" />
+    <Content Include="Views\ErrorCatch\NoPermission.cshtml" />
+    <Content Include="Views\AdminProject\UpdateProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,21 +11,21 @@
     当前 @pager.PageIndex / @pager.PageCount 页&nbsp;&nbsp; 共 @pager.Total 条记录
     <div class="am-fr">
         <ul class="am-pagination">
-            <li><a href="@action?pageIndex=1">|&lt;&lt;</a></li>
-            <li @prev><a href="@action?pageIndex=@(Convert.ToString(pager.PageIndex-1))">&lt;&lt;</a></li>
+            <li><a href="@action?pageIndex=1&search=@pager.Remarks">|&lt;&lt;</a></li>
+            <li @prev><a href="@action?pageIndex=@(Convert.ToString(pager.PageIndex-1))&search=@pager.Remarks">&lt;&lt;</a></li>
             @for (int i = pager.Start; i <= pager.End; i++)
             {
                 if (pager.PageIndex == i)
                 {
-                    <li class="am-active"><a href="@action?pageIndex=@i">@i</a></li>
+                    <li class="am-active"><a href="@action?pageIndex=@i&search=@pager.Remarks">@i</a></li>
                 }
                 else
                 {
-                    <li><a href="@action?pageIndex=@i">@i</a></li>
+                    <li><a href="@action?pageIndex=@i&search=@pager.Remarks">@i</a></li>
                 }
             }
-            <li @next><a href="#">&gt;&gt;</a></li>
-            <li><a href="@action?pageIndex=@Convert.ToString(pager.PageCount)">&gt;&gt;|</a></li>
+            <li @next><a href="@action?pageIndex=@(Convert.ToString(pager.PageIndex+1))&search=@pager.Remarks">&gt;&gt;</a></li>
+            <li><a href="@action?pageIndex=@Convert.ToString(pager.PageCount)&search=@pager.Remarks">&gt;&gt;|</a></li>
         </ul>
     </div>
 </div>

@@ -21,6 +21,7 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
+                dbContext.Configuration.ProxyCreationEnabled = false;
                 var project = from p in dbContext.Project
                            where p.Id == id
                            select p;
