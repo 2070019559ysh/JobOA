@@ -6,10 +6,10 @@
 //动态原型方法
 function Modal(title,id) {
     if (id) {
-        id = "joboa-modal";
+        this.id = "joboa-modal";
     }
     if (title) {
-        title = "JobOA-系统提示";
+        this.title = "JobOA-系统提示";
     }
 
     var template = '<div class="am-modal am-modal-confirm" tabindex="-1" id="'+id+'">' +

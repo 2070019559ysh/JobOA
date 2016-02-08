@@ -163,7 +163,8 @@ namespace JobOA.Controllers
                     employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
                 }
                 //创建身份验证票证
-                FormsAuthentication.SetAuthCookie(employee.UserName, (!String.IsNullOrEmpty(remember)));
+                bool isRemember = !String.IsNullOrEmpty(remember);
+                FormsAuthentication.SetAuthCookie(employee.UserName, isRemember);
                 FormsAuthenticationTicket authenticationTicket = new FormsAuthenticationTicket(
                     1, //身份验证票据版本号
                     employee.UserName,//关联的用户名
@@ -182,7 +183,7 @@ namespace JobOA.Controllers
                 Response.Cookies.Add(sessionCookie);
 
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticketContent);
-                cookie.Expires = DateTime.Now.AddMonths(1);
+                if(isRemember)cookie.Expires = DateTime.Now.AddMonths(1);
                 cookie.HttpOnly = false;//客户端js不需要读取到这个Cookie，只允许服务器端读取
                 Response.Cookies.Add(cookie);//响应给客户端
 

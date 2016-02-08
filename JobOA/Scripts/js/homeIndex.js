@@ -20,7 +20,7 @@
         var $password = $("#password");
         var $remember=$("#remember");
         var $loginMess = $("#loginMess");
-        var remember;
+        var remember="";
         if ($remember.attr("checked")) remember = "1";
         var isPass = false;
         if (!$userName.val()) {
