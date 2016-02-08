@@ -278,6 +278,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\adminProject.js" />
+    <Content Include="Scripts\js\allMajorTaskIndex.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
     <Content Include="Scripts\js\adminHome.js" />
     <Content Include="Scripts\js\homeIndex.js" />
@@ -315,6 +316,9 @@
     <Content Include="Views\Shared\EditorTemplates\ListBox.cshtml" />
     <Content Include="Views\ErrorCatch\NoPermission.cshtml" />
     <Content Include="Views\AdminProject\UpdateProject.cshtml" />
+    <Content Include="Views\AdminTask\ParticipatorView.cshtml" />
+    <Content Include="Views\AdminTask\AddMajorTask.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Selected.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

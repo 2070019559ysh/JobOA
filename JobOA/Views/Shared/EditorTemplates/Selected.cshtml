@@ -1,0 +1,37 @@
+﻿@{
+    SelectList selectList = ViewData["list"] as SelectList;
+}
+<select multiple data-am-selected="{btnWidth: '@ViewData["btnWidth"]',btnSize: 'sm', btnStyle: 'secondary',maxHeight: 150}">
+    @if (selectList != null)
+    {
+        foreach (var item in selectList)
+        {
+            System.Collections.IEnumerator e = selectList.SelectedValues.GetEnumerator();
+            do
+            {
+                e.MoveNext();
+                try
+                {
+                    object obj = e.Current;
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+                if (e.Current.ToString().Equals(item.Value))
+                {
+                <option selected="selected" value="@item.Value">@item.Text</option>
+                }
+                else
+                {
+                <option value="@item.Value">@item.Text</option>
+                }
+            } while (true);
+        }
+
+    }
+    else
+    {
+        <option value="">无</option>
+    }
+</select>

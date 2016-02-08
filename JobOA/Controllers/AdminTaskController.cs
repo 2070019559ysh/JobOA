@@ -20,6 +20,9 @@ namespace JobOA.Controllers
 
         [Inject]
         public IProjectManager ProjectManager { get; set; }
+
+        [Inject]
+        public IEmployeeManager EmployeeManager { get; set; }
         //
         // GET: /AdminTask/
         /// <summary>
@@ -62,5 +65,37 @@ namespace JobOA.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 根据参与员工id,多个用，分隔 显示参与员工信息分布视图
+        /// </summary>
+        /// <param name="employeeIds">员工id,多个用，分隔</param>
+        /// <returns>参与员工信息分布视图</returns>
+        [AllowAnonymous]
+        public ActionResult GetParticipatorInfo(string employeeIds)
+        {
+            List<Employee> employeeList = new List<Employee>();
+            if (employeeIds != null)
+            {
+                string[] ids = employeeIds.Split(',');
+                foreach (var id in ids)
+                {
+                    Employee employee = EmployeeManager.SearchEmployeeById(Convert.ToInt32(id));
+                    employeeList.Add(employee);
+                }
+            }
+            return PartialView("ParticipatorView", employeeList);
+        }
+
+        public ActionResult AddMajorTask()
+        {
+            //查找所有部门
+            List<Department> departmentList = DepartmentManager.SearchAllDepartment();
+            ViewData["departmentList"] = new SelectList(departmentList,"Id","Name",departmentList[0].Id);
+            List<Employee> employeeList=EmployeeManager.SearchEmployeeByDeparementId(departmentList[0].Id);
+            ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
+            Dictionary<int, string> process = StateData.ProState;
+            ViewData["state"] = new SelectList(process, "Key", "Value");
+            return View();
+        }
     }
 }

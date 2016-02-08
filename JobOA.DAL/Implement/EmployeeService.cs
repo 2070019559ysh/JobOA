@@ -45,6 +45,24 @@ namespace JobOA.DAL.Implement
         }
 
         /// <summary>
+        /// 通过部门id查找部门的所有员工信息
+        /// </summary>
+        /// <param name="departmentId">部门id</param>
+        /// <returns>员工信息集合</returns>
+        public List<Employee> SearchEmployeeByDeparementId(int departmentId)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                dbContext.Configuration.ProxyCreationEnabled = false;
+                //一个员工的手机号码只能注册一个账号，以此查找唯一员工信息
+                var employee = from e in dbContext.Employee
+                               where e.DepartmentId==departmentId
+                               select e;
+                return employee.ToList();
+            }
+        }
+
+        /// <summary>
         /// 添加员工信息
         /// </summary>
         /// <param name="employee">员工信息</param>

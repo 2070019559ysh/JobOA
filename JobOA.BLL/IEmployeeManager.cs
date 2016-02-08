@@ -33,6 +33,13 @@ namespace JobOA.BLL
         Employee SearchEmployeeByUserName(string userName);
 
         /// <summary>
+        /// 通过部门id查找部门的所有员工信息
+        /// </summary>
+        /// <param name="departmentId">部门id</param>
+        /// <returns>员工信息集合</returns>
+        List<Employee> SearchEmployeeByDeparementId(int departmentId);
+
+        /// <summary>
         /// 添加员工信息
         /// </summary>
         /// <param name="employee">员工信息</param>

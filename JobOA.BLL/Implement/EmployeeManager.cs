@@ -38,12 +38,44 @@ namespace JobOA.BLL.Implement
             try
             {
                 employee = EmployeeService.SearchEmployeeById(id);
+                if (String.IsNullOrEmpty(employee.HeadPicture))
+                {
+                    //没有头像，使用默认头像
+                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
+                }
+                else
+                {
+                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
+                }
             }
             catch (Exception ex)
             {
                 _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
             }
             return employee;
+        }
+
+        /// <summary>
+        /// 通过部门id查找部门的所有员工信息
+        /// </summary>
+        /// <param name="departmentId">部门id</param>
+        /// <returns>员工信息集合</returns>
+        public List<Employee> SearchEmployeeByDeparementId(int departmentId)
+        {
+            List<Employee> employeeList = EmployeeService.SearchEmployeeByDeparementId(departmentId);
+            foreach (var e in employeeList)
+            {
+                if (String.IsNullOrEmpty(e.HeadPicture))
+                {
+                    //没有头像，使用默认头像
+                    e.HeadPicture = "/Content/images/oaui/default.jpg";
+                }
+                else
+                {
+                    e.HeadPicture = "/Content/images/userImg/" + e.HeadPicture;
+                }
+            }
+            return employeeList;
         }
 
         /// <summary>

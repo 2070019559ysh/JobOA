@@ -21,6 +21,7 @@
 }
 @section scripts{
     <!--<script src="@Url.Content("~/Scripts/js/modal.js")"></script>-->
+    <script src="@Url.Content("~/Scripts/js/allMajorTaskIndex.js")"></script>
 }
 
 <div class="am-cf am-padding">
@@ -30,7 +31,7 @@
 <div class="am-g">
     <div class="am-u-sm-12 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
         项目：
-        <select id="project" data-am-selected="{searchBox:1,btnStyle: 'success',dropUp:0,maxHeight: 200}">
+        <select id="project" data-am-selected="{searchBox:1,btnStyle: 'success',btnSize: 'sm',dropUp:0,maxHeight: 200}">
             @foreach (Project project in projectList)
             {
                 if (projectId == project.Id)
@@ -47,7 +48,7 @@
     </div>
     <div class="am-u-sm-12 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
         部门：
-        <select id="department" data-am-selected="{searchBox:1,btnStyle: 'success',dropUp:0,maxHeight: 200}">
+        <select id="department" data-am-selected="{searchBox:1,btnSize: 'sm',btnStyle: 'success',dropUp:0,maxHeight: 200}">
             @foreach (Department department in departmentList)
             {
                 if (departmentId == department.Id)
@@ -63,7 +64,7 @@
         </select>
     </div>
     <div class="am-u-sm-12 am-u-md-6 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
-        <div class="am-input-group">
+        <div class="am-input-group  am-input-group-sm">
             <input type="text" class="am-form-field" placeholder="请输入任务名">
             <span class="am-input-group-btn">
                 <button class="am-btn am-btn-success" type="button">搜索</button>
@@ -74,7 +75,7 @@
 
 <div class="am-g">
     <div class="am-u-sm-12">
-        <button type="button" class="am-btn am-btn-secondary"><span class="am-icon-plus"></span> 新增主任务</button>
+        <button onclick="javascript:location.href='AddMajorTask';" type="button" class="am-btn am-btn-secondary am-btn-sm"><span class="am-icon-plus"></span> 新增主任务</button>
     </div>
 </div>
 
@@ -95,6 +96,13 @@
                             <span class="am-u-sm-12 am-u-lg-4">执行人：@majorTask.ExeEmployee.RealName</span>
                             <span class="am-u-sm-12 am-u-lg-4">安排人：@majorTask.ArrangeEmployee.RealName</span>
                             <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：@majorTask.CheckEmployee.RealName</span>
+                            <span class="am-u-sm-12 am-u-lg-12">
+                                参与人：
+                                @{
+                    string[] ids = majorTask.Participator.Split(',');
+                    Html.RenderAction("GetParticipatorInfo", new { employeeIds = ids });
+                                }
+                            </span>
                         </section>
                         <section class="am-g">
                             <span class="am-u-sm-12 am-u-lg-4">创建时间：@majorTask.CreateTime</span>
@@ -118,10 +126,10 @@
                                 </div>
                             </div>
                         </section>
-                        <section>
+                        <section class="am-margin-top-xs">
                             @{ViewData["state"] = majorTask.State;}
                             任务状态：@Html.Display("progressState", "ProgressState")
-                            <div class="am-progress">
+                            <div class="am-progress am-margin-0">
                                 <div class="am-progress-bar am-progress-bar-secondary" style="width: 57%">57%</div>
                             </div>
                         </section>
