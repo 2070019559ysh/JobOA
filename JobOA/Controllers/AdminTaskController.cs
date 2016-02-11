@@ -95,6 +95,8 @@ namespace JobOA.Controllers
             ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
             Dictionary<int, string> process = StateData.ProState;
             ViewData["state"] = new SelectList(process, "Key", "Value");
+            List<Project> projectList=ProjectManager.SearchAllProject();
+            ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
             return View();
         }
     }

@@ -1,7 +1,7 @@
 ﻿@model JobOA.Model.MajorTask
 
 @{
-    ViewBag.Title = "AddMajorTask";
+    ViewBag.Title = "JobOA—新增主任务";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
 }
 
@@ -15,7 +15,7 @@
     {
         @Html.ValidationSummary(true)
         <div class="am-nbfc am-margin">
-            @Html.LabelFor(model => model.Name, new {@class="am-fl" })
+            @Html.LabelFor(model => model.Name, new {@class="am-fl" })：
             @Html.TextBoxFor(m => m.Name, new { @class = "am-fl", placeholder = "输入主任务名" })
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Name)</em>
         </div>
@@ -58,15 +58,18 @@
         <em class="am-text-danger">@Html.ValidationMessageFor(m => m.CheckPersonId)</em>
     </div>
     <div class="am-margin">
-        @{
-        ViewData["list"] = departmentList;
-        }
-        <div class="am-inline-block">@Html.Editor("department", "ListBox")</div>
-        @{
-        ViewData["list"] = employeeList;
-        }
-        <div class="am-inline-block">@Html.EditorFor(m => m.Participator, "Selected")</div>
-        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Participator)</em>
+        @Html.LabelFor(model => model.StartTime)
+        <div class="am-inline-block">
+            @Html.EditorFor(model => model.StartTime,"DatePicker")
+        </div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(model => model.StartTime)</em>
+    </div>
+    <div class="am-margin">
+        @Html.LabelFor(model => model.CompleteTime)
+        <div class="am-inline-block">
+            @Html.EditorFor(model => model.CompleteTime, "DatePicker")
+        </div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(model => model.CompleteTime)</em>
     </div>
         <div class="am-margin">
             @Html.LabelFor(m=>m.State)
@@ -76,82 +79,19 @@
             <div class="am-inline-block">@Html.EditorFor(m => m.State, "ListBox")</div>
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.State)</em>
         </div>
+    <div class="am-margin">
+        @Html.LabelFor(m=>m.ProjectId)：
+        @{
+        ViewData["list"] = ViewBag.projectList;
+        }
+        <div class="am-inline-block">@Html.EditorFor(m=>m.ProjectId, "ListBox")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.ProjectId)</em>
+    </div>
         <div class="am-nbfc am-margin">
             <label for="IsSecrecy" class="am-fl">是否对非参与人员保密：</label>
             @Html.CheckBoxFor(m => m.IsSecrecy, new { @class = "am-fl" })
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.IsSecrecy)</em>
         </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.StartTime)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.StartTime)
-        @Html.ValidationMessageFor(model => model.StartTime)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.CompleteTime)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.CompleteTime)
-        @Html.ValidationMessageFor(model => model.CompleteTime)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.CreateTime)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.CreateTime)
-        @Html.ValidationMessageFor(model => model.CreateTime)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.CommitTime)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.CommitTime)
-        @Html.ValidationMessageFor(model => model.CommitTime)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.State)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.State)
-        @Html.ValidationMessageFor(model => model.State)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.IsNotice)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.IsNotice)
-        @Html.ValidationMessageFor(model => model.IsNotice)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.IsSecrecy)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.IsSecrecy)
-        @Html.ValidationMessageFor(model => model.IsSecrecy)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Attachment)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Attachment)
-        @Html.ValidationMessageFor(model => model.Attachment)
-    </div>
-
-    <div class="editor-label">
-        @Html.LabelFor(model => model.ProjectId)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.ProjectId)
-        @Html.ValidationMessageFor(model => model.ProjectId)
-    </div>
         <div class="am-form-group am-margin">
             <button type="submit" class="am-btn am-btn-secondary">创建项目</button>
             <button type="reset" class="am-btn am-btn-default">重置输入</button>
@@ -159,6 +99,7 @@
     }
 </div>
 
-@section Scripts {
+@section scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/datePicker/WdatePicker.js"></script>
 }

@@ -266,6 +266,18 @@
     <Content Include="Scripts\assets\js\app.js" />
     <Content Include="Scripts\assets\js\handlebars.min.js" />
     <Content Include="Scripts\assets\js\jquery.min.js" />
+    <Content Include="Scripts\datePicker\calendar.js" />
+    <Content Include="Scripts\datePicker\lang\en.js" />
+    <Content Include="Scripts\datePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\datePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\datePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\datePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\datePicker\skin\default\img.gif" />
+    <Content Include="Scripts\datePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\datePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\datePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\datePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\datePicker\WdatePicker.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -319,6 +331,7 @@
     <Content Include="Views\AdminTask\ParticipatorView.cshtml" />
     <Content Include="Views\AdminTask\AddMajorTask.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Selected.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
