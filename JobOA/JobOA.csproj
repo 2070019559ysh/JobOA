@@ -289,7 +289,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\addMajorTask.js" />
     <Content Include="Scripts\js\adminProject.js" />
+    <Content Include="Scripts\js\alertMess.js" />
     <Content Include="Scripts\js\allMajorTaskIndex.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
     <Content Include="Scripts\js\adminHome.js" />

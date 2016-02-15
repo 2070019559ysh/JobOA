@@ -206,6 +206,7 @@ namespace JobOA.BLL.Implement
             bool isSuccess = false;
             try
             {
+                majorTask.CreateTime = DateTime.Now;
                 if (MajorTaskService.AddMajorTask(majorTask) > 0)
                 {
                     isSuccess = true;

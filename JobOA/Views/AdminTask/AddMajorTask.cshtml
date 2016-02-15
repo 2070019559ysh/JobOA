@@ -6,16 +6,14 @@
 }
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增公司项目</strong> / <small>Add Project</small></div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增主任务</strong> / <small>Add Major Task</small></div>
 </div>
 
 <div style="margin:10px;">
-    <input type="hidden" id="mess" value="@ViewBag.mess" />
     @using (Html.BeginForm("AddMajorTask", "AdminTask", FormMethod.Post))
     {
-        @Html.ValidationSummary(true)
         <div class="am-nbfc am-margin">
-            @Html.LabelFor(model => model.Name, new {@class="am-fl" })：
+            @Html.LabelFor(model => model.Name, new {@class="am-fl" })
             @Html.TextBoxFor(m => m.Name, new { @class = "am-fl", placeholder = "输入主任务名" })
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Name)</em>
         </div>
@@ -25,7 +23,7 @@
         var departmentList = ViewBag.departmentList;
         ViewData["list"] = departmentList;
         }
-        <div class="am-inline-block">@Html.Editor("department","ListBox")</div>
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
         @{
         var employeeList = ViewBag.employeeList;
         ViewData["list"] = employeeList;
@@ -38,7 +36,7 @@
         @{
         ViewData["list"] = departmentList;
         }
-        <div class="am-inline-block">@Html.Editor("department", "ListBox")</div>
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
         @{
         ViewData["list"] = employeeList;
         }
@@ -50,12 +48,24 @@
         @{
         ViewData["list"] = departmentList;
         }
-        <div class="am-inline-block">@Html.Editor("department", "ListBox")</div>
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
         @{
         ViewData["list"] = employeeList;
         }
         <div class="am-inline-block">@Html.EditorFor(m => m.CheckPersonId, "ListBox")</div>
         <em class="am-text-danger">@Html.ValidationMessageFor(m => m.CheckPersonId)</em>
+    </div>
+    <div class="am-margin">
+        <label for="CheckPersonId">参与人（可以多人）：</label>
+        @{
+        ViewData["list"] = departmentList;
+        }
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
+        @{
+        ViewData["list"] = employeeList;
+        }
+        <div class="am-inline-block">@Html.EditorFor(m => m.Participator, "Selected")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Participator)</em>
     </div>
     <div class="am-margin">
         @Html.LabelFor(model => model.StartTime)
@@ -92,8 +102,8 @@
             @Html.CheckBoxFor(m => m.IsSecrecy, new { @class = "am-fl" })
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.IsSecrecy)</em>
         </div>
-        <div class="am-form-group am-margin">
-            <button type="submit" class="am-btn am-btn-secondary">创建项目</button>
+        <div class="am-form-group am-margin" style="height:100px;">
+            <button type="submit" class="am-btn am-btn-primary">创建主任务</button>
             <button type="reset" class="am-btn am-btn-default">重置输入</button>
         </div>
     }
@@ -102,4 +112,6 @@
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="~/Scripts/datePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/modal.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/addMajorTask.js"></script>
 }

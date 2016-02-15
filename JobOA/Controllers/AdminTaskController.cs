@@ -86,6 +86,11 @@ namespace JobOA.Controllers
             return PartialView("ParticipatorView", employeeList);
         }
 
+        /// <summary>
+        /// 进入新增主任务页面
+        /// </summary>
+        /// <returns>新增主任务页面</returns>
+        [HttpGet]
         public ActionResult AddMajorTask()
         {
             //查找所有部门
@@ -98,6 +103,43 @@ namespace JobOA.Controllers
             List<Project> projectList=ProjectManager.SearchAllProject();
             ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult GetEmployeeInfo(int departmentId)
+        {
+            List<Employee> employeeList = EmployeeManager.SearchEmployeeByDeparementId(departmentId);
+            return Json(employeeList, JsonRequestBehavior.DenyGet);
+        }
+
+        /// <summary>
+        /// 执行新增主任务
+        /// </summary>
+        /// <param name="majorTask">新的主任务信息</param>
+        /// <returns>新增主任务页面</returns>
+        [HttpPost]
+        public JsonResult AddMajorTask(MajorTask majorTask)
+        {
+            string mess = String.Empty;
+            bool isSuccess = false;
+            if (ModelState.IsValid)
+            {
+                if (MajorTaskManager.AddMajorTask(majorTask))
+                {
+                    mess = "新增主任务成功。";
+                    isSuccess = true;
+                }
+                else
+                {
+                    mess = "新增主任务失败！";
+                }
+            }
+            else
+            {
+                mess = "输入的值验证不通过，请求重新输入!";
+            }
+            return Json(new { result=isSuccess,text=mess });
         }
     }
 }

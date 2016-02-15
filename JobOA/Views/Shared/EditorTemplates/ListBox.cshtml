@@ -1,12 +1,12 @@
 ﻿@{
     SelectList selectList = ViewData["list"] as SelectList;
 }
-<select data-am-selected="{btnSize: 'sm', btnStyle: 'secondary',maxHeight: 150}">
+<select name="@ViewData.ModelMetadata.PropertyName" data-am-selected="{btnSize: 'sm', btnStyle: 'secondary',maxHeight: 150}">
     @if (selectList != null)
     {
         foreach (var item in selectList)
         {
-            if (selectList.SelectedValue != null&&selectList.SelectedValue.ToString().Equals(item.Value))
+            if (selectList.SelectedValue != null && selectList.SelectedValue.ToString().Equals(item.Value))
             {
                 <option selected="selected" value="@item.Value">@item.Text</option>
             }

@@ -7,17 +7,9 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
+    <script src="~/Scripts/js/alertMess.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var mess = $("#mess").val();
-            if (mess) {
-                var modal = new Modal();
-                var confirmFun = function () {
-                    window.location.href = "Index";
-                }
-                modal.alert(mess, confirmFun);
-                $("#mess").val("");
-            }
             $("#reset").click(function () {
                 var projectId=$("#Id").val();
                 $.ajax({

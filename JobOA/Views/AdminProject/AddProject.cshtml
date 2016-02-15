@@ -7,19 +7,7 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var mess = $("#mess").val();
-            if (mess) {
-                var modal = new Modal();
-                var confirmFun = function () {
-                    window.location.href = "Index";
-                }
-                modal.alert(mess, confirmFun);
-                $("#mess").val("");
-            }
-        });
-    </script>
+    <script src="~/Scripts/js/alertMess.js"></script>
 }
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增公司项目</strong> / <small>Add Project</small></div>
