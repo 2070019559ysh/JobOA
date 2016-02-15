@@ -9,7 +9,8 @@ SELECT 'GET','/AdminProject/Index' UNION
 SELECT 'GET,POST','/AdminProject/AddProject' UNION
 SELECT 'GET,POST','/AdminProject/UpdateProject' UNION
 SELECT 'GET','/AdminProject/DelProject' UNION
-SELECT 'GET,POST','/AdminTask/AddMajorTask'
+SELECT 'GET,POST','/AdminTask/AddMajorTask' UNION
+SELECT 'GET','/PersonalInfo/Information'
 
 INSERT INTO Permission([Description],AccessPathId)
 SELECT '访问首页',1 UNION
@@ -21,3 +22,4 @@ SELECT '新增公司项目操作',6 UNION
 SELECT '修改公司项目操作',7 UNION
 SELECT '执行删除公司项目',8 UNION
 SELECT '添加主任务操作',9
+SELECT '查看个人信息资料',10

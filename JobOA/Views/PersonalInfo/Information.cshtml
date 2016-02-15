@@ -1,0 +1,93 @@
+﻿@model JobOA.Model.Employee
+
+@{
+    ViewBag.Title = "Information";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+}
+
+<h2>Information</h2>
+
+<fieldset>
+    <legend>Employee</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RealName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RealName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HeadPicture)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HeadPicture)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Introduction)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Introduction)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastLoginTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastLoginTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsEnabled)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsEnabled)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoleIds)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoleIds)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DepartmentId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DepartmentId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OnlineState)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OnlineState)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
