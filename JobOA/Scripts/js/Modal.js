@@ -5,8 +5,8 @@
 */
 //动态原型方法
 function Modal(title,id) {
-    if (id) {
-        this.id = "joboa-modal";
+    if (!id) {
+        id = "joboa-modal";
     }
     if (title) {
         this.title = "JobOA-系统提示";
@@ -59,7 +59,8 @@ function Modal(title,id) {
                 //当要重新设置标题时，重置标题
                 this.modalTitle.text(title);
             }
-            this.modalContent.html(content);//设置内容支持html格式
+            if(content)
+                this.modalContent.html(content);//设置内容支持html格式
             $('#'+this.id).modal({
                 relatedTarget: this,
                 onConfirm: confirmFun

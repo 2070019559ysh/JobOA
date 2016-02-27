@@ -1,93 +1,213 @@
 ﻿@model JobOA.Model.Employee
 
 @{
-    ViewBag.Title = "Information";
+    ViewBag.Title = "JobOA—个人资料";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
 }
 
-<h2>Information</h2>
+@section css{
+    <style type="text/css">
+        .am-text-nowrap img {
+            width: 30%;
+            height: 30%;
+        }
+    </style>
+}
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/js/modal.js"></script>
+<script type="text/javascript" src="~/Scripts/plUpload/plupload.full.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/fileUpload.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/personalInfo.js"></script>
+}<!--
+<table class="am-table am-table-bordered  am-table-compact">
+    <tbody>
+        <tr>
+            <td class="am-hide-sm-only" rowspan="2">总进度</td>
+            <td>
+                <section>文件大小进度：<span>20MB</span>/<span>100MB</span></section>
+                <section>文件数量进度：成功<span>1</span>个/共<span>5个</span></section>
+                <section><span class="am-icon-warning"></span>上传失败文件数量：<span>1</span>个</section>
+                <section>上传速度：<span>1KB/s</span></section>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="am-progress am-progress-striped am-margin-0">
+                    <div class="am-progress-bar am-progress-bar-secondary" style="width: 30%">
+                        30%
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <div style="height:100px;overflow-y:auto">
+        <table class="am-table am-table-bordered am-table-compact">
+            <caption>
+                文件队列
+            </caption>
+            <tbody>
+                <tr>
+                    <th style="width:100px;" class="am-text-truncate">文件名</th>
+                    <th>文件类型</th>
+                    <th>上传进度</th>
+                </tr>
+                <tr>
+                    <td>wifoe.gif</td>
+                    <td>image/gif</td>
+                    <td style ="position:relative;">
+                        <section class="am-g">
+                            <div class="am-u-md-6"><small>20MB</small>/<small>100MB</small></div>
+                            <div class="am-u-md-6"><small>排队等待</small></div>
+                            <div class="am-u-md-12">
+                                <div class="am-progress am-progress-striped  am-margin-0">
+                                    <div class="am-progress-bar am-progress-bar-secondary" style="width: 30%">
+                                        30%
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <span style="position:absolute;top:0;right:0;cursor:pointer" title="移除" class="am-badge am-badge-danger">－</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="am-center am-btn-group-xs">
+    <button class="am-btn am-btn-success am-margin-right-xs">选择文件</button>
+    <button class="am-btn am-btn-primary am-margin-right-xs">开始上传</button>
+    <button class="am-btn am-btn-danger">停止上传</button>
+    </div>-->
 
-<fieldset>
-    <legend>Employee</legend>
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人资料</strong> / <small>Personal information</small></div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UserName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UserName)
-    </div>
+<hr />
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Password)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Password)
-    </div>
+<div class="am-g">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.RealName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.RealName)
-    </div>
+    <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+                <div class="am-g">
+                    <div class="am-u-md-4">
+                        @{
+                            string[] headPic;
+                            headPic = Model.HeadPicture.Split(',');
+                        }
+                        <img class="am-img-circle am-img-thumbnail" src="@(headPic[0])" alt="您的头像" />
+                    </div>
+                    <div class="am-u-md-8">
+                        <p>你可以使用已有的头像或者使用本地上传头像。 </p>
+                    </div>
+                    <section class="am-u-md-12">
+                        <form class="am-form">
+                            <div class="am-form-group">
+                                <button type="button" class="oa-upload am-btn am-btn-default">
+                                    <span class="am-icon-upload"></span>上传文件图片
+                                </button>
+                                <p class="am-form-help">您可以选择下面已经上传的文件...</p>
+                                <div class="am-scrollable-horizontal am-text-nowrap">
+                                    @for (int i = 0; i < headPic.Length; i++)
+                                    {
+                                       <img class="am-img-thumbnail" src="@headPic[i]" alt="头像 @i" />
+                                    }
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.HeadPicture)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.HeadPicture)
-    </div>
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+                <div class="user-info">
+                    <p>等级信息</p>
+                    <div class="am-progress am-progress-sm">
+                        <div class="am-progress-bar" style="width: 60%"></div>
+                    </div>
+                    <p class="user-info-order">当前等级：<strong>LV8</strong> 活跃天数：<strong>587</strong> 距离下一级别：<strong>160</strong></p>
+                </div>
+                <div class="user-info">
+                    <p>信用信息</p>
+                    <div class="am-progress am-progress-sm">
+                        <div class="am-progress-bar am-progress-bar-success" style="width: 80%"></div>
+                    </div>
+                    <p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>
+                </div>
+            </div>
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Introduction)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Introduction)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LastLoginTime)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LastLoginTime)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsEnabled)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsEnabled)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.RoleIds)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.RoleIds)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DepartmentId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DepartmentId)
-    </div>
+    <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+        @using (Html.BeginForm("UpdateEmployeeInfo", "PersonalInfo", FormMethod.Post, new { @class = "am-form am-form-horizontal" }))
+        {
+            <div class="am-form-group">
+                <label for="RealName" class="am-u-sm-3 am-form-label">*真实姓名</label>
+                <div class="am-u-sm-9">
+                    @Html.TextBoxFor(m => m.RealName, new { placeholder = "请输入自己的真实姓名方便开展工作", maxlength = "20" })
+                    <small class="am-text-danger">@Html.ValidationMessageFor(m => m.RealName)</small>
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.OnlineState)
+            <div class="am-form-group">
+                <label for="UserName" class="am-u-sm-3 am-form-label">*账号（手机号）</label>
+                <div class="am-u-sm-9">
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "请输入11位手机号", minlength = "11", maxlength = "11", pattern = "^\\d{11}$" })
+                    <small class="am-text-danger">@Html.ValidationMessageFor(m => m.UserName)</small>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="phone-check" class="am-u-sm-3 am-form-label">*手机号确认</label>
+                <div class="am-u-sm-9">
+                    <input type="text" name="phoneCheck" id="phone-check" placeholder="请输入手机短信里的验证码" require />
+                    <small class="am-text-danger">@Html.ValidationMessage("phoneCheck")</small>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="Email" class="am-u-sm-3 am-form-label">电子邮箱</label>
+                <div class="am-u-sm-9">
+                    @Html.TextBoxFor(m => m.Email, new { type = "email", placeholder = "邮箱用于工作任务通知" })
+                    <small class="am-text-danger">@Html.ValidationMessageFor(m => m.Email)</small>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="emailCheck" class="am-u-sm-3 am-form-label">邮箱确认</label>
+                <div class="am-u-sm-9">
+                    <input type="text" name="emailCheck" id="emailCheck" placeholder="请输入邮箱里的验证码" require />
+                    <small class="am-text-danger">@Html.ValidationMessage("emailCheck")</small>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="user-QQ" class="am-u-sm-3 am-form-label">*所属部门</label>
+                <div class="am-u-sm-9">
+                    @Html.EditorFor(m => m.DepartmentId, "ListBox")
+                    <small class="am-text-danger">@Html.ValidationMessageFor(m => m.DepartmentId)</small>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
+                <div class="am-u-sm-9">
+                    <textarea class="" rows="5" id="user-intro" placeholder="输入个人简介">@Model.Introduction</textarea>
+                    <small class="am-text-danger">@Html.ValidationMessageFor(m => m.Introduction)</small>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <div class="am-u-sm-9 am-u-sm-push-3">
+                    <button type="submit" class="am-btn am-btn-primary">保存修改</button>
+                    <button type="button" class="am-btn am-btn-success">获取验证码</button>
+                </div>
+            </div>
+        }
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.OnlineState)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

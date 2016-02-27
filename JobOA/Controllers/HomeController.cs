@@ -18,11 +18,6 @@ namespace JobOA.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                Employee employee=EmployeeManager.SearchEmployeeByUserName(User.Identity.Name);
-                ViewBag.Employee = employee;
-            }
             return View();
         }
 

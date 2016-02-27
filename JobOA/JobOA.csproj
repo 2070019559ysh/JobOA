@@ -142,6 +142,7 @@
     <Compile Include="Controllers\ErrorCatchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminProjectController.cs" />
+    <Compile Include="Controllers\PersonalInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -295,13 +296,18 @@
     <Content Include="Scripts\js\allMajorTaskIndex.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
     <Content Include="Scripts\js\adminHome.js" />
+    <Content Include="Scripts\js\fileUpload.js" />
     <Content Include="Scripts\js\homeIndex.js" />
     <Content Include="Scripts\js\modal.js" />
     <Content Include="Scripts\js\masterHeadPicture.js" />
+    <Content Include="Scripts\js\personalInfo.js" />
     <Content Include="Scripts\js\register.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plUpload\Moxie.swf" />
+    <Content Include="Scripts\plUpload\Moxie.xap" />
+    <Content Include="Scripts\plUpload\plupload.full.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -334,6 +340,7 @@
     <Content Include="Views\AdminTask\AddMajorTask.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Selected.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
+    <Content Include="Views\PersonalInfo\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

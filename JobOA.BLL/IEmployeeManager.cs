@@ -59,5 +59,29 @@ namespace JobOA.BLL
         /// <param name="employee">新员工信息</param>
         /// <returns>是否更新成功</returns>
         bool UpdateEmployee(Employee employee);
+
+        /// <summary>
+        /// 添加一个用户头像
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="headImg">头像名</param>
+        /// <returns>新的用户信息</returns>
+        Employee AddHeadPicture(string userName, string headImg);
+
+        /// <summary>
+        /// 移除用户的指定头像
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="headImg">头像名</param>
+        /// <returns>新的用户信息</returns>
+        Employee removeHeadPicture(string userName, string headImg);
+
+        /// <summary>
+        /// 设置用户使用的头像，第一个即用户正使用头像
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="headImg">头像名</param>
+        /// <returns>新的用户信息</returns>
+        Employee SetHeadPicture(string userName, string headImg);
     }
 }

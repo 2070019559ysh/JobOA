@@ -78,12 +78,14 @@
                 <ul class="amz-header-nav am-collapse">
                     @{
                         //获取已登录的员工信息
-                        if (ViewBag.Employee!=null&&ViewBag.Employee is Employee)
+                        Employee employee = Session["user"] as Employee;
+                        if (employee!=null)
                         {
-                            Employee employee =ViewBag.Employee as Employee;
+                            string[] headPic;
+                            headPic = employee.HeadPicture.Split(',');
                             <li id="userMess">
                                 <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
-                                    <img src="@employee.HeadPicture" width="40" height="40" class="am-circle" /> <span>@employee.RealName</span><i class="am-icon-caret-down"></i>
+                                    <img src="@headPic[0]" width="40" height="40" class="am-circle" /> <span>@employee.RealName</span><i class="am-icon-caret-down"></i>
                                 </a>
                                 <ol id="oa-dropdown-content" style="display:none;">
                                     <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>

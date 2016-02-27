@@ -153,15 +153,6 @@ namespace JobOA.Controllers
             Employee employee=EmployeeManager.CheckEmployeeLogin(userName, password);
             if (employee!=null)
             {
-                if (String.IsNullOrEmpty(employee.HeadPicture))
-                {
-                    //没有头像，使用默认头像
-                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
-                }
-                else
-                {
-                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
-                }
                 //创建身份验证票证
                 bool isRemember = !String.IsNullOrEmpty(remember);
                 FormsAuthentication.SetAuthCookie(employee.UserName, isRemember);

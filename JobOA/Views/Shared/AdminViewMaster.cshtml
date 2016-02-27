@@ -49,7 +49,9 @@
                             Employee employee = Session["user"] as Employee;
                             if (employee != null)
                             {
-                                <img id="head-picture" src="@employee.HeadPicture" alt="头像" width="40" height="40" class="am-img-thumbnail am-circle" />
+                                string[] headPic;
+                                headPic = employee.HeadPicture.Split(',');
+                                <img id="head-picture" src="@headPic[0]" alt="头像" width="40" height="40" class="am-img-thumbnail am-circle" />
                                 @employee.RealName
                             }
                         }

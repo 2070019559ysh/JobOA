@@ -38,15 +38,7 @@ namespace JobOA.BLL.Implement
             try
             {
                 employee = EmployeeService.SearchEmployeeById(id);
-                if (String.IsNullOrEmpty(employee.HeadPicture))
-                {
-                    //没有头像，使用默认头像
-                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
-                }
-                else
-                {
-                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
-                }
+                employee.HeadPicture=GetHeadPicture(employee.HeadPicture);
             }
             catch (Exception ex)
             {
@@ -65,15 +57,7 @@ namespace JobOA.BLL.Implement
             List<Employee> employeeList = EmployeeService.SearchEmployeeByDeparementId(departmentId);
             foreach (var e in employeeList)
             {
-                if (String.IsNullOrEmpty(e.HeadPicture))
-                {
-                    //没有头像，使用默认头像
-                    e.HeadPicture = "/Content/images/oaui/default.jpg";
-                }
-                else
-                {
-                    e.HeadPicture = "/Content/images/userImg/" + e.HeadPicture;
-                }
+                e.HeadPicture=GetHeadPicture(e.HeadPicture);
             }
             return employeeList;
         }
@@ -89,7 +73,7 @@ namespace JobOA.BLL.Implement
             Employee employeeLogin =null;//登录成功的员工信息
             try
             {
-                Employee employee = EmployeeService.SearchEmployeeByUserName(userName);
+                Employee employee = SearchEmployeeByUserName(userName);
                 password = MD5Encrypt.ConvertMD5String(password);//密码加密
                 if (employee != null && employee.Password.Equals(password))
                 {
@@ -113,15 +97,7 @@ namespace JobOA.BLL.Implement
             try
             {
                 employee=EmployeeService.SearchEmployeeByUserName(userName);
-                if (String.IsNullOrEmpty(employee.HeadPicture))
-                {
-                    //没有头像，使用默认头像
-                    employee.HeadPicture = "/Content/images/oaui/default.jpg";
-                }
-                else
-                {
-                    employee.HeadPicture = "/Content/images/userImg/" + employee.HeadPicture;
-                }
+                employee.HeadPicture=GetHeadPicture(employee.HeadPicture);
             }
             catch (Exception ex)
             {
@@ -198,6 +174,115 @@ namespace JobOA.BLL.Implement
                 _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
             }
             return success;
+        }
+
+        /// <summary>
+        /// 获取多个图片名连接的字符串中的第一个图片名地址
+        /// </summary>
+        /// <param name="headImg">多个图片名连接的字符串</param>
+        /// <returns>第一个图片名地址</returns>
+        private string GetHeadPicture(string headImg)
+        {
+            if (String.IsNullOrEmpty(headImg))
+            {
+                //没有头像，使用默认头像
+                headImg = "/Content/images/oaui/default.jpg";
+            }
+            else
+            {
+                string[] headImgs = headImg.Split(',');
+                for (int i = 0; i < headImgs.Length; i++)
+                {
+                    headImgs[i]="/Content/images/userImg/" + headImgs[i];
+                }
+                headImg = String.Join(",",headImgs);
+            }
+            return headImg;
+        }
+
+        /// <summary>
+        /// 添加一个用户头像
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="headImg">头像名</param>
+        /// <returns>新的用户信息</returns>
+        public Employee AddHeadPicture(string userName,string headImg)
+        {
+            Employee employee = EmployeeService.SearchEmployeeByUserName(userName);
+            if (String.IsNullOrEmpty(employee.HeadPicture))
+            {
+                employee.HeadPicture = headImg;
+            }
+            else
+            {
+                employee.HeadPicture += "," + headImg;
+            }
+            UpdateEmployee(employee);
+            return employee;
+        }
+
+        /// <summary>
+        /// 移除用户的指定头像
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="headImg">头像名</param>
+        /// <returns>新的用户信息</returns>
+        public Employee removeHeadPicture(string userName, string headImg)
+        {
+            Employee employee = EmployeeService.SearchEmployeeByUserName(userName);
+            if (!String.IsNullOrEmpty(employee.HeadPicture))
+            {
+                string[] headPictures = employee.HeadPicture.Split(',');
+                //strBuilder重新保存要移除图片名外的其他图片名，再修改用户头像列信息
+                StringBuilder strBuilder = new StringBuilder();
+                for (int i = 0; i < headPictures.Length;i++ )
+                {
+                    if (headPictures[i].Equals(headImg))
+                    {
+                        continue;
+                    }
+                    if (String.IsNullOrEmpty(strBuilder.ToString()))
+                    {
+                        strBuilder.Append(headPictures[i]);
+                    }
+                    else
+                    {
+                        strBuilder.Append(","+headPictures[i]);
+                    }
+                }
+                employee.HeadPicture = strBuilder.ToString();
+            }
+            UpdateEmployee(employee);
+            return employee;
+        }
+
+        /// <summary>
+        /// 设置用户使用的头像，第一个即用户正使用头像
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="headImg">头像名</param>
+        /// <returns>新的用户信息</returns>
+        public Employee SetHeadPicture(string userName,string headImg)
+        {
+            Employee employee = EmployeeService.SearchEmployeeByUserName(userName);
+            if (!String.IsNullOrEmpty(employee.HeadPicture))
+            {
+                string[] headPictures = employee.HeadPicture.Split(',');
+                for (int i = 0; i < headPictures.Length; i++)
+                {
+                    if (headPictures[i].Equals(headImg))
+                    {
+                        string temp;
+                        temp=headPictures[0];
+                        headPictures[0] = headPictures[i];
+                        headPictures[i] = temp;
+                        break;
+                    }
+                }
+                employee.HeadPicture=String.Join(",", headPictures);
+            }
+            UpdateEmployee(employee);
+            return employee;
         }
     }
 }
