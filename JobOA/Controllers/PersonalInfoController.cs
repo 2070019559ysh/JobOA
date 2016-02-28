@@ -60,5 +60,33 @@ namespace JobOA.Controllers
                 return Json(false);
             }
         }
+
+        /// <summary>
+        /// 删除员工的一个头像图片
+        /// </summary>
+        /// <param name="src">要删除的头像名</param>
+        /// <returns>是否删除成功</returns>
+        [AllowAnonymous]
+        public ActionResult DelHeadPicture(string src)
+        {
+            Employee emp = EmployeeManager.RemoveHeadPicture(User.Identity.Name, Server.MapPath("~/"), src);
+            if (emp != null)
+            {
+                Session["user"] = emp;
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
+
+        [AllowAnonymous]
+        public JsonResult GetHeadPicture()
+        {
+            Employee emp = Session["user"] as Employee;
+            string[] headPicture=emp.HeadPicture.Split(',');
+            return Json(headPicture,JsonRequestBehavior.DenyGet);
+        }
     }
 }

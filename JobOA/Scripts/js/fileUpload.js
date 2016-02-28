@@ -164,7 +164,8 @@ var UploadFile = function (selector, url,multiSelect, filters) {
     }
     var self = this;
     if (typeof UploadFile._initMethod == "undefined") {
-        UploadFile.prototype.fileDialog = function () {
+        //给按钮绑定打开文件上传对话框事件，completeFunc是上传完一个文件时执行的回调函数
+        UploadFile.prototype.fileDialog = function (completeFunc) {
             var uploadFileObj = function () {
                 //创建文件上传功能的对象
                 var uploader = new plupload.Uploader({
@@ -202,8 +203,6 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                 });
                 //某文件开始上传后触发
                 uploader.bind("UploadFile", function (uploader, file) {
-                    console.log(uploader.runtime);
-                    console.log(uploader.settings);
                 });
                 //上传文件队列发生变化后触发,优先于FileAdded/FileRemoved触发
                 uploader.bind("QueueChanged", function (uploader) {
@@ -260,14 +259,13 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                     var $tr = $("#" + file.id).parents("tr:first");
                     if(file.percent===100)
                         $tr.find(".am-progress-bar").text("完成");
+                    completeFunc();
                 });
                 //每一小片文件上传完成后触发
                 uploader.bind("ChunkUploaded", function (uploader, file, responseObj) {
                 });
                 //队列中所有文件上传完成后触发
                 uploader.bind("UploadCompleted", function (uploader, files) {
-                    $("#joboa-modal").find(".state").text("上传完成");
-                    $("#joboa-modal").find(".perSec").text(sizeTxt(0));
                 });
                 //发生错误时触发
                 uploader.bind("Error", function (uploader, errObj) {

@@ -72,9 +72,10 @@ namespace JobOA.BLL
         /// 移除用户的指定头像
         /// </summary>
         /// <param name="userName">用户名</param>
+        /// <param name="root">项目根目录</param>
         /// <param name="headImg">头像名</param>
         /// <returns>新的用户信息</returns>
-        Employee removeHeadPicture(string userName, string headImg);
+        Employee RemoveHeadPicture(string userName, string root, string headImg);
 
         /// <summary>
         /// 设置用户使用的头像，第一个即用户正使用头像

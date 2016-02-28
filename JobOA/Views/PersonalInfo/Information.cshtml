@@ -97,7 +97,7 @@
                             string[] headPic;
                             headPic = Model.HeadPicture.Split(',');
                         }
-                        <img class="am-img-circle am-img-thumbnail" src="@(headPic[0])" alt="您的头像" />
+                        <img id="headPicture" class="am-img-circle am-img-thumbnail" src="@(headPic[0])" alt="您的头像" />
                     </div>
                     <div class="am-u-md-8">
                         <p>你可以使用已有的头像或者使用本地上传头像。 </p>
@@ -105,14 +105,14 @@
                     <section class="am-u-md-12">
                         <form class="am-form">
                             <div class="am-form-group">
-                                <button type="button" class="oa-upload am-btn am-btn-default">
+                                <button type="button" class="oa-upload am-btn am-btn-default am-margin-xs">
                                     <span class="am-icon-upload"></span>上传文件图片
                                 </button>
                                 <p class="am-form-help">您可以选择下面已经上传的文件...</p>
                                 <div class="am-scrollable-horizontal am-text-nowrap">
-                                    @for (int i = 0; i < headPic.Length; i++)
+                                    @for (int i = headPic.Length-1; i >= 0; i--)
                                     {
-                                       <img class="am-img-thumbnail" src="@headPic[i]" alt="头像 @i" />
+                                       <img class="am-img-thumbnail" src="@headPic[i]" alt="头像 @i" title="点击左键应用，右键删除" />
                                     }
                                 </div>
                             </div>

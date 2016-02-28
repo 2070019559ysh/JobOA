@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Reflection;
+using System.IO;
 
 namespace JobOA.BLL.Implement
 {
@@ -218,6 +219,7 @@ namespace JobOA.BLL.Implement
                 employee.HeadPicture += "," + headImg;
             }
             UpdateEmployee(employee);
+            employee.HeadPicture = GetHeadPicture(employee.HeadPicture);
             return employee;
         }
 
@@ -225,34 +227,48 @@ namespace JobOA.BLL.Implement
         /// 移除用户的指定头像
         /// </summary>
         /// <param name="userName">用户名</param>
+        /// <param name="root">项目根目录</param>
         /// <param name="headImg">头像名</param>
         /// <returns>新的用户信息</returns>
-        public Employee removeHeadPicture(string userName, string headImg)
+        public Employee RemoveHeadPicture(string userName,string root, string headImg)
         {
-            Employee employee = EmployeeService.SearchEmployeeByUserName(userName);
-            if (!String.IsNullOrEmpty(employee.HeadPicture))
+            Employee employee=null;
+            try
             {
-                string[] headPictures = employee.HeadPicture.Split(',');
-                //strBuilder重新保存要移除图片名外的其他图片名，再修改用户头像列信息
-                StringBuilder strBuilder = new StringBuilder();
-                for (int i = 0; i < headPictures.Length;i++ )
+                employee = EmployeeService.SearchEmployeeByUserName(userName);
+                if (!String.IsNullOrEmpty(employee.HeadPicture))
                 {
-                    if (headPictures[i].Equals(headImg))
+                    string[] headPictures = employee.HeadPicture.Split(',');
+                    //strBuilder重新保存要移除图片名外的其他图片名，再修改用户头像列信息
+                    StringBuilder strBuilder = new StringBuilder();
+                    for (int i = 0; i < headPictures.Length; i++)
                     {
-                        continue;
+                        headImg = Path.GetFileName(headImg);
+                        if (headPictures[i].Equals(headImg))
+                        {
+                            string fileName = root + "Content/images/userImg/" + headImg;
+                            if (File.Exists(fileName))
+                                File.Delete(fileName);
+                            continue;
+                        }
+                        if (String.IsNullOrEmpty(strBuilder.ToString()))
+                        {
+                            strBuilder.Append(headPictures[i]);
+                        }
+                        else
+                        {
+                            strBuilder.Append("," + headPictures[i]);
+                        }
                     }
-                    if (String.IsNullOrEmpty(strBuilder.ToString()))
-                    {
-                        strBuilder.Append(headPictures[i]);
-                    }
-                    else
-                    {
-                        strBuilder.Append(","+headPictures[i]);
-                    }
+                    employee.HeadPicture = strBuilder.ToString();
                 }
-                employee.HeadPicture = strBuilder.ToString();
+                UpdateEmployee(employee);
+                employee.HeadPicture = GetHeadPicture(employee.HeadPicture);
             }
-            UpdateEmployee(employee);
+            catch (Exception ex)
+            {
+                 _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+            }
             return employee;
         }
 
@@ -282,6 +298,7 @@ namespace JobOA.BLL.Implement
                 employee.HeadPicture=String.Join(",", headPictures);
             }
             UpdateEmployee(employee);
+            employee.HeadPicture=GetHeadPicture(employee.HeadPicture);
             return employee;
         }
     }
