@@ -153,6 +153,9 @@ namespace JobOA.Controllers
             Employee employee=EmployeeManager.CheckEmployeeLogin(userName, password);
             if (employee!=null)
             {
+                employee.OnlineState = (int)OnlineState.onLine;
+                employee.LastLoginTime = DateTime.Now;//记录最近登录时间
+                EmployeeManager.UpdateEmployee(employee);
                 //创建身份验证票证
                 bool isRemember = !String.IsNullOrEmpty(remember);
                 FormsAuthentication.SetAuthCookie(employee.UserName, isRemember);
@@ -196,6 +199,7 @@ namespace JobOA.Controllers
         /// 请求发送验证码到手机或邮箱
         /// </summary>
         /// <returns>是否发送成功</returns>
+        [AllowAnonymous]
         [HttpPost]
         public JsonResult GetVerificationCode(string num,string type)
         {
@@ -220,6 +224,7 @@ namespace JobOA.Controllers
         /// 响应客户端获取验证码图片
         /// </summary>
         /// <returns>验证码图片</returns>
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult GetVerificationImg()
         {

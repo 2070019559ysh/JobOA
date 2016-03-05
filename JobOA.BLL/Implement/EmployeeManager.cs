@@ -164,7 +164,10 @@ namespace JobOA.BLL.Implement
             bool success = false;//是否成功执行
             try
             {
+                string regionImg = employee.HeadPicture;
+                employee.HeadPicture = ResetHeadPicture(employee.HeadPicture);
                 int row = EmployeeService.UpdateEmployee(employee);
+                employee.HeadPicture = regionImg;
                 if (row > 0)
                 {
                     success = true;
@@ -178,10 +181,10 @@ namespace JobOA.BLL.Implement
         }
 
         /// <summary>
-        /// 获取多个图片名连接的字符串中的第一个图片名地址
+        /// 获取多个图片名连接的字符串,图片名包含目录
         /// </summary>
         /// <param name="headImg">多个图片名连接的字符串</param>
-        /// <returns>第一个图片名地址</returns>
+        /// <returns>多个图片名（包含目录字符串）连接的字符串</returns>
         private string GetHeadPicture(string headImg)
         {
             if (String.IsNullOrEmpty(headImg))
@@ -197,6 +200,24 @@ namespace JobOA.BLL.Implement
                     headImgs[i]="/Content/images/userImg/" + headImgs[i];
                 }
                 headImg = String.Join(",",headImgs);
+            }
+            return headImg;
+        }
+        /// <summary>
+        /// 获取去掉图片名中的目录字符
+        /// </summary>
+        /// <param name="headImg">多个图片名（包含目录字符串）连接的字符串</param>
+        /// <returns>去掉图片名中的目录字符</returns>
+        private string ResetHeadPicture(string headImg)
+        {
+            if (!String.IsNullOrEmpty(headImg))
+            {
+                string[] headImgs = headImg.Split(',');
+                for (int i = 0; i < headImgs.Length; i++)
+                {
+                    headImgs[i] =Path.GetFileName(headImgs[i]);
+                }
+                headImg = String.Join(",", headImgs);
             }
             return headImg;
         }

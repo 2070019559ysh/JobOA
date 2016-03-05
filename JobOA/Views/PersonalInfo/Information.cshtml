@@ -97,26 +97,24 @@
                             string[] headPic;
                             headPic = Model.HeadPicture.Split(',');
                         }
-                        <img id="headPicture" class="am-img-circle am-img-thumbnail" src="@(headPic[0])" alt="您的头像" />
+                        <img id="headImg" class="am-img-circle am-img-thumbnail" src="@(headPic[0])" alt="您的头像" />
                     </div>
                     <div class="am-u-md-8">
                         <p>你可以使用已有的头像或者使用本地上传头像。 </p>
                     </div>
                     <section class="am-u-md-12">
-                        <form class="am-form">
-                            <div class="am-form-group">
-                                <button type="button" class="oa-upload am-btn am-btn-default am-margin-xs">
-                                    <span class="am-icon-upload"></span>上传文件图片
-                                </button>
-                                <p class="am-form-help">您可以选择下面已经上传的文件...</p>
-                                <div class="am-scrollable-horizontal am-text-nowrap">
-                                    @for (int i = headPic.Length-1; i >= 0; i--)
-                                    {
-                                       <img class="am-img-thumbnail" src="@headPic[i]" alt="头像 @i" title="点击左键应用，右键删除" />
-                                    }
-                                </div>
+                        <div class="am-form-group">
+                            <button type="button" class="oa-upload am-btn am-btn-default am-margin-xs">
+                                <span class="am-icon-upload"></span>上传文件图片
+                            </button>
+                            <p class="am-form-help">您可以选择下面已经上传的文件...</p>
+                            <div class="am-scrollable-horizontal am-text-nowrap">
+                                @for (int i = headPic.Length - 1; i >= 0; i--)
+                                {
+                                    <img class="am-img-thumbnail" src="@headPic[i]" alt="头像 @i" title="点击左键应用，右键删除" />
+                                }
                             </div>
-                        </form>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -125,18 +123,8 @@
         <div class="am-panel am-panel-default">
             <div class="am-panel-bd">
                 <div class="user-info">
-                    <p>等级信息</p>
-                    <div class="am-progress am-progress-sm">
-                        <div class="am-progress-bar" style="width: 60%"></div>
-                    </div>
-                    <p class="user-info-order">当前等级：<strong>LV8</strong> 活跃天数：<strong>587</strong> 距离下一级别：<strong>160</strong></p>
-                </div>
-                <div class="user-info">
-                    <p>信用信息</p>
-                    <div class="am-progress am-progress-sm">
-                        <div class="am-progress-bar am-progress-bar-success" style="width: 80%"></div>
-                    </div>
-                    <p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>
+                    <p>最近登录时间</p>
+                    <p class="user-info-order">@Model.LastLoginTime</p>
                 </div>
             </div>
         </div>
@@ -146,6 +134,11 @@
     <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
         @using (Html.BeginForm("UpdateEmployeeInfo", "PersonalInfo", FormMethod.Post, new { @class = "am-form am-form-horizontal" }))
         {
+            <input type="hidden" id="mess" value="@ViewBag.mess" />
+            <input type="hidden" id="validate" value="@ViewBag.validate" />
+            @Html.ValidationSummary()
+            @Html.HiddenFor(m => m.HeadPicture)
+            @Html.HiddenFor(m=>m.Id)
             <div class="am-form-group">
                 <label for="RealName" class="am-u-sm-3 am-form-label">*真实姓名</label>
                 <div class="am-u-sm-9">
@@ -190,14 +183,14 @@
                 <label for="user-QQ" class="am-u-sm-3 am-form-label">*所属部门</label>
                 <div class="am-u-sm-9">
                     @Html.EditorFor(m => m.DepartmentId, "ListBox")
-                    <small class="am-text-danger">@Html.ValidationMessageFor(m => m.DepartmentId)</small>
+                    <small id="tip-mess" class="am-text-danger">@Html.ValidationMessageFor(m => m.DepartmentId)</small>
                 </div>
             </div>
 
             <div class="am-form-group">
                 <label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
                 <div class="am-u-sm-9">
-                    <textarea class="" rows="5" id="user-intro" placeholder="输入个人简介">@Model.Introduction</textarea>
+                    <textarea name="Introduction" class="" rows="5" id="user-intro" placeholder="输入个人简介">@Model.Introduction</textarea>
                     <small class="am-text-danger">@Html.ValidationMessageFor(m => m.Introduction)</small>
                 </div>
             </div>
@@ -205,7 +198,7 @@
             <div class="am-form-group">
                 <div class="am-u-sm-9 am-u-sm-push-3">
                     <button type="submit" class="am-btn am-btn-primary">保存修改</button>
-                    <button type="button" class="am-btn am-btn-success">获取验证码</button>
+                    <button id="get-validate" type="button" class="am-btn am-btn-success">获取验证码</button>
                 </div>
             </div>
         }

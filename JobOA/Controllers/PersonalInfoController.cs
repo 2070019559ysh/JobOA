@@ -7,6 +7,8 @@ using JobOA.BLL;
 using JobOA.Model;
 using Ninject;
 using System.IO;
+using JobOA.Common;
+using JobOA.Models;
 
 namespace JobOA.Controllers
 {
@@ -17,6 +19,10 @@ namespace JobOA.Controllers
 
         [Inject]
         public IDepartmentManager DepartmentManager { get; set; }
+
+        [Inject]
+        public IOAUiManager oaUiManager { get; set; }
+
         //
         // GET: /PersonalInfo/
         [ActionName("Information")]
@@ -81,12 +87,124 @@ namespace JobOA.Controllers
             }
         }
 
+        /// <summary>
+        /// 获取当前员工头像信息
+        /// </summary>
+        /// <returns>头像信息</returns>
         [AllowAnonymous]
         public JsonResult GetHeadPicture()
         {
             Employee emp = Session["user"] as Employee;
             string[] headPicture=emp.HeadPicture.Split(',');
             return Json(headPicture,JsonRequestBehavior.DenyGet);
+        }
+
+        /// <summary>
+        /// 响应客户端获取验证码图片
+        /// </summary>
+        /// <returns>验证码图片</returns>
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult GetVerificationImg()
+        {
+            VerificationCode verificateCode = new VerificationCode();
+            string code = verificateCode.CreateRandomCode(6);
+            TempData["code"] = code;
+            byte[] imgByte = verificateCode.CreateValidateGraphic(code);
+            return File(imgByte, "image/jpg");
+        }
+
+        /// <summary>
+        /// 正式发送验证码前验证验证码图片输入
+        /// </summary>
+        /// <param name="vaildCode">针对验证码图片输入的验证码</param>
+        /// <returns>验证结果json</returns>
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult CheckVerificationCode(string vaildCode)
+        {
+            string code = TempData["code"] as string;
+            if (vaildCode == null) return Json(new { result = false }, JsonRequestBehavior.DenyGet);
+            if (vaildCode.ToUpper().Equals(code))
+            {
+                return Json(new { result = true }, JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                TempData["code"] = code;//验证错误，继续保存验证
+                return Json(new { result = false }, JsonRequestBehavior.DenyGet);
+            }
+        }
+
+        /// <summary>
+        /// 请求发送验证码到手机或邮箱
+        /// </summary>
+        /// <returns>是否发送成功</returns>
+        [AllowAnonymous]
+        [HttpPost]
+        public JsonResult GetVerificationCode(string num, string type)
+        {
+            if (num == null || type == null) return Json(new { result = false }, JsonRequestBehavior.DenyGet);
+            VerificationCode verificateCode = new VerificationCode();
+            string code = verificateCode.CreateRandomCode(6);
+            bool isSuccess = true;//标志是否成功发送验证码
+            if (type.Equals("phone"))
+            {
+                TempData["phoneCode"] = code;
+                isSuccess = oaUiManager.SendSms(num, "您正在修改员工账号，如非本人操作，请忽略本短信。您的验证码是：" + code);
+            }
+            else
+            {
+                TempData["emailCode"] = code;
+                isSuccess = oaUiManager.SendEmail(num, "JoaOA系统的员工注册", "您正在修改员工账号，如非本人操作，请忽略本邮件。您的验证码是：" + code);
+            }
+            return Json(new { result = isSuccess }, JsonRequestBehavior.DenyGet);
+        }
+
+        /// <summary>
+        /// 修改员工信息，由于密码等信息是不修改的，模型绑定使用自定义模型绑定
+        /// </summary>
+        /// <param name="employee">新的员工信息</param>
+        /// <returns>修改员工信息页面</returns>
+        [HttpPost]
+        public ActionResult UpdateEmployeeInfo([ModelBinder(typeof(EmployeeBinder))]Employee employee,string phoneCheck,string emailCheck)
+        {
+            Employee emp=Session["user"] as Employee;
+            if (!emp.UserName.Equals(employee.UserName))
+            {
+                string phoneCode = TempData["phoneCode"] as string;
+                if (!phoneCode.Equals(phoneCheck))
+                {
+                    ModelState.AddModelError("phoneCheck", "手机号验证错误");
+                    TempData["phoneCode"] = phoneCheck;
+                    ViewBag.validate = true;//告知界面是验证码有效时间
+                }            
+            }
+            if (!(String.IsNullOrEmpty(employee.Email)||emp.Email.Equals(employee.Email)))
+            {
+                string emailCode = TempData["emailCode"] as string;
+                if (!emailCode.Equals(emailCheck))
+                {
+                    ModelState.AddModelError("emailCheck", "邮箱验证错误");
+                    TempData["phoneCode"] = emailCode;
+                    ViewBag.validate = true;
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                if (EmployeeManager.UpdateEmployee(employee))
+                {
+                    Session["user"] = employee;//修改session信息
+                    ViewBag.mess = "修改信息成功。";
+                }
+                else
+                {
+                    ViewBag.mess = "修改信息失败！请稍后再试。";
+                }
+            }
+            List<Department> departmentList = DepartmentManager.SearchAllDepartment();
+            ViewData["list"] = new SelectList(departmentList, "Id", "Name", employee.DepartmentId);
+            return View("Information", employee);
         }
     }
 }

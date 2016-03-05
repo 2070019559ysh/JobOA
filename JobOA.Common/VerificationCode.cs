@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace JobOA.Common
 {
+    /// <summary>
+    /// 提供生成随机号码和图片的功能类
+    /// </summary>
     public class VerificationCode
     {
         /// <summary>
