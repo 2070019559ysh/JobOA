@@ -15,6 +15,7 @@ namespace JobOA.Controllers
         public IEmployeeManager EmployeeManager { get; set; }
         //
         // GET: /Home/
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Index()
         {

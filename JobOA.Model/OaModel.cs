@@ -16,7 +16,7 @@ namespace JobOA.Model
         public OaModel()
             : base("name=OaModel")
         {
-            Database.SetInitializer<OaModel>(new DropCreateDatabaseIfModelChanges<OaModel>());
+            Database.SetInitializer<OaModel>(new CreateDatabaseIfNotExists<OaModel>());
         }
 
         /// <summary>
@@ -158,6 +158,10 @@ namespace JobOA.Model
             modelBuilder.Entity<SubTask>()
                 .Property(e => e.Participator)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<OAException>()
+               .Property(e => e.ExMessage)
+               .IsUnicode(false);
 
             modelBuilder.Entity<SubTask>()
                 .Property(e => e.Progress)

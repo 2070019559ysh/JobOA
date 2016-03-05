@@ -33,3 +33,44 @@
 2016/2/14 13:25:58 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
 2016/2/14 13:31:14 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
 2016/2/14 14:58:19 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
+2016/3/5 15:00:14 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 19:49:56 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 19:51:13 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 19:57:24 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 20:06:29 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
+2016/3/5 20:07:08 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
+2016/3/5 20:15:10 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
+2016/3/5 20:15:20 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
+2016/3/5 20:19:12 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
+2016/3/5 20:19:17 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
+2016/3/5 20:20:12 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
+2016/3/5 20:36:08 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
+2016/3/5 20:37:00 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
+2016/3/5 20:38:45 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
+2016/3/5 20:45:06 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+2016/3/5 20:45:11 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+2016/3/5 20:48:21 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+2016/3/5 20:50:09 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+2016/3/5 20:55:33 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
+2016/3/5 21:07:53 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+2016/3/5 21:08:05 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+2016/3/5 21:08:52 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+2016/3/5 21:10:41 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+2016/3/5 21:16:51 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+2016/3/5 21:40:44 发生异常：未找到视图“UpdateDepartment”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/Administration/UpdateDepartment.aspx
+~/Views/Administration/UpdateDepartment.ascx
+~/Views/Shared/UpdateDepartment.aspx
+~/Views/Shared/UpdateDepartment.ascx
+~/Views/Administration/UpdateDepartment.cshtml
+~/Views/Administration/UpdateDepartment.vbhtml
+~/Views/Shared/UpdateDepartment.cshtml
+~/Views/Shared/UpdateDepartment.vbhtml
+2016/3/5 21:49:39 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 21:53:39 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 21:54:30 发生异常：未将对象引用设置到对象的实例。
+2016/3/5 21:57:45 发生异常：无法删除数据库 "JOB_OA"，因为该数据库当前正在使用。

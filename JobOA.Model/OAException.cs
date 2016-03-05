@@ -24,7 +24,6 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("异常信息")]
         [Required(ErrorMessage = "{0}是必须的")]
-        [StringLength(500, ErrorMessage = "{0}不能多于{1}个字符")]
         public string ExMessage { get; set; }
 
         /// <summary>
