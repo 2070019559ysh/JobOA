@@ -28,21 +28,21 @@ namespace JobOA.BLL
         /// 添加部门信息
         /// </summary>
         /// <param name="department">部门信息</param>
-        /// <returns>添加的记录数</returns>
-        int AddDepartment(Department department);
+        /// <returns>添加的记录是否成功</returns>
+        bool AddDepartment(Department department);
 
         /// <summary>
         /// 删除部门信息
         /// </summary>
         /// <param name="id">部门Id</param>
-        /// <returns>删除的记录数</returns>
-        int DeleteDepartment(int id);
+        /// <returns>删除的记录是否成功</returns>
+        bool DeleteDepartment(int id);
 
         /// <summary>
         /// 更新部门信息
         /// </summary>
         /// <param name="department">新部门信息</param>
-        /// <returns>修改的记录数</returns>
-        int UpdateDepartment(Department department);
+        /// <returns>修改的记录是否成功</returns>
+        bool UpdateDepartment(Department department);
     }
 }

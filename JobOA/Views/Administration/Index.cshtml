@@ -1,0 +1,66 @@
+﻿@model List<JobOA.Model.Department>
+@using JobOA.Model
+
+@{
+    ViewBag.Title = "JobOA—部门管理";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+}
+
+@section css{
+    <link href="@Url.Content("~/Content/css/adminHome.css")" rel="stylesheet" type="text/css" />
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
+    <script src="@Url.Content("~/Scripts/js/adminDepartment.js")"></script>
+    <script src="~/Scripts/js/alertMess.js"></script>
+}
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">公司部门</strong> / <small>Department</small></div>
+</div>
+
+<div class="am-g">
+    <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <button id="add-department" type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="mess" type="hidden" value="@TempData["mess"]"/>
+<div class="am-g">
+    <div class="am-u-sm-12">
+        <table class="am-table am-table-bd am-table-striped admin-content-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>部门名称</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Department department in Model)
+                {
+                    <tr>
+                        <td>@department.Id</td>
+                        <td>@department.Name</td>
+                        <td>
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button class="update-department am-btn am-btn-default am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                    <button class="del-department am-btn am-btn-default am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                } 
+            </tbody>
+        </table>
+        <hr />
+        <p>注：.....</p>
+    </div>
+
+</div>
+
+

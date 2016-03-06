@@ -1,3 +1,4 @@
+using JobOA.Common;
 using JobOA.DAL;
 using JobOA.Model;
 using Ninject;
@@ -21,6 +22,11 @@ namespace JobOA.BLL.Implement
         public IDepartmentService DepartmentService { get; set; }
 
         /// <summary>
+        /// 异常处理对象
+        /// </summary>
+        private readonly ExceptionLog _exceptionLog = new ExceptionLog();
+
+        /// <summary>
         /// 通过Id查找部门信息
         /// </summary>
         /// <returns>部门信息</returns>
@@ -42,30 +48,66 @@ namespace JobOA.BLL.Implement
         /// 添加部门信息
         /// </summary>
         /// <param name="department">部门信息</param>
-        /// <returns>添加的记录数</returns>
-        public int AddDepartment(Department department)
+        /// <returns>添加的记录是否成功</returns>
+        public bool AddDepartment(Department department)
         {
-            return DepartmentService.AddDepartment(department);
+            bool isSuccess = false;
+            try
+            {
+                if (DepartmentService.AddDepartment(department) > 0)
+                {
+                    isSuccess = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+            }
+            return isSuccess;
         }
 
         /// <summary>
         /// 删除部门信息
         /// </summary>
         /// <param name="id">部门Id</param>
-        /// <returns>删除的记录数</returns>
-        public int DeleteDepartment(int id)
+        /// <returns>删除的记录是否成功</returns>
+        public bool DeleteDepartment(int id)
         {
-            return DepartmentService.DeleteDepartment(id);
+            bool isSuccess = false;
+            try
+            {
+                if (DepartmentService.DeleteDepartment(id) > 0)
+                {
+                    isSuccess = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+            }
+            return isSuccess;
         }
 
         /// <summary>
         /// 更新部门信息
         /// </summary>
         /// <param name="department">新部门信息</param>
-        /// <returns>修改的记录数</returns>
-        public int UpdateDepartment(Department department)
+        /// <returns>修改的记录是否成功</returns>
+        public bool UpdateDepartment(Department department)
         {
-            return DepartmentService.UpdateDepartment(department);
+            bool isSuccess = false;
+            try
+            {
+                if (DepartmentService.UpdateDepartment(department) > 0)
+                {
+                    isSuccess = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+            }
+            return isSuccess;
         }
     }
 }

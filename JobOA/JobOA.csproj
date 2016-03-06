@@ -138,6 +138,7 @@
     <Compile Include="Auxiliary\PermissionAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AdminTaskController.cs" />
     <Compile Include="Controllers\ErrorCatchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -292,6 +293,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\addMajorTask.js" />
+    <Content Include="Scripts\js\adminDepartment.js" />
     <Content Include="Scripts\js\adminProject.js" />
     <Content Include="Scripts\js\alertMess.js" />
     <Content Include="Scripts\js\allMajorTaskIndex.js" />
@@ -342,6 +344,7 @@
     <Content Include="Views\Shared\EditorTemplates\Selected.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
     <Content Include="Views\PersonalInfo\Information.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
