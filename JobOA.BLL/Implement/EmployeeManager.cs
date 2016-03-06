@@ -76,7 +76,8 @@ namespace JobOA.BLL.Implement
             {
                 Employee employee = SearchEmployeeByUserName(userName);
                 password = MD5Encrypt.ConvertMD5String(password);//密码加密
-                if (employee != null && employee.Password.Equals(password))
+                //密码正确并被HR审核通过确认可登录
+                if (employee != null && employee.Password.Equals(password)&&employee.IsEnabled)
                 {
                     employeeLogin = employee;
                 }
@@ -213,11 +214,19 @@ namespace JobOA.BLL.Implement
             if (!String.IsNullOrEmpty(headImg))
             {
                 string[] headImgs = headImg.Split(',');
-                for (int i = 0; i < headImgs.Length; i++)
+                if (headImgs.Length == 1 && headImgs[0].Equals("/Content/images/oaui/default.jpg"))
                 {
-                    headImgs[i] =Path.GetFileName(headImgs[i]);
+                    //如果使用默认头像，则清空数据
+                    headImg = null;
                 }
-                headImg = String.Join(",", headImgs);
+                else
+                {
+                    for (int i = 0; i < headImgs.Length; i++)
+                    {
+                        headImgs[i] = Path.GetFileName(headImgs[i]);
+                    }
+                    headImg = String.Join(",", headImgs);
+                }
             }
             return headImg;
         }

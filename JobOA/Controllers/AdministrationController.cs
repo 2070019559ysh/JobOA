@@ -35,25 +35,18 @@ namespace JobOA.Controllers
         /// <param name="department">部门</param>
         /// <returns>是否成功json</returns>
         [HttpGet]
-        public ActionResult AddDepartment(Department department)
+        public ActionResult AddDepartment(string name)
         {
-            if (ModelState.IsValid)
+            Department department = new Department() { Name=name };
+            if (DepartmentManager.AddDepartment(department))
             {
-                if (DepartmentManager.AddDepartment(department))
-                {
-                    ViewData["mess"] = "新增部门成功";
-                }
-                else
-                {
-                    ViewData["mess"] = "新增部门失败";
-                }
+                TempData["tipMess"] = "新增部门成功";
             }
             else
             {
-                ViewData["mess"] = "部门名称不能多于10个字";
+                TempData["tipMess"] = "新增部门失败！注意：部门名称不能多于10个字";
             }
-            List<Department> departmentList = DepartmentManager.SearchAllDepartment();
-            return View(departmentList);
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -62,25 +55,21 @@ namespace JobOA.Controllers
         /// <param name="department">部门信息</param>
         /// <returns>是否成功json</returns>
         [HttpGet]
-        public ActionResult UpdateDepartment(Department department)
+        public ActionResult UpdateDepartment(int? id,string name)
         {
-            if (ModelState.IsValid)
+            if (id.HasValue)
             {
+                Department department = new Department() { Id=id.Value,Name=name };
                 if (DepartmentManager.UpdateDepartment(department))
                 {
-                    ViewData["mess"] = "修改部门名称成功";
+                    TempData["tipMess"] = "修改部门名称成功";
                 }
                 else
                 {
-                    ViewData["mess"] = "修改部门名称失败，请稍后再试";
+                    TempData["tipMess"] = "修改部门名称失败！请稍后再试。注意：部门名称不能多于10个字";
                 }
             }
-            else
-            {
-                ViewData["mess"] = "部门名称不能多于10个字";
-            }
-            List<Department> departmentList = DepartmentManager.SearchAllDepartment();
-            return View(departmentList);
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -89,18 +78,20 @@ namespace JobOA.Controllers
         /// <param name="departmentId">部门信息Id</param>
         /// <returns>是否成功json</returns>
         [HttpGet]
-        public ActionResult DelDepartment(int departmentId)
+        public ActionResult DelDepartment(int? id)
         {
-            if (DepartmentManager.DeleteDepartment(departmentId))
+            if (id.HasValue)
             {
-                ViewData["mess"] = "删除部门信息成功";
+                if (DepartmentManager.DeleteDepartment(id.Value))
+                {
+                    TempData["tipMess"] = "删除部门信息成功";
+                }
+                else
+                {
+                    TempData["tipMess"] = "删除部门信息失败！您可以确定部门下没有任务信息后再试";
+                }
             }
-            else
-            {
-                ViewData["mess"] = "删除部门信息失败，您可以确定部门下没有任务信息后再试";
-            }
-            List<Department> departmentList = DepartmentManager.SearchAllDepartment();
-            return View(departmentList);
+            return RedirectToAction("Index");
         }
 
     }

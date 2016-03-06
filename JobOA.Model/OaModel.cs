@@ -16,7 +16,7 @@ namespace JobOA.Model
         public OaModel()
             : base("name=OaModel")
         {
-            Database.SetInitializer<OaModel>(new CreateDatabaseIfNotExists<OaModel>());
+            Database.SetInitializer<OaModel>(new DropCreateDatabaseIfModelChanges<OaModel>());
         }
 
         /// <summary>

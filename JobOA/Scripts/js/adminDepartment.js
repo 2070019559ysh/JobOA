@@ -1,4 +1,10 @@
 ﻿$(function () {
+    var mess = $("#mess").val();
+    if (mess) {
+        var modal = new Modal();
+        modal.alert(mess);
+        $("#mess").val("");
+    }
     /*
     * 显示在输入框后面的提示信息
     * @param {Object} $input 输入框jquery对象
@@ -23,8 +29,8 @@
         var confirm = function () {
             var $input=$("#addDepartment").find("input")
             var departmentVal = $input.val();
-            if(departmentVal){
-                location.href = "AddDepartment?departName=" + departmentVal;
+            if (departmentVal) {
+                location.href = "/Administration/AddDepartment?name=" + departmentVal;
             } else {
                 showMess($input, "部门信息不能为空");
             }
@@ -40,7 +46,7 @@
             var $input = $("#updateDepartment").find("input");
             name = $input.val();
             if (name) {
-                location.href = "UpdateDepartment?Id="+id+"&Name="+name;
+                location.href = "/Administration/UpdateDepartment?id=" + id + "&name=" + name;
             } else {
                 showMess($input, "部门信息不能为空！");
             }
@@ -54,7 +60,7 @@
         name = $tr.children("td:eq(1)").text();
         var modal = new Modal("删除部门", "delDepartment");
         var confirm = function () {
-            location.href = "DelDepartment?departmentId="+id;
+            location.href = "/Administration/DelDepartment?id="+id;
         }
         modal.confirm("确定要删除部门：" + name + "?", true, confirm);
     });

@@ -68,7 +68,7 @@ namespace JobOA.BLL.Implement
         }
 
         /// <summary>
-        /// 通过权限Id查找所有关联的角色
+        /// 通过权限Id查找所有关联并启用的角色
         /// </summary>
         /// <param name="permissionId">权限Id</param>
         /// <returns>所有关联的角色</returns>
@@ -90,6 +90,12 @@ namespace JobOA.BLL.Implement
                     string[] roleIds = roleList[i].PermissionIds.Split(',');
                     if (!roleIds.Contains(permId))
                     {
+                        roleList.RemoveAt(i);
+                        i--;
+                    }
+                    else if(!roleList[i].IsEnabled)
+                    {
+                        //如果该角色没有被启用，也忽略掉
                         roleList.RemoveAt(i);
                         i--;
                     }

@@ -72,7 +72,7 @@
                             $("#userMess").show();
                         }
                     } else {
-                        $loginMess.text("用户名或密码错误！请求登录失败");
+                        $loginMess.text("用户名或密码错误！请求登录失败,或未被HR审核通过");
                     }
                 },
                 async:true,

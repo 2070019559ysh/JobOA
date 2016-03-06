@@ -79,7 +79,7 @@
                     @{
                         //获取已登录的员工信息
                         Employee employee = Session["user"] as Employee;
-                        if (employee!=null)
+                        if (User.Identity.IsAuthenticated&&employee!=null)
                         {
                             string[] headPic;
                             headPic = employee.HeadPicture.Split(',');
