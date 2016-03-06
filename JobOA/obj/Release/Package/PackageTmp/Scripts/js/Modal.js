@@ -5,16 +5,16 @@
 */
 //动态原型方法
 function Modal(title,id) {
-    if (typeof id === "undefined" || id === "") {
+    if (!id) {
         id = "joboa-modal";
     }
-    if (typeof title === "undefined" || title === "") {
-        title = "JobOA-系统提示";
+    if (title) {
+        this.title = "JobOA-系统提示";
     }
 
     var template = '<div class="am-modal am-modal-confirm" tabindex="-1" id="'+id+'">' +
                 '<div class="am-modal-dialog">' +
-                    '<div class="am-modal-hd">JobOA</div>' +
+                    '<div class="am-modal-hd">JobOA系统提示</div>' +
                     '<div class="am-modal-bd">' +
                       '你，确定要删除这条记录吗？' +
                     '</div>' +
@@ -59,7 +59,8 @@ function Modal(title,id) {
                 //当要重新设置标题时，重置标题
                 this.modalTitle.text(title);
             }
-            this.modalContent.html(content);//设置内容支持html格式
+            if(content)
+                this.modalContent.html(content);//设置内容支持html格式
             $('#'+this.id).modal({
                 relatedTarget: this,
                 onConfirm: confirmFun

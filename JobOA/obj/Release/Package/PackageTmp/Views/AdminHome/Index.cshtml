@@ -1,0 +1,264 @@
+﻿@model JobOA.Model.Project
+
+@{
+    ViewBag.Title = "JobOA—工作首页";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+}
+
+@section css{
+    <link href="@Url.Content("~/Content/css/adminHome.css")" rel="stylesheet" type="text/css"/>
+}
+@section scripts{
+    <script src="@Url.Content("~/Scripts/js/adminHome.js")"></script>
+}
+
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
+</div>
+
+<div class="am-g userstate">
+    <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-panel am-panel-danger">
+            <div class="am-panel-hd am-nbfc">
+                <div class="am-fl">
+                    <span class="am-icon-user"></span>
+                    在线员工列表
+                </div>
+                <div class="am-input-group am-input-group-sm am-fr" style="width:200px;">
+                    <input type="text" class="am-form-field">
+                    <span class="am-input-group-btn">
+                        <button class="am-btn am-btn-danger" type="button">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <ul class="am-list">
+                <li class="am-text-truncate">
+                    <a href="javascript:void(0)" class="am-btn am-btn-danger">发送消息</a>
+                    <img src="~/Content/images/oaui/default.jpg" height="20" width="20" alt="头像" />
+                    <span>陈动漫</span><span title="默认用户">默认用户</span>
+                </li>
+                <li class="am-text-truncate">
+                    <a href="javascript:void(0)" class="am-btn am-btn-danger">发送消息</a>
+                    <img src="~/Content/images/oaui/default.jpg" height="20" width="20" alt="头像" />
+                    <span>陈动漫</span><span title="默认用户">默认用户</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-nbfc">
+                <div class="am-fl">
+                    <span class="am-icon-user"></span>
+                    离线员工列表
+                </div>
+                <div class="am-input-group am-input-group-sm am-fr" style="width:200px;">
+                    <input type="text" class="am-form-field">
+                    <span class="am-input-group-btn">
+                        <button class="am-btn am-btn-default" type="button">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <ul class="am-list">
+                <li class="am-text-truncate">
+                    <a href="javascript:void(0)" class="am-btn am-btn-default">发送离线消息</a>
+                    <img src="~/Content/images/oaui/default.jpg" height="20" width="20" alt="头像" />
+                    <span>陈动漫</span><span title="默认用户">默认用户</span>
+                </li>
+                <li class="am-text-truncate">
+                    <a href="javascript:void(0)" class="am-btn am-btn-default">发送离线消息</a>
+                    <img src="~/Content/images/userImg/mytou.jpg" height="20" width="20" alt="头像" />
+                    <span>陈动漫</span><span title="默认用户">默认用户</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="am-g">
+    <div class="am-u-sm-12">
+        <table class="am-table am-table-bd am-table-striped admin-content-table">
+            <thead>
+                <tr>
+                    <th class="am-hide-sm-only">ID</th>
+                    <th>项目名</th>
+                    <th class="am-hide-sm-only">项目简述</th>
+                    <th>完成状态</th>
+                    <th style="width:30%">实时进度</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="am-hide-sm-only">1</td>
+                    <td>John Clark</td>
+                    <td class="am-hide-sm-only"><a href="#">Business management 分我发觉光荣改日哦如果ioger如果 就ijigr</a></td>
+                    <td>未完成</td>
+                    <td>
+                        <div class="am-progress am-progress-striped am-progress-sm am-active">
+                            <div class="am-progress-bar am-progress-bar-warning" style="width: 82%">82%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="am-hide-sm-only">2</td>
+                    <td>风清扬</td>
+                    <td class="am-hide-sm-only"><a href="#">公司LOGO设计</a> </td>
+                    <td>已完成</td>
+                    <td>
+                        <div class="am-progress am-progress-striped am-progress-sm">
+                            <div class="am-progress-bar am-progress-bar-success" style="width: 100%">100%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="am-hide-sm-only">3</td>
+                    <td>詹姆斯</td>
+                    <td class="am-hide-sm-only"><a href="#">开发一款业务数据软件</a></td>
+                    <td>未完成</td>
+                    <td>
+                        <div class="am-progress am-progress-striped am-progress-sm am-active">
+                            <div class="am-progress-bar am-progress-bar-warning" style="width: 25%">25%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="am-hide-sm-only">4</td>
+                    <td>云适配</td>
+                    <td class="am-hide-sm-only"><a href="#">适配所有网站</a></td>
+                    <td>验收不通过</td>
+                    <td>
+                        <div class="am-progress am-progress-striped am-progress-sm am-active">
+                            <div class="am-progress-bar am-progress-bar-danger" style="width: 90%">90%</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="am-hide-sm-only">5</td>
+                    <td>呵呵呵</td>
+                    <td class="am-hide-sm-only"><a href="#">基兰会获得BUFF</a></td>
+                    <td>终止</td>
+                    <td>
+                        <div class="am-progress am-progress-striped am-progress-sm">
+                            <div class="am-progress-bar am-progress-bar-success" style="width: 82%">82%</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="am-g">
+    <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">主任务提交记录 Master task<span class="am-icon-chevron-down am-fr"></span></div>
+            <div id="collapse-panel-1" class="am-panel-bd am-collapse am-in am-nbfc">
+                <ul class="am-list admin-content-task">
+                    <li>
+                        <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
+                        <div class="admin-task-bd">
+                            The starting place for exploring business management; helping new managers get started and experienced managers get better.
+                        </div>
+                        <div class="am-cf">
+                            <div class="am-btn-toolbar am-fl">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-check"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+                                </div>
+                            </div>
+                            <div class="am-fr">
+                                <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="admin-task-meta"> Posted on 25/1/2120 by 呵呵呵</div>
+                        <div class="admin-task-bd">
+                            基兰和狗熊出现在不同阵营时。基兰会获得BUFF，“装甲熊憎恨者”。狗熊会获得BUFF，“时光老人憎恨者”。
+                        </div>
+                        <div class="am-cf">
+                            <div class="am-btn-toolbar am-fl">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-check"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+                                </div>
+                            </div>
+                            <div class="am-fr">
+                                <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="am-pagination am-fr admin-content-pagination">
+                    <li class="am-disabled"><a href="#">«</a></li>
+                    <li class="am-active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">子任务提交记录 Subtask<span class="am-icon-chevron-down am-fr"></span></div>
+            <div id="collapse-panel-2" class="am-panel-bd am-collapse am-in am-nbfc">
+                <ul class="am-list admin-content-task">
+                    <li>
+                        <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
+                        <div class="admin-task-bd">
+                            The starting place for exploring business management; helping new managers get started and experienced managers get better.
+                        </div>
+                        <div class="am-cf">
+                            <div class="am-btn-toolbar am-fl">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-check"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+                                </div>
+                            </div>
+                            <div class="am-fr">
+                                <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="admin-task-meta"> Posted on 25/1/2120 by 呵呵呵</div>
+                        <div class="admin-task-bd">
+                            基兰和狗熊出现在不同阵营时。基兰会获得BUFF，“装甲熊憎恨者”。狗熊会获得BUFF，“时光老人憎恨者”。
+                        </div>
+                        <div class="am-cf">
+                            <div class="am-btn-toolbar am-fl">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-check"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+                                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+                                </div>
+                            </div>
+                            <div class="am-fr">
+                                <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="am-pagination am-fr admin-content-pagination">
+                    <li class="am-disabled"><a href="#">«</a></li>
+                    <li class="am-active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
