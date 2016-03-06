@@ -172,7 +172,6 @@
     <Content Include="Content\images\oaui\web.png" />
     <Content Include="Content\images\oaui\web_ico.png" />
     <Content Include="Content\images\oaui\wenlubackground.jpg" />
-    <Content Include="Content\images\userImg\mytou.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
