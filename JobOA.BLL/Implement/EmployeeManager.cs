@@ -30,6 +30,20 @@ namespace JobOA.BLL.Implement
         private readonly ExceptionLog _exceptionLog = new ExceptionLog();
 
         /// <summary>
+        /// 查找所有员工信息
+        /// </summary>
+        /// <returns>所有员工信息</returns>
+        public List<Employee> SearchAllEmployee()
+        {
+            List<Employee> employeeList=EmployeeService.SearchAllEmployee();
+            foreach (var e in employeeList)
+            {
+                e.HeadPicture = GetHeadPicture(e.HeadPicture);
+            }
+            return employeeList;
+        }
+
+        /// <summary>
         /// 通过Id查找员工信息
         /// </summary>
         /// <returns>员工信息</returns>

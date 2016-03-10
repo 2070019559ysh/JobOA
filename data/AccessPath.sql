@@ -27,6 +27,8 @@ INSERT INTO Permission([Description],AccessPathId) VALUES('进入部门信息管理页',1
 INSERT INTO Permission([Description],AccessPathId) VALUES('新增部门信息',11);
 INSERT INTO Permission([Description],AccessPathId) VALUES('修改部门信息',12);
 INSERT INTO Permission([Description],AccessPathId) VALUES('删除部门信息',13);
+--角色
+INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13');
 --部门
 INSERT INTO Department(Name) VALUES('软件开发部');
 --员工信息
