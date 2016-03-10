@@ -20,10 +20,17 @@ namespace JobOA.Model
         public int Id { get; set; }
 
         /// <summary>
+        /// 信息标题
+        /// </summary>
+        [DisplayName("信息标题")]
+        [StringLength(100, ErrorMessage = "{0}不能多于{1}个字符")]
+        public string Title { get; set; }
+
+        /// <summary>
         /// 额外信息
         /// </summary>
         [DisplayName("额外信息")]
-        [StringLength(100, ErrorMessage = "{0}不能多于{1}个字符")]
+        [StringLength(1000, ErrorMessage = "{0}不能多于{1}个字符")]
         public string ExtraMessage { get; set; }
 
         /// <summary>
@@ -37,6 +44,28 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("关联子任务")]
         public int? SubTaskId { get; set; }
+
+        /// <summary>
+        /// 发消息员工Id
+        /// </summary>
+        [DisplayName("发消息员工")]
+        public int FromEmployeeId { get; set; }
+
+        /// <summary>
+        /// 收消息员工Id
+        /// </summary>
+        [DisplayName("收消息员工")]
+        public int ToEmployeeId { get; set; }
+
+        /// <summary>
+        /// 发消息员工
+        /// </summary>
+        public virtual Employee FromEmployee { get; set; }
+
+        /// <summary>
+        /// 收消息员工
+        /// </summary>
+        public virtual Employee ToEmployee { get; set; }
 
         /// <summary>
         /// 关联的主任务

@@ -41,6 +41,8 @@ namespace JobOA.Model
             ExePersonTask = new HashSet<MajorTask>();
             ExePersonSubTask = new HashSet<SubTask>();
             Roles = new HashSet<Role>();
+            SendMessages = new HashSet<OAMessage>();
+            GetMessages = new HashSet<OAMessage>();
         }
 
         /// <summary>
@@ -158,5 +160,15 @@ namespace JobOA.Model
         /// 执行人子任务集合
         /// </summary>
         public virtual ICollection<SubTask> ExePersonSubTask { get; set; }
+
+        /// <summary>
+        /// 员工所发信息
+        /// </summary>
+        public virtual ICollection<OAMessage> SendMessages { get; set; }
+
+        /// <summary>
+        /// 员工所收到的信息
+        /// </summary>
+        public virtual ICollection<OAMessage> GetMessages { get; set; }
     }
 }

@@ -142,6 +142,18 @@ namespace JobOA.Model
                 .HasForeignKey(e => e.ExePersonId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.SendMessages)
+                .WithRequired(e => e.FromEmployee)
+                .HasForeignKey(e => e.FromEmployeeId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.GetMessages)
+                .WithRequired(e => e.ToEmployee)
+                .HasForeignKey(e => e.ToEmployeeId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Project>()
                 .HasMany(e => e.Task)
                 .WithRequired(e => e.Project)

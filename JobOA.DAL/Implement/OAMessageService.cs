@@ -74,6 +74,9 @@ namespace JobOA.DAL.Implement
                     oldOAMessage.ExtraMessage = oaMessage.ExtraMessage;
                     oldOAMessage.SubTaskId = oaMessage.SubTaskId;
                     oldOAMessage.TaskId = oaMessage.TaskId;
+                    oldOAMessage.Title = oaMessage.Title;
+                    oldOAMessage.ToEmployeeId = oaMessage.ToEmployeeId;
+                    oldOAMessage.FromEmployeeId = oaMessage.FromEmployeeId;
                     int rows = dbContext.SaveChanges();
                     return rows;
                 }
