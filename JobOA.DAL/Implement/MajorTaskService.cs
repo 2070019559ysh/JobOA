@@ -171,7 +171,6 @@ namespace JobOA.DAL.Implement
                     oldMajorTask.CompleteTime = majorTask.CompleteTime;
                     oldMajorTask.CreateTime = majorTask.CreateTime;
                     oldMajorTask.ExePersonId = majorTask.ExePersonId;
-                    oldMajorTask.IsNotice = majorTask.IsNotice;
                     oldMajorTask.Participator = majorTask.Participator;
                     oldMajorTask.ProjectId = majorTask.ProjectId;
                     oldMajorTask.StartTime = majorTask.StartTime;

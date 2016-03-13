@@ -294,6 +294,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\addMajorTask.js" />
     <Content Include="Scripts\js\adminDepartment.js" />
+    <Content Include="Scripts\js\adminInbox.js" />
     <Content Include="Scripts\js\adminProject.js" />
     <Content Include="Scripts\js\alertMess.js" />
     <Content Include="Scripts\js\allMajorTaskIndex.js" />
@@ -345,6 +346,7 @@
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
     <Content Include="Views\PersonalInfo\Information.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\PersonalInfo\Inbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

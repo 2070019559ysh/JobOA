@@ -132,3 +132,5 @@
 2016/3/9 18:31:38 发生异常：调用的目标发生了异常。
 2016/3/9 18:34:05 发生异常：调用的目标发生了异常。
 2016/3/10 16:36:37 发生异常：无法删除数据库 "JOB_OA"，因为该数据库当前正在使用。
+2016/3/12 11:28:36 发生异常：f:\C#.Net\JobOA\JobOA\Views\PersonalInfo\Inbox.cshtml(30): error CS0103: 当前上下文中不存在名称“pager”
+2016/3/12 11:29:03 发生异常：f:\C#.Net\JobOA\JobOA\Views\PersonalInfo\Inbox.cshtml(30): error CS0103: 当前上下文中不存在名称“pager”

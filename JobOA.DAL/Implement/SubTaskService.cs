@@ -101,7 +101,6 @@ namespace JobOA.DAL.Implement
                     oldSubTask.CompleteTime = subTask.CompleteTime;
                     oldSubTask.CreateTime = subTask.CreateTime;
                     oldSubTask.ExePersonId = subTask.ExePersonId;
-                    oldSubTask.IsNotice = subTask.IsNotice;
                     oldSubTask.Participator = subTask.Participator;
                     oldSubTask.TaskId = subTask.TaskId;
                     oldSubTask.StartTime = subTask.StartTime;

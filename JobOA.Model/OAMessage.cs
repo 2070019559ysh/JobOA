@@ -58,6 +58,16 @@ namespace JobOA.Model
         public int ToEmployeeId { get; set; }
 
         /// <summary>
+        /// 是否已经点击查看
+        /// </summary>
+        public bool IsLookUp { get; set; }
+
+        /// <summary>
+        /// 发送消息时间
+        /// </summary>
+        public DateTime SendDateTime { get; set; }
+
+        /// <summary>
         /// 发消息员工
         /// </summary>
         public virtual Employee FromEmployee { get; set; }

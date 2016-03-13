@@ -17,7 +17,7 @@
     //请求员工在线信息
     function requestEmp() {
         $.ajax({
-            url: "GetOnlineState",
+            url: "/AdminHome/GetOnlineState",
             type: "POST",
             beforeSend: function (xhr) {
                 $("#online-user").html("<li><i class=\"am-icon-spinner am-icon-pulse\"></i>加载中...</li>");
@@ -31,7 +31,7 @@
                     if (emp.Introduction === null) {
                         emp.Introduction = "";
                     }
-                    var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-danger">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
+                    var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-danger">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>'+emp.UserName+'</span><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
                     $("#online-user").append(html);
                 });
                 $("#offline-user").empty();
@@ -39,7 +39,7 @@
                     if (emp.Introduction === null) {
                         emp.Introduction = "";
                     }
-                    var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-default">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
+                    var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-default">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.UserName + '</span><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
                     $("#offline-user").append(html);
                 });
                 btnHover();
@@ -78,7 +78,7 @@
                 isContain = true;
             }
             if (isContain) {
-                var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-danger">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
+                var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-danger">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.UserName + '</span><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
                 $("#online-user").append(html);
             }
         });
@@ -114,7 +114,7 @@
                 isContain = true;
             }
             if (isContain) {
-                var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-default">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
+                var html = '<li class="am-text-truncate"><a href="javascript:;" class="am-btn am-btn-default">发送消息</a><img src="' + emp.HeadPicture + '" height="20" width="20" alt="头像" /><span>' + emp.UserName + '</span><span>' + emp.RealName + '</span><span title="' + emp.Introduction + '">' + emp.Introduction + '</span></li>';
                 $("#offline-user").append(html);
             }
         });

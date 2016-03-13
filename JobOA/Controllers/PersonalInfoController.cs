@@ -206,5 +206,14 @@ namespace JobOA.Controllers
             ViewData["list"] = new SelectList(departmentList, "Id", "Name", employee.DepartmentId);
             return View("Information", employee);
         }
+
+        /// <summary>
+        /// 进入个人收件箱
+        /// </summary>
+        /// <returns>个人收件箱页面</returns>
+        public ActionResult Inbox()
+        {
+            return View();
+        }
     }
 }

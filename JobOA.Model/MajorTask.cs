@@ -94,11 +94,6 @@ namespace JobOA.Model
         public int State { get; set; }
 
         /// <summary>
-        /// 是否已经短信通知
-        /// </summary>
-        public bool IsNotice { get; set; }
-
-        /// <summary>
         /// 是否对外保密
         /// </summary>
         public bool IsSecrecy { get; set; }

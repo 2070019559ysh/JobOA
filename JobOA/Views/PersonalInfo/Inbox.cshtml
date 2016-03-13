@@ -1,0 +1,194 @@
+﻿@model List<JobOA.Model.OAMessage>
+
+@{
+    ViewBag.Title = "JobOA—个人收件箱";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+}
+
+@section css{
+    <style type="text/css">
+        .mess-title span.am-badge{
+            border-right:1px solid green;
+            height:24px;line-height:19px;
+        }
+        #messages .am-badge{
+            color:#000000;
+            background-color:transparent;
+            text-overflow:ellipsis;
+            overflow:hidden;
+            border-right:1px solid green;
+            height:24px;line-height:19px;
+        }
+        #messages div{
+            overflow:hidden;
+            background-color:transparent;
+        }
+        #messages div:hover{
+            background-color:#CCC;
+        }
+    </style>
+<link href="@Url.Content("~/Content/css/adminHome.css")" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/adminInbox.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/adminHome.js")"></script>
+}
+
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表单</strong> / <small>form</small></div>
+</div>
+
+<div class="am-tabs am-margin" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#tab1">收信</a></li>
+        <li><a href="#tab2">写信</a></li>
+        <li><a href="#tab3">员工在线状态</a></li>
+    </ul>
+
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+            <div class="am-g">
+                <section class="am-u-md-4 am-u-sm-12">
+                    <input type="button" class="am-btn am-btn-danger am-btn-xs" value="删除" />
+                </section>
+                <section class="am-u-md-8 am-u-sm-12">
+                    第<span class="index-page">1</span>页&nbsp;&nbsp;共<span class="all-page">6</span>页&nbsp;&nbsp;&nbsp;共56条消息记录
+                    <a href="javascript:;">上一页</a>  <a href="javascript:;">下一页</a>&nbsp;&nbsp;
+                    跳转到：
+                    <div class="am-inline-block am-vertical-align-middle" style="width:100px;">
+                        <div class="am-input-group am-input-group-sm">
+                            <input id="search-text" type="text" class="am-form-field" placeholder="页码" value="1" />
+                            <span class="am-input-group-btn">
+                                <button id="search-btn" class="am-btn am-btn-secondary" style="border:#3bb4f2" type="button">GO</button>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section class="mess-title am-u-sm-12 am-margin-top">
+                    <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
+                    <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope"></i></span>
+                    <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
+                    <span class="am-badge am-u-sm-5 am-u-md-3">标题</span>
+                    <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
+                    <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
+                </section>
+                <section id="messages" class="am-u-sm-12">
+                    <div>
+                        <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
+                        <a href="#" title="点击查看">
+                            <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope am-danger"></i></span>
+                            <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
+                            <span class="am-badge am-u-sm-5 am-u-md-3">标 fewfe few 额分分割核桃仁恒天然集团和他人给予耳挖勺题</span>
+                            <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
+                            <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
+                        </a>
+                    </div>
+                    <div>
+                        <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
+                        <a href="#" title="点击查看">
+                            <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope am-danger"></i></span>
+                            <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
+                            <span class="am-badge am-u-sm-5 am-u-md-3">标 fewfe few 额分分割核桃仁恒天然集团和他人给予耳挖勺题</span>
+                            <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
+                            <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
+                        </a>
+                    </div>
+                    <div>
+                        <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
+                        <a href="#" title="点击查看">
+                            <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope am-danger"></i></span>
+                            <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
+                            <span class="am-badge am-u-sm-5 am-u-md-3">标 fewfe few 额分分割核桃仁恒天然集团和他人给予耳挖勺题</span>
+                            <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
+                            <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+</div>
+
+        <div class="am-tab-panel am-fade" id="tab2">
+            <form class="am-form">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                        <!--todo:实现发消息给指定用户名的人，发送类型有三种，消息提示，短信，邮箱-->
+                        收件人
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                        <input type="text" class="am-input-sm">
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                        消息标题
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                        <input type="text" class="am-input-sm">
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                        消息内容
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                        <textarea rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="am-margin" style="padding-left:10%;">
+                    <button type="button" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+                    <button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="am-tab-panel am-fade" id="tab3">
+                <div class="am-g am-margin-top">
+                    <div class="am-g userstate">
+                        <div class="am-u-sm-12 am-btn-group-xs"><button id="refresh-emp" type="button" class="am-btn am-btn-secondary" title="刷新员工在线状态"><i class="am-icon-refresh"></i></button></div>
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-panel am-panel-danger">
+                                <div class="am-panel-hd am-nbfc">
+                                    <div class="am-fl">
+                                        <span class="am-icon-user"></span>
+                                        在线员工列表
+                                    </div>
+                                    <div class="am-input-group am-input-group-sm am-fr" style="width:200px;">
+                                        <input id="online-emp" type="text" placeholder="员工名" class="am-form-field">
+                                        <span class="am-input-group-btn">
+                                            <button id="search-online" class="am-btn am-btn-danger" type="button">搜索</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul id="online-user" class="am-list">
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-panel am-panel-default">
+                                <div class="am-panel-hd am-nbfc">
+                                    <div class="am-fl">
+                                        <span class="am-icon-user"></span>
+                                        离线员工列表
+                                    </div>
+                                    <div class="am-input-group am-input-group-sm am-fr" style="width:200px;">
+                                        <input id="offline-emp" type="text" placeholder="员工名" class="am-form-field">
+                                        <span class="am-input-group-btn">
+                                            <button id="search-offline" class="am-btn am-btn-default" type="button">搜索</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul id="offline-user" class="am-list">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+        </div>
+
+    </div>
+</div>
