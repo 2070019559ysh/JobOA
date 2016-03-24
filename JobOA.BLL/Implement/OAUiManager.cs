@@ -131,7 +131,7 @@ namespace JobOA.BLL.Implement
         }
 
         /// <summary>
-        /// 发送邮箱信息
+        /// 发送邮箱信息，使用了joboa_System_email标志的短信账号
         /// </summary>
         /// <param name="toSb">发送给谁的邮箱</param>
         /// <param name="subject">主题</param>

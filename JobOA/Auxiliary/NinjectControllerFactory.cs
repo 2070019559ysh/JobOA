@@ -41,6 +41,7 @@ namespace JobOA.Auxiliary
             ninjectKernel.Bind<IOAUiManager>().To<OAUiManager>();
             ninjectKernel.Bind<IMajorTaskManager>().To<MajorTaskManager>();
             ninjectKernel.Bind<IProjectManager>().To<ProjectManageer>();
+            ninjectKernel.Bind<IOAMessageManager>().To<OAMessageManager>();
         }
 
         /// <summary>

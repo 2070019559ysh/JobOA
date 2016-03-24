@@ -33,6 +33,7 @@ namespace JobOA.BLL
             ninjectKernel.Bind<IPermissionService>().To<PermissionService>();
             ninjectKernel.Bind<IMajorTaskService>().To<MajorTaskService>();
             ninjectKernel.Bind<IProjectService>().To<ProjectService>();
+            ninjectKernel.Bind<IOAMessageService>().To<OAMessageService>();
         }
     }
 }

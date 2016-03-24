@@ -135,6 +135,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Auxiliary\ExceptionFilterAttribute.cs" />
     <Compile Include="Auxiliary\NinjectControllerFactory.cs" />
+    <Compile Include="Auxiliary\AjaxPermission.cs" />
     <Compile Include="Auxiliary\PermissionAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />

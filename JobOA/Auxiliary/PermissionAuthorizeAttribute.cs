@@ -21,12 +21,6 @@ namespace JobOA.Auxiliary
         private const string NoAuthority = "/ErrorCatch/NoPermission";
         private bool _isLogin;
 
-        [Inject]
-        public IRoleManager RoleManager { get; set; }
-
-        [Inject]
-        public IEmployeeManager EmployeeManager { get; set; }
-
         /// <summary>
         /// 确定当前用户是否已经登录授权
         /// </summary>

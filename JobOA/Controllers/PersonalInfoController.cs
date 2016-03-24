@@ -9,6 +9,7 @@ using Ninject;
 using System.IO;
 using JobOA.Common;
 using JobOA.Models;
+using JobOA.Auxiliary;
 
 namespace JobOA.Controllers
 {
@@ -22,6 +23,14 @@ namespace JobOA.Controllers
 
         [Inject]
         public IOAUiManager oaUiManager { get; set; }
+
+        [Inject]
+        public IOAMessageManager oaMessManager { get; set; }
+
+        /// <summary>
+        /// 实例化一个ajax请求权限确认对象
+        /// </summary>
+        AjaxPermission ajaxPerm = new AjaxPermission();
 
         //
         // GET: /PersonalInfo/
@@ -210,10 +219,51 @@ namespace JobOA.Controllers
         /// <summary>
         /// 进入个人收件箱
         /// </summary>
+        /// <param name="id">员工Id</param>
         /// <returns>个人收件箱页面</returns>
-        public ActionResult Inbox()
+        public ActionResult Inbox(int id)
         {
+            //获取收件箱中写消息应显示的收件人信息
+            ViewBag.ToEmp = EmployeeManager.SearchEmployeeById(id);
             return View();
+        }
+
+        /// <summary>
+        /// 获取指定UserName的员工信息
+        /// </summary>
+        /// <param name="id">UserName</param>
+        /// <returns>员工信息</returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult EmployeeMess(string id)
+        {
+            if (Request.IsAuthenticated)
+            {
+                //获取指定员工信息
+                Employee emp = EmployeeManager.SearchEmployeeByUserName(id);
+                return Json(emp, JsonRequestBehavior.DenyGet);
+            }
+            return Json("No Permission!", JsonRequestBehavior.DenyGet);
+        }
+
+        //todo:处理界面获取到的消息信息，存储在数据库并发送消息，每次获取在线时同时
+        [AllowAnonymous]
+        public JsonResult SendMess(OAMessage oamess,string messtype)
+        {
+            string result=ajaxPerm.IsAuthenticated(HttpContext);
+            if (result.Equals("true", StringComparison.CurrentCultureIgnoreCase))
+            {
+                switch (messtype)
+                {
+                    case "sms":
+                        break;
+                    case "email":
+                        break;
+                    default: break;
+                }
+                
+            }
+            return Json(result);
         }
     }
 }

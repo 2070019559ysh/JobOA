@@ -37,7 +37,6 @@ namespace JobOA.DAL.Tests
                     CompleteTime = DateTime.Now,
                     CreateTime = DateTime.Now,
                     ExePersonId = 1,
-                    IsNotice = true,
                     IsSecrecy = false,
                     TaskId = 1,
                     StartTime = DateTime.Now
@@ -104,7 +103,6 @@ namespace JobOA.DAL.Tests
                 CompleteTime = DateTime.Now,
                 CreateTime = DateTime.Now,
                 ExePersonId = 1,
-                IsNotice = true,
                 IsSecrecy = false,
                 TaskId = 1,
                 StartTime = DateTime.Now
@@ -140,7 +138,6 @@ namespace JobOA.DAL.Tests
                 CompleteTime = DateTime.Now,
                 CreateTime = DateTime.Now,
                 ExePersonId = 1,
-                IsNotice = true,
                 IsSecrecy = false,
                 TaskId = 1,
                 StartTime = DateTime.Now

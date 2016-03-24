@@ -59,9 +59,11 @@
     <Compile Include="Implement\DepartmentManager.cs" />
     <Compile Include="Implement\EmployeeManager.cs" />
     <Compile Include="Implement\MajorTaskManager.cs" />
+    <Compile Include="Implement\OAMessageManager.cs" />
     <Compile Include="Implement\OAUiManager.cs" />
     <Compile Include="Implement\ProjectManager.cs" />
     <Compile Include="Implement\RoleManager.cs" />
+    <Compile Include="IOAMessageManager.cs" />
     <Compile Include="IOAUiManager.cs" />
     <Compile Include="IProjectManager.cs" />
     <Compile Include="IRoleManager.cs" />

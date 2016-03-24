@@ -14,6 +14,7 @@ INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/AddDepar
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/UpdateDepartment');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/DelDepartment');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');
 GO
 --权限
 INSERT INTO Permission([Description],AccessPathId) VALUES('任务管理主页',1);
@@ -30,9 +31,10 @@ INSERT INTO Permission([Description],AccessPathId) VALUES('新增部门信息',11);
 INSERT INTO Permission([Description],AccessPathId) VALUES('修改部门信息',12);
 INSERT INTO Permission([Description],AccessPathId) VALUES('删除部门信息',13);
 INSERT INTO Permission([Description],AccessPathId) VALUES('进入个人收件箱',14);
+INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里发送消息',15);
 GO
 --角色
-INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14');
+INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15');
 --部门
 INSERT INTO Department(Name) VALUES('软件开发部');
 --员工信息

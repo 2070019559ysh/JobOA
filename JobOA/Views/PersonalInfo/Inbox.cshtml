@@ -1,5 +1,7 @@
 ﻿@model List<JobOA.Model.OAMessage>
 
+@using JobOA.Model;
+
 @{
     ViewBag.Title = "JobOA—个人收件箱";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
@@ -40,13 +42,26 @@
 
 <div class="am-tabs am-margin" data-am-tabs>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
-        <li class="am-active"><a href="#tab1">收信</a></li>
-        <li><a href="#tab2">写信</a></li>
+        @{
+            Employee toEmp = ViewBag.ToEmp;
+            //记录是收消息还是写消息处于活动状态
+            string tab1Active = String.Empty, tab2Active = String.Empty;
+            if (toEmp == null)
+            {
+                tab1Active = "am-active";
+            }
+            else
+            {
+                tab2Active = "am-active";
+            }
+}
+        <li class="@tab1Active"><a href="#tab1">收信</a></li>
+        <li class="@tab2Active"><a href="#tab2">写信</a></li>
         <li><a href="#tab3">员工在线状态</a></li>
     </ul>
 
     <div class="am-tabs-bd">
-        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+        <div class="am-tab-panel am-fade am-in @tab1Active" id="tab1">
             <div class="am-g">
                 <section class="am-u-md-4 am-u-sm-12">
                     <input type="button" class="am-btn am-btn-danger am-btn-xs" value="删除" />
@@ -107,43 +122,85 @@
             </div>
 </div>
 
-        <div class="am-tab-panel am-fade" id="tab2">
+        <div class="am-tab-panel am-fade am-in @tab2Active" id="tab2">
             <form class="am-form">
                 <div class="am-g am-margin-top-sm">
-                    <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                        <!--todo:实现发消息给指定用户名的人，发送类型有三种，消息提示，短信，邮箱-->
-                        收件人
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        收件人：
                     </div>
-                    <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                        <input type="text" class="am-input-sm">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        @if (toEmp != null)
+                        {
+                            @Html.Hidden("ToEmployeeId",toEmp.Id)
+                            @Html.TextBox("UserName", toEmp.UserName, new { id = "to-emp",style="display:none", @class = "am-input-sm", placeholder = "请输入员工账号" })
+                            <section class="am-badge am-badge-success">
+                                <img src="@toEmp.HeadPicture" alt="头像" width="20" height="20" />
+                                <span class="am-inline-block am-margin-xs">@toEmp.UserName</span>
+                                <span class="am-inline-block am-margin-xs">@toEmp.RealName</span>
+                                <a href="javascripts:;" onclick="reEnterUserName()" class="am-icon am-icon-close" title="重新输入"></a>
+                            </section>
+                        }else{
+                            @Html.Hidden("ToEmployeeId")
+                            @Html.TextBox("UserName", null, new { id = "to-emp",@class="am-input-sm",placeholder="请输入员工账号" })
+                            <section class="am-badge am-badge-success" style="display:none">
+                                <img src="/Content/images/oaui/default.jpg" alt="头像" width="20" height="20" />
+                                <span class="am-inline-block am-margin-xs"></span>
+                                <span class="am-inline-block am-margin-xs"></span>
+                                <a href="javascripts:;" onclick="reEnterUserName()" class="am-icon am-icon-close" title="重新输入"></a>
+                            </section>
+                        }
+                        <div class="am-text-xs am-text-warning">&nbsp;@Html.ValidationMessage("UserName", new { id="valid-username"})</div>
                     </div>
                 </div>
 
                 <div class="am-g am-margin-top-sm">
-                    <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                        消息标题
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        消息标题：
                     </div>
-                    <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                        <input type="text" class="am-input-sm">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        @Html.TextBox("Title", "", new {@class="am-input-sm",placeholder="明确的标题可引起更大的关注" })
+                        <div class="am-text-warning">&nbsp;@Html.ValidationMessage("Title")</div>
                     </div>
                 </div>
 
                 <div class="am-g am-margin-top-sm">
-                    <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                        消息内容
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        消息发送方式：
                     </div>
-                    <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                        <textarea rows="4"></textarea>
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        <section>
+                            <input name="messtype" id="messtype1" type="radio" checked class="am-input-sm" value="alert" />
+                            <label for="messtype1">仅弹窗提示</label>
+                        </section>
+                        <section>
+                            <input name="messtype" id="messtype2" type="radio" class="am-input-sm" value="sms" />
+                            <label for="messtype2">弹窗提示和发送短信</label>
+                        </section>
+                        <section>
+                            <input name="messtype" id="messtype3" type="radio" @(toEmp!=null&&toEmp.Email!=null?"":"disabled") class="am-input-sm" value="email" />
+                            <label for="messtype3">弹窗提示和发送邮件</label>
+                        </section>
+                        <div class="am-text-warning">&nbsp;@Html.ValidationMessage("MessType")</div>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        消息内容：
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        <textarea id="extra-message" name="ExtraMessage" rows="8"></textarea>
+                        <div class="am-text-warning">&nbsp;@Html.ValidationMessage("ExtraMessage")</div>
                     </div>
                 </div>
                 <div class="am-margin" style="padding-left:10%;">
-                    <button type="button" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
-                    <button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+                    <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="sendMess()">提交发送</button>
+                    <button type="reset" class="am-btn am-btn-primary am-btn-xs">重新填写</button>
                 </div>
             </form>
         </div>
 
-        <div class="am-tab-panel am-fade" id="tab3">
+        <div class="am-tab-panel am-fade am-in" id="tab3">
                 <div class="am-g am-margin-top">
                     <div class="am-g userstate">
                         <div class="am-u-sm-12 am-btn-group-xs"><button id="refresh-emp" type="button" class="am-btn am-btn-secondary" title="刷新员工在线状态"><i class="am-icon-refresh"></i></button></div>
