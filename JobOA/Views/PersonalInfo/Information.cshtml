@@ -135,7 +135,7 @@
         @using (Html.BeginForm("UpdateEmployeeInfo", "PersonalInfo", FormMethod.Post, new { @class = "am-form am-form-horizontal" }))
         {
             <input type="hidden" id="mess" value="@ViewBag.mess" />
-            <input type="hidden" id="validate" value="@ViewBag.validate" />
+            <input type="hidden" id="validate" value="@ViewBag.HasValid" />
             @Html.ValidationSummary()
             @Html.HiddenFor(m => m.HeadPicture)
             @Html.HiddenFor(m=>m.Id)

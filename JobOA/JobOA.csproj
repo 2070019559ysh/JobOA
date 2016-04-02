@@ -230,6 +230,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.ttf" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff" />

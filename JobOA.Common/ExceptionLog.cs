@@ -111,6 +111,20 @@ namespace JobOA.Common
         }
 
         /// <summary>
+        /// 使用默认或配置文件LogFileName指定的物理文件记录系统异常日志
+        /// </summary>
+        /// <param name="ex">异常对象</param>
+        public void RecordLog(Exception ex)
+        {
+            StringBuilder exmessBuilder = new StringBuilder(DateTime.Now.ToString("yyyy-y-d HH:mm:ss"));
+            exmessBuilder.Append(" 发生异常：");
+            exmessBuilder.Append(ex.Message);
+            exmessBuilder.Append("  异常堆栈：");
+            exmessBuilder.Append(ex.StackTrace);
+            RecordLog(LogFileName, exmessBuilder.ToString());
+        }
+
+        /// <summary>
         /// 一行行读取文件数据，按行添加到集合里
         /// </summary>
         /// <param name="filePath">文件完整路径及名</param>

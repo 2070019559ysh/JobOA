@@ -28,7 +28,7 @@ namespace JobOA.Auxiliary
         /// <returns>总是返回false,目的是执行HandleUnauthorizedRequest，确定访问权限</returns>
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            if (base.AuthorizeCore(httpContext))//如果用户已经过授权，则为 true；否则为 false。
+            if (base.AuthorizeCore(httpContext)&&(httpContext.Session["user"] as Employee) != null)//如果用户已经过授权，则为 true；否则为 false。
             {
                 // 已经登录授权
                 _isLogin = true;

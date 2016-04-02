@@ -61,7 +61,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return isSuccess;
         }
@@ -83,7 +83,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return isSuccess;
         }
@@ -105,7 +105,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return isSuccess;
         }

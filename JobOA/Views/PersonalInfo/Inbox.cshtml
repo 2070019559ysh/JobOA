@@ -1,10 +1,12 @@
 ﻿@model List<JobOA.Model.OAMessage>
 
 @using JobOA.Model;
+@using JobOA.Model.ViewModel;
 
 @{
     ViewBag.Title = "JobOA—个人收件箱";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+    Pager pager = ViewBag.Pager;
 }
 
 @section css{
@@ -32,6 +34,7 @@
 <link href="@Url.Content("~/Content/css/adminHome.css")" rel="stylesheet" type="text/css" />
 }
 @section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/modal.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/js/adminInbox.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/js/adminHome.js")"></script>
 }
@@ -64,23 +67,25 @@
         <div class="am-tab-panel am-fade am-in @tab1Active" id="tab1">
             <div class="am-g">
                 <section class="am-u-md-4 am-u-sm-12">
-                    <input type="button" class="am-btn am-btn-danger am-btn-xs" value="删除" />
+                    <form name="deleteMess" action="/PersonalInfo/DeleteMess" method="post">
+                        <input type="submit" class="am-btn am-btn-danger am-btn-xs" value="删除" />
+                    </form>  
                 </section>
                 <section class="am-u-md-8 am-u-sm-12">
-                    第<span class="index-page">1</span>页&nbsp;&nbsp;共<span class="all-page">6</span>页&nbsp;&nbsp;&nbsp;共56条消息记录
-                    <a href="javascript:;">上一页</a>  <a href="javascript:;">下一页</a>&nbsp;&nbsp;
+                    第<span class="index-page">@pager.PageIndex</span>页&nbsp;&nbsp;共<span class="all-page">@pager.PageCount</span>页&nbsp;&nbsp;&nbsp;共<span class="total-record">@pager.Total</span>条消息记录
+                    <buton id="previous-page" class="am-btn am-btn-xs am-btn-secondary @(pager.HasPrev?"":"am-disabled")" onclick="perviousPage()">上一页</buton>  <button id="next-page" class="am-btn am-btn-xs am-btn-secondary @(pager.HasNext?"":"am-disabled")" onclick="nextPage()">下一页</button>&nbsp;&nbsp;
                     跳转到：
                     <div class="am-inline-block am-vertical-align-middle" style="width:100px;">
                         <div class="am-input-group am-input-group-sm">
-                            <input id="search-text" type="text" class="am-form-field" placeholder="页码" value="1" />
+                            <input id="page-number" type="text" class="am-form-field" placeholder="页码" value="@pager.PageIndex" />
                             <span class="am-input-group-btn">
-                                <button id="search-btn" class="am-btn am-btn-secondary" style="border:#3bb4f2" type="button">GO</button>
+                                <button id="search-btn" class="am-btn am-btn-secondary" onclick="jumpPage()" style="border:#3bb4f2" type="button">GO</button>
                             </span>
                         </div>
                     </div>
                 </section>
                 <section class="mess-title am-u-sm-12 am-margin-top">
-                    <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
+                    <span class="am-badge am-u-sm-2 am-u-md-1"><input name="Id" type="checkbox" value="all" /></span>
                     <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope"></i></span>
                     <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
                     <span class="am-badge am-u-sm-5 am-u-md-3">标题</span>
@@ -88,36 +93,35 @@
                     <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
                 </section>
                 <section id="messages" class="am-u-sm-12">
-                    <div>
-                        <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
-                        <a href="#" title="点击查看">
-                            <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope am-danger"></i></span>
-                            <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
-                            <span class="am-badge am-u-sm-5 am-u-md-3">标 fewfe few 额分分割核桃仁恒天然集团和他人给予耳挖勺题</span>
-                            <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
-                            <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
-                        </a>
-                    </div>
-                    <div>
-                        <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
-                        <a href="#" title="点击查看">
-                            <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope am-danger"></i></span>
-                            <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
-                            <span class="am-badge am-u-sm-5 am-u-md-3">标 fewfe few 额分分割核桃仁恒天然集团和他人给予耳挖勺题</span>
-                            <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
-                            <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
-                        </a>
-                    </div>
-                    <div>
-                        <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" value="all" /></span>
-                        <a href="#" title="点击查看">
-                            <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope am-danger"></i></span>
-                            <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
-                            <span class="am-badge am-u-sm-5 am-u-md-3">标 fewfe few 额分分割核桃仁恒天然集团和他人给予耳挖勺题</span>
-                            <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
-                            <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
-                        </a>
-                    </div>
+                    <form name="deleteMess">
+                        @if (Model == null || Model.Count() < 1)
+                        {
+                            <div>暂无记录</div>
+                        }
+                        else
+                        {
+                            foreach (var oaMess in Model)
+                            {
+                                <div>
+                                    <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" name="Id" value="@oaMess.Id" /></span>
+                                    <a class="oamess-row" href="javascript:;" title="点击查看">
+                                        @{
+                                var envelopeClass = "class=am-icon-envelope title=未查看";
+                                if (oaMess.IsLookUp) { envelopeClass = "class=am-icon-envelope-o title=已查看"; }
+                                        }
+                                        <span class="am-badge am-u-sm-2 am-u-md-1"><i @envelopeClass></i></span>
+                                        <span class="am-badge am-u-sm-3 am-u-md-2">
+                                            <img src="@oaMess.FromEmployee.HeadPicture" alt="发件人头像" width="20" height="20" style="margin-right:5px" />@oaMess.FromEmployee.RealName
+                                        </span>
+                                        <span class="am-badge am-u-sm-5 am-u-md-3">@oaMess.Title</span>
+                                        <span class="am-badge am-hide-sm-only am-u-md-3">@oaMess.ExtraMessage</span>
+                                        <span class="am-badge am-hide-sm-only am-u-md-2">@oaMess.SendDateTime</span>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </form>
+                    <i class="am-text-warning"></i>
                 </section>
             </div>
 </div>
@@ -132,6 +136,7 @@
                         @if (toEmp != null)
                         {
                             @Html.Hidden("ToEmployeeId",toEmp.Id)
+                            @Html.Hidden("Email", toEmp.Email)
                             @Html.TextBox("UserName", toEmp.UserName, new { id = "to-emp",style="display:none", @class = "am-input-sm", placeholder = "请输入员工账号" })
                             <section class="am-badge am-badge-success">
                                 <img src="@toEmp.HeadPicture" alt="头像" width="20" height="20" />
@@ -141,6 +146,7 @@
                             </section>
                         }else{
                             @Html.Hidden("ToEmployeeId")
+                            @Html.Hidden("Email")
                             @Html.TextBox("UserName", null, new { id = "to-emp",@class="am-input-sm",placeholder="请输入员工账号" })
                             <section class="am-badge am-badge-success" style="display:none">
                                 <img src="/Content/images/oaui/default.jpg" alt="头像" width="20" height="20" />
@@ -149,7 +155,7 @@
                                 <a href="javascripts:;" onclick="reEnterUserName()" class="am-icon am-icon-close" title="重新输入"></a>
                             </section>
                         }
-                        <div class="am-text-xs am-text-warning">&nbsp;@Html.ValidationMessage("UserName", new { id="valid-username"})</div>
+                        <div class="am-text-xs am-text-danger">&nbsp;@Html.ValidationMessage("UserName", new { id="valid-username"})</div>
                     </div>
                 </div>
 
@@ -159,7 +165,7 @@
                     </div>
                     <div class="am-u-sm-12 am-u-md-4 am-u-end">
                         @Html.TextBox("Title", "", new {@class="am-input-sm",placeholder="明确的标题可引起更大的关注" })
-                        <div class="am-text-warning">&nbsp;@Html.ValidationMessage("Title")</div>
+                        <div class="am-text-danger">&nbsp;@Html.ValidationMessage("Title", new { id="valid-title" })</div>
                     </div>
                 </div>
 
@@ -190,11 +196,11 @@
                     </div>
                     <div class="am-u-sm-12 am-u-md-4 am-u-end">
                         <textarea id="extra-message" name="ExtraMessage" rows="8"></textarea>
-                        <div class="am-text-warning">&nbsp;@Html.ValidationMessage("ExtraMessage")</div>
+                        <div class="am-text-danger">&nbsp;@Html.ValidationMessage("ExtraMessage", new { id = "valid-extramess" })</div>
                     </div>
                 </div>
                 <div class="am-margin" style="padding-left:10%;">
-                    <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="sendMess()">提交发送</button>
+                    <button id="submit-mess" type="button" class="am-btn am-btn-primary am-btn-xs" onclick="sendMess()">提交发送</button>
                     <button type="reset" class="am-btn am-btn-primary am-btn-xs">重新填写</button>
                 </div>
             </form>

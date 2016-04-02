@@ -14,7 +14,7 @@ namespace JobOA.Auxiliary
     public class AjaxPermission
     {
         /// <summary>
-        /// 确认当前请求是否具有访问权限
+        /// 确认当前请求是否具有访问权限,返回字符串信息，“true”代表有权限访问，其他为无权限的原因
         /// </summary>
         /// <param name="httpContext">htt上下文对象</param>
         /// <returns>返回字符串信息，“true”代表有权限访问，其他为无权限的原因</returns>

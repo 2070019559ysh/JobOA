@@ -42,7 +42,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return oaUi;
         }
@@ -61,7 +61,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return oaUi;
         }
@@ -84,7 +84,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -125,7 +125,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -176,7 +176,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -199,7 +199,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -222,7 +222,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }

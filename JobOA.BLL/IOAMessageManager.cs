@@ -1,5 +1,7 @@
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
+using System.Collections.Generic;
 
 namespace JobOA.BLL
 {
@@ -14,6 +16,13 @@ namespace JobOA.BLL
         /// <param name="id">通知消息的Id</param>
         /// <returns>OA通知的信息</returns>
         OAMessage SearchOAMessageById(int id);
+
+        /// <summary>
+        /// 分页查找所有OA通知的信息
+        /// </summary>
+        /// <param name="pager">输出参数，分页信息对象</param>
+        /// <returns>OA通知的信息集合</returns>
+        List<OAMessage> SearchAllOAMessage(Pager pager);
 
         /// <summary>
         /// 添加OA通知的信息
@@ -35,5 +44,12 @@ namespace JobOA.BLL
         /// <param name="oaMessage">新OA通知的信息</param>
         /// <returns>修改的记录是否成功</returns>
         bool UpdateOAMessage(OAMessage oaMessage);
+
+        /// <summary>
+        /// 标志OA通知的信息已经被主人查看过
+        /// </summary>
+        /// <param name="id">要标志已查看OA信息的Id</param>
+        /// <returns>是否标志成功</returns>
+        bool LookUpOAMessage(int id);
     }
 }
