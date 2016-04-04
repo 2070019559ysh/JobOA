@@ -19,6 +19,8 @@ INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/GetOaMess');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/DeleteMess');
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/UpdateMajorTask');
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/DelMajorTask');
 GO
 --权限
 INSERT INTO Permission([Description],AccessPathId) VALUES('任务管理主页',1);
@@ -38,9 +40,11 @@ INSERT INTO Permission([Description],AccessPathId) VALUES('进入个人收件箱',14);
 INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里发送消息',15);
 INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里进行消息页面跳转，获取指定页消息数据',16);
 INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里进行消息删除操作',17);
+INSERT INTO Permission([Description],AccessPathId) VALUES('进入页面并进行修改主任务操作',18);
+INSERT INTO Permission([Description],AccessPathId) VALUES('删除主任务操作',19);
 GO
 --角色
-INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17');
+INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19');
 --部门
 INSERT INTO Department(Name) VALUES('软件开发部');
 --员工信息

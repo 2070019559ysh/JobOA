@@ -26,7 +26,7 @@ namespace JobOA.BLL.Implement
         /// 依赖注入员工信息关联数据库服务类
         /// </summary>
         [Inject]
-        public IEmployeeService EmployeeService { get; set; }
+        public IEmployeeManager EmployeeManager { get; set; }
 
         /// <summary>
         /// 异常处理对象
@@ -44,6 +44,18 @@ namespace JobOA.BLL.Implement
             try
             {
                 majorTask=MajorTaskService.SearchMajorTaskById(id);
+                if (majorTask.ArrangeEmployee == null)
+                {
+                    majorTask.ArrangeEmployee = EmployeeManager.SearchEmployeeById(majorTask.ArrangePersonId);
+                }
+                if (majorTask.CheckEmployee == null)
+                {
+                    majorTask.CheckEmployee = EmployeeManager.SearchEmployeeById(majorTask.CheckPersonId);
+                }
+                if (majorTask.ExeEmployee == null)
+                {
+                    majorTask.ExeEmployee = EmployeeManager.SearchEmployeeById(majorTask.ExePersonId);
+                }
             }
             catch (Exception ex)
             {
@@ -115,15 +127,15 @@ namespace JobOA.BLL.Implement
                     {
                         if (majorTask.ArrangeEmployee == null)
                         {
-                            majorTask.ArrangeEmployee=EmployeeService.SearchEmployeeById(majorTask.ArrangePersonId);
+                            majorTask.ArrangeEmployee = EmployeeManager.SearchEmployeeById(majorTask.ArrangePersonId);
                         }
                         if (majorTask.CheckEmployee == null)
                         {
-                            majorTask.CheckEmployee=EmployeeService.SearchEmployeeById(majorTask.CheckPersonId);
+                            majorTask.CheckEmployee = EmployeeManager.SearchEmployeeById(majorTask.CheckPersonId);
                         }
                         if (majorTask.ExeEmployee == null)
                         {
-                            majorTask.ExeEmployee = EmployeeService.SearchEmployeeById(majorTask.ExePersonId);
+                            majorTask.ExeEmployee = EmployeeManager.SearchEmployeeById(majorTask.ExePersonId);
                         }
                     });
                 }

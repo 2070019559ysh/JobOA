@@ -1,19 +1,20 @@
 ﻿@model JobOA.Model.MajorTask
 
 @{
-    ViewBag.Title = "JobOA—新增主任务";
+    ViewBag.Title = "JobOA—修改主任务";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
 }
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增主任务</strong> / <small>Add Major Task</small></div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">修改主任务</strong> / <small>Update Major Task</small></div>
 </div>
 
 <div style="margin:10px;">
-    @using (Html.BeginForm("AddMajorTask", "AdminTask", FormMethod.Post))
+    @using (Html.BeginForm("UpdateMajorTask", "AdminTask", FormMethod.Post))
     {
-        @Html.ValidationSummary()
         <div class="am-nbfc am-margin">
+            @Html.HiddenFor(m=>m.Id)
+            @Html.HiddenFor(m=>m.CreateTime)
             @Html.LabelFor(model => model.Name, new {@class="am-fl" })
             @Html.TextBoxFor(m => m.Name, new { @class = "am-fl", placeholder = "输入主任务名" })
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Name)</em>
@@ -104,7 +105,7 @@
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.IsSecrecy)</em>
         </div>
         <div class="am-form-group am-margin" style="height:100px;">
-            <button type="submit" class="am-btn am-btn-primary">创建主任务</button>
+            <button type="submit" class="am-btn am-btn-primary">修改主任务</button>
             <button type="reset" class="am-btn am-btn-default">重置输入</button>
         </div>
     }

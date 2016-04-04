@@ -22,8 +22,7 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                dbContext.Configuration.LazyLoadingEnabled = false;
-                var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
+                var majorTask = from m in dbContext.MajorTask
                               where m.Id == id
                               select m;
                 return majorTask.SingleOrDefault();
@@ -39,7 +38,6 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
-                dbContext.Configuration.LazyLoadingEnabled = false;
                 var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
                                 where m.Name.Contains(name)
                                 orderby m.CreateTime descending
