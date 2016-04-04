@@ -95,13 +95,18 @@ namespace JobOA.Controllers
         {
             //查找所有部门
             List<Department> departmentList = DepartmentManager.SearchAllDepartment();
-            ViewData["departmentList"] = new SelectList(departmentList,"Id","Name",departmentList[0].Id);
-            List<Employee> employeeList=EmployeeManager.SearchEmployeeByDeparementId(departmentList[0].Id);
-            ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
+            if (departmentList != null && departmentList.Count > 0)
+            {
+                ViewData["departmentList"] = new SelectList(departmentList, "Id", "Name", departmentList[0].Id);
+                List<Employee> employeeList = EmployeeManager.SearchEmployeeByDeparementId(departmentList[0].Id);
+                if(employeeList!=null&&employeeList.Count>0)
+                    ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
+            }
             Dictionary<int, string> process = StateData.ProState;
             ViewData["state"] = new SelectList(process, "Key", "Value");
             List<Project> projectList=ProjectManager.SearchAllProject();
-            ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
+            if(projectList!=null&&projectList.Count>0)
+                ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
             return View();
         }
 
