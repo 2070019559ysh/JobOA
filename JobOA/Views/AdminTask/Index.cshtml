@@ -21,7 +21,7 @@
 }
 @section scripts{
     <!--<script src="@Url.Content("~/Scripts/js/modal.js")"></script>-->
-    <script src="@Url.Content("~/Scripts/js/allMajorTaskIndex.js")"></script>
+    <script src="@Url.Content("~/Scripts/js/majorTaskManager.js")"></script>
 }
 
 <div class="am-cf am-padding">
@@ -65,7 +65,7 @@
     </div>
     <div class="am-u-sm-12 am-u-md-6 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
         <div class="am-input-group  am-input-group-sm">
-            <input type="text" class="am-form-field" placeholder="请输入任务名">
+            <input id="search-text" type="text" class="am-form-field" placeholder="请输入任务名">
             <span class="am-input-group-btn">
                 <button class="am-btn am-btn-success" type="button">搜索</button>
             </span>
@@ -93,7 +93,10 @@
                         <h4>@majorTask.Name</h4>
                         <em>ID:1</em>
                         <section class="am-g">
-                            <span class="am-u-sm-12 am-u-lg-4">执行人：@majorTask.ExeEmployee.RealName</span>
+                            <span class="am-u-sm-12 am-u-lg-4">执行人：
+                            <img src="@majorTask.ExeEmployee.HeadPicture" width="20" height="20"/>
+                            @majorTask.ExeEmployee.RealName
+                            </span>
                             <span class="am-u-sm-12 am-u-lg-4">安排人：@majorTask.ArrangeEmployee.RealName</span>
                             <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：@majorTask.CheckEmployee.RealName</span>
                             <span class="am-u-sm-12 am-u-lg-12">
