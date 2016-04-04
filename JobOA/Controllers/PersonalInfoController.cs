@@ -367,29 +367,22 @@ namespace JobOA.Controllers
         /// </summary>
         /// <param name="messIds">指定的id数组</param>
         /// <returns>成功删除的记录数</returns>
-        [AllowAnonymous]
-        public JsonResult DeleteMess(int[] messIds)
+        public ActionResult DeleteMess(int[] messId)
         {
-            string permResult = ajaxPerm.IsAuthenticated(HttpContext);
-            var deleteCount = 0;//记录成功删除数量
-            List<int> deleteIds = new List<int>();
-            if (permResult.Equals("true"))
+            if (messId != null)
             {
-                for (int i = 0; i < messIds.Length; i++)
+                //记录成功删除的记录数
+                int deleteNum = 0;
+                for (int i = 0; i < messId.Length; i++)
                 {
-                    if (oaMessManager.DeleteOAMessage(messIds[i]))
+                    if (oaMessManager.DeleteOAMessage(messId[i]))
                     {
-                        deleteCount++;
-                        deleteIds.Add(messIds[i]);
+                        deleteNum++;
                     }
                 }
-                return Json(deleteIds);
+                TempData["Mess"] = "成功删除"+deleteNum+"条消息记录！";
             }
-            else
-            {
-                return Json(permResult);
-            }
-            
+            return RedirectToAction("Inbox", new { id = RouteData.Values["id"] });
         }
     }
 }

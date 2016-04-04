@@ -1,3 +1,5 @@
+USE JOB_OA
+GO
 --JOBOA系统数据初始化
 --可访问路径与权限应该是一对一的关系
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/Index');
@@ -16,7 +18,7 @@ INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/DelDepar
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/GetOaMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/DeleteMess');
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/DeleteMess');
 GO
 --权限
 INSERT INTO Permission([Description],AccessPathId) VALUES('任务管理主页',1);

@@ -1,4 +1,10 @@
 ﻿$(function () {
+    var mess = $("#mess").val();
+    if (mess) {
+        var modal = new Modal();
+        modal.alert(mess);
+        $("#mess").val("");
+    }
     $("#to-emp").blur(function () {
         var userName = $(this).val();
         userName=userName.replace(/\s+/g,"");//去除所有空格字符
@@ -40,7 +46,20 @@
         }
     });
     messLookUpEvent();
-    
+    $("form[name='deleteMess']").submit(function () {
+        var $subCheckbox = $("input:checkbox[name='messId']:not([value='all'])");
+        var delMessTitle="";
+        $subCheckbox.each(function(index) {
+            if ($(this).attr("checked")) {
+                var title=$(this).parents("div:first").find("span:eq(3)").text();
+                delMessTitle += title+"\n";
+            }
+        });
+        var isDel = window.confirm("请确认删除以下消息记录：\n" + delMessTitle);
+        if (!isDel) {
+            return false;
+        }
+    });
 });
 //绑定点击查看消息事件
 function messLookUpEvent() {
@@ -71,17 +90,17 @@ function messLookUpEvent() {
             }, "json");
         }
     });
-    $("input:checkbox[name='Id']").unbind("click");
+    $("input:checkbox[name='messId']").unbind("click");
     //复选框的全选全不选效果
-    $("input:checkbox[name='Id']").click(function () {
+    $("input:checkbox[name='messId']").click(function () {
         if ($(this).attr("value") === "all") {
             if ($(this).attr("checked")) {
-                $("input:checkbox[name='Id']").attr("checked", true);
+                $("input:checkbox[name='messId']").attr("checked", true);
             } else {
-                $("input:checkbox[name='Id']").attr("checked", false);
+                $("input:checkbox[name='messId']").attr("checked", false);
             }
         } else {
-            var $subCheckbox = $("input:checkbox[name='Id']:not([value='all'])");
+            var $subCheckbox = $("input:checkbox[name='messId']:not([value='all'])");
             var allChecked = true;
             $subCheckbox.each(function (index) {
                 if (!$(this).attr("checked")) {

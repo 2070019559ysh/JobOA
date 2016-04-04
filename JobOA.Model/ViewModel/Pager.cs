@@ -87,6 +87,7 @@ namespace JobOA.Model.ViewModel
                     _total = value;
                 }
                 _pageCount = _total % _pageSize == 0 ? _total / _pageSize : (_total / _pageSize) + 1;
+                if (_pageCount < 1) _pageCount = 1;
                 PageIndex = _pageIndex;
                 if (_pageCount < 1) _pageCount = 1;//至少要有一页
                 _start = _pageIndex - 3 > 1 ? _pageIndex - 3 : 1;

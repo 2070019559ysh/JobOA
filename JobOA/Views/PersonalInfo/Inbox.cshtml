@@ -67,7 +67,8 @@
         <div class="am-tab-panel am-fade am-in @tab1Active" id="tab1">
             <div class="am-g">
                 <section class="am-u-md-4 am-u-sm-12">
-                    <form name="deleteMess" action="/PersonalInfo/DeleteMess" method="post">
+                    <input type="hidden" id="mess" value="@TempData["Mess"]"/>
+                    <form name="deleteMess" id="delmess-form" action="/PersonalInfo/DeleteMess/@Request.RequestContext.RouteData.Values["id"]" method="post">
                         <input type="submit" class="am-btn am-btn-danger am-btn-xs" value="删除" />
                     </form>  
                 </section>
@@ -85,7 +86,7 @@
                     </div>
                 </section>
                 <section class="mess-title am-u-sm-12 am-margin-top">
-                    <span class="am-badge am-u-sm-2 am-u-md-1"><input name="Id" type="checkbox" value="all" /></span>
+                    <span class="am-badge am-u-sm-2 am-u-md-1"><input name="messId" type="checkbox" value="all" /></span>
                     <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope"></i></span>
                     <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
                     <span class="am-badge am-u-sm-5 am-u-md-3">标题</span>
@@ -103,7 +104,7 @@
                             foreach (var oaMess in Model)
                             {
                                 <div>
-                                    <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" name="Id" value="@oaMess.Id" /></span>
+                                    <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" name="messId" value="@oaMess.Id" form="delmess-form"/></span>
                                     <a class="oamess-row" href="javascript:;" title="点击查看">
                                         @{
                                 var envelopeClass = "class=am-icon-envelope title=未查看";
