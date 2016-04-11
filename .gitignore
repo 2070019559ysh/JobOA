@@ -1,4 +1,4 @@
-#忽略.sln项目文件
+#锟斤拷锟斤拷.sln锟斤拷目锟侥硷拷
 *.sln
 *.suo
 *.dll
@@ -6,3 +6,4 @@
 *.cache
 *.log
 /obj
+JobOA/obj/
