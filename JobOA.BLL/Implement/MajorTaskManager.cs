@@ -28,6 +28,9 @@ namespace JobOA.BLL.Implement
         [Inject]
         public IEmployeeManager EmployeeManager { get; set; }
 
+        [Inject]
+        public IProjectManager ProjectManager { get; set; }
+
         /// <summary>
         /// 异常处理对象
         /// </summary>
@@ -89,8 +92,10 @@ namespace JobOA.BLL.Implement
         /// <param name="pageIndex">当前页</param>
         /// <param name="pageSize">每页最大记录数</param>
         /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
+        /// <param name="lookUpMethod">查看方式枚举</param>
+        /// <param name="employeeId">当前员工id</param>
         /// <returns>所有主任务的集合</returns>
-        public List<MajorTask> SearchAllMajorTask(int pageIndex,int pageSize,string search)
+        public List<MajorTask> SearchAllMajorTask(int pageIndex,int pageSize,string search,LookUpMethod lookUpMethod,int employeeId)
         {
             List<MajorTask> majorTaskList = null;
             try
@@ -112,6 +117,8 @@ namespace JobOA.BLL.Implement
                         PageMax = pageSize,
                         ProjectId = projectId,
                         DepantmentId = departmentId,
+                        LookUpType=lookUpMethod,
+                        EmployeeId=employeeId
                     }; 
                     if (searchCnds.Length == 2)
                     {   //刚好两个查询条件，第三个默认
@@ -153,8 +160,10 @@ namespace JobOA.BLL.Implement
         /// <param name="pageIndex">当前页</param>
         /// <param name="pageSize">每页最大记录数</param>
         /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
+        /// <param name="lookUpMethod">查看方式枚举</param>
+        /// <param name="employeeId">当前员工id</param>
         /// <returns>满足条件的主任务总记录数</returns>
-        public int SearchAllMajorTaskCount(int pageIndex, int pageSize, string search)
+        public int SearchAllMajorTaskCount(int pageIndex, int pageSize, string search,LookUpMethod lookUpMethod,int employeeId)
         {
             int count = 0;
             if (!String.IsNullOrEmpty(search))
@@ -174,6 +183,8 @@ namespace JobOA.BLL.Implement
                     PageMax = pageSize,
                     ProjectId = projectId,
                     DepantmentId = departmentId,
+                    LookUpType = lookUpMethod,
+                    EmployeeId = employeeId
                 };
                 if (searchCnds.Length == 2)
                 {   //刚好两个查询条件，第三个默认
@@ -200,6 +211,29 @@ namespace JobOA.BLL.Implement
             try
             {
                 majorTaskList = MajorTaskService.SearchAllMajorTask(pageIndex, pageMax);
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(ex);
+            }
+            return majorTaskList;
+        }
+
+        /// <summary>
+        /// 查找所有指定部门下的主任务,不分页
+        /// </summary>
+        /// <param name="departmentId">部门id</param>
+        /// <returns>指定部门下的所有主任务的集合</returns>
+        public List<MajorTask> SearchAllMajorTask(int departmentId)
+        {
+            List<MajorTask> majorTaskList = null;
+            try
+            {
+                majorTaskList = MajorTaskService.SearchAllMajorTask(departmentId);
+                majorTaskList.ForEach(majorTask =>
+                {
+                    majorTask.Name = majorTask.Project.Name+"--"+ majorTask.Name;
+                });
             }
             catch (Exception ex)
             {
@@ -273,6 +307,24 @@ namespace JobOA.BLL.Implement
                 _exceptionLog.RecordLog(ex);
             }
             return isSuccess;
+        }
+
+        /// <summary>
+        /// 根据主任务Id及服务器根路径获取当前项目的附件存放路径
+        /// </summary>
+        /// <param name="taskId">主任务Id</param>
+        /// <param name="serverMapPath">服务器根路径</param>
+        /// <returns></returns>
+        public string GetAttachmentPath(int taskId, string serverMapPath)
+        {
+            Project project = ProjectManager.SearchProjectByTaskId(taskId);
+            string path = project.Name;//把子任务名称作为项目
+            if (project == null)
+            {
+                path = new VerificationCode().CreateRandomCode(12).ToLower();
+            }
+            string userImg = serverMapPath + "Content/ProjectFile/" + path + "/";//用户上传附件路径
+            return path;
         }
     }
 }

@@ -1,411 +1,3 @@
-2015/12/6 0:16:06 发生异常：调用的目标发生了异常。
-2016/1/1 16:35:51 发生异常：尚未对布局页“~/Views/Shared/AdminViewMaster.cshtml”调用“RenderBody”方法。
-2016/1/1 16:37:00 发生异常：未将对象引用设置到对象的实例。
-2016/1/10 14:40:17 发生异常：仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”。
-2016/1/15 23:02:37 发生异常：未将对象引用设置到对象的实例。
-2016/1/16 12:42:39 发生异常：调用的目标发生了异常。
-2016/1/16 12:42:54 发生异常：调用的目标发生了异常。
-2016/1/16 12:45:37 发生异常：调用的目标发生了异常。
-2016/1/16 13:04:36 发生异常：调用的目标发生了异常。
-2016/1/16 13:10:44 发生异常：调用的目标发生了异常。
-2016/1/16 13:11:22 发生异常：调用的目标发生了异常。
-2016/1/16 13:11:39 发生异常：调用的目标发生了异常。
-2016/1/16 13:12:18 发生异常：调用的目标发生了异常。
-2016/1/16 13:12:33 发生异常：调用的目标发生了异常。
-2016/1/16 13:12:55 发生异常：调用的目标发生了异常。
-2016/1/16 13:13:18 发生异常：调用的目标发生了异常。
-2016/1/16 14:31:03 发生异常：尝试除以零。
-2016/1/16 14:32:27 发生异常：尝试除以零。
-2016/1/16 14:58:19 发生异常：尝试除以零。
-2016/1/16 15:00:50 发生异常：尝试除以零。
-2016/2/1 15:35:48 发生异常：仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”。
-2016/2/1 15:36:02 发生异常：仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”。
-2016/2/2 22:46:21 发生异常：f:\C#.Net\JobOA\JobOA\Views\AdminProject\AddProject.cshtml(27): error CS1525: 无效的表达式项“>”
-2016/2/2 22:46:38 发生异常：f:\C#.Net\JobOA\JobOA\Views\AdminProject\AddProject.cshtml(27): error CS1525: 无效的表达式项“>”
-2016/2/4 15:10:54 发生异常：无法在发送 HTTP 标头之后进行重定向。
-2016/2/4 15:11:22 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
-2016/2/4 15:11:22 发生异常：无法在发送 HTTP 标头之后进行重定向。
-2016/2/4 15:16:10 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
-2016/2/4 15:33:32 发生异常：调用的目标发生了异常。
-2016/2/4 15:34:11 发生异常：调用的目标发生了异常。
-2016/2/11 18:05:18 发生异常：节已定义:“Scripts”。
-2016/2/11 19:31:49 发生异常：传入字典的模型项为 null，但此字典需要类型“System.DateTime”的非 null 模型项。
-2016/2/14 13:25:58 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
-2016/2/14 13:31:14 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
-2016/2/14 14:58:19 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
-<<<<<<< HEAD
-2016/2/28 14:17:02 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/28 14:33:04 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/28 14:37:06 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/28 22:42:45 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/28 22:46:36 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/28 22:46:57 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/28 22:46:58 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/2/29 15:39:40 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:42 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:43 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:43 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:44 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:45 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:45 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:46 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:46 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:47 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:47 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 15:39:48 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 17:24:19 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:23:09 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:23:11 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:23:12 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:23:13 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:24:16 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:25:25 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:33:15 发生异常：未将对象引用设置到对象的实例。
-2016/2/29 19:36:19 发生异常：未将对象引用设置到对象的实例。
-2016/3/4 15:36:56 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 10:59:02 发生异常：未将对象引用设置到对象的实例。
-=======
-2016/3/5 15:00:14 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 19:49:56 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 19:51:13 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 19:57:24 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 20:06:29 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/5 20:07:08 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/5 20:15:10 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/5 20:15:20 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/5 20:19:12 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/5 20:19:17 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/5 20:20:12 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/5 20:36:08 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/5 20:37:00 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/5 20:38:45 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/5 20:45:06 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
-参数名: parameters
-2016/3/5 20:45:11 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
-参数名: parameters
-2016/3/5 20:48:21 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
-参数名: parameters
-2016/3/5 20:50:09 发生异常：对于“JobOA.Controllers.AdministrationController”中方法“System.Web.Mvc.JsonResult DelDepartment(Int32)”的不可以为 null 的类型“System.Int32”的参数“departmentId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
-参数名: parameters
-2016/3/5 20:55:33 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/5 21:07:53 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
-2016/3/5 21:08:05 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
-2016/3/5 21:08:52 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
-2016/3/5 21:10:41 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
-2016/3/5 21:16:51 发生异常：Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
-2016/3/5 21:40:44 发生异常：未找到视图“UpdateDepartment”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
-~/Views/Administration/UpdateDepartment.aspx
-~/Views/Administration/UpdateDepartment.ascx
-~/Views/Shared/UpdateDepartment.aspx
-~/Views/Shared/UpdateDepartment.ascx
-~/Views/Administration/UpdateDepartment.cshtml
-~/Views/Administration/UpdateDepartment.vbhtml
-~/Views/Shared/UpdateDepartment.cshtml
-~/Views/Shared/UpdateDepartment.vbhtml
-2016/3/5 21:49:39 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 21:53:39 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 21:54:30 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 21:57:45 发生异常：无法删除数据库 "JOB_OA"，因为该数据库当前正在使用。
-2016/3/5 22:43:26 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 22:46:49 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 23:10:25 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 23:12:37 发生异常：未将对象引用设置到对象的实例。
-2016/3/5 23:13:13 发生异常：未能解析此远程名称: 'utf8.sms.webchinese.cn'
-2016/3/5 23:16:30 发生异常：未能解析此远程名称: 'utf8.sms.webchinese.cn'
-2016/3/6 11:39:57 发生异常：未找到视图“AddDepartment”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
-~/Views/Administration/AddDepartment.aspx
-~/Views/Administration/AddDepartment.ascx
-~/Views/Shared/AddDepartment.aspx
-~/Views/Shared/AddDepartment.ascx
-~/Views/Administration/AddDepartment.cshtml
-~/Views/Administration/AddDepartment.vbhtml
-~/Views/Shared/AddDepartment.cshtml
-~/Views/Shared/AddDepartment.vbhtml
-2016/3/6 12:05:59 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 12:07:53 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 12:08:00 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 12:08:28 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 12:16:10 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 12:25:21 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 22:49:09 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/6 22:49:42 发生异常：对一个或多个实体的验证失败。有关详细信息，请参阅“EntityValidationErrors”属性。
-2016/3/9 18:31:38 发生异常：调用的目标发生了异常。
-2016/3/9 18:34:05 发生异常：调用的目标发生了异常。
-2016/3/10 16:36:37 发生异常：无法删除数据库 "JOB_OA"，因为该数据库当前正在使用。
-2016/3/12 11:28:36 发生异常：f:\C#.Net\JobOA\JobOA\Views\PersonalInfo\Inbox.cshtml(30): error CS0103: 当前上下文中不存在名称“pager”
-2016/3/12 11:29:03 发生异常：f:\C#.Net\JobOA\JobOA\Views\PersonalInfo\Inbox.cshtml(30): error CS0103: 当前上下文中不存在名称“pager”
-2016/3/19 17:40:04 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 16:24:36 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 16:26:49 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 16:27:51 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 16:28:34 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 16:36:00 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 16:36:33 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 19:48:19 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 19:54:13 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 19:55:21 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 19:56:40 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 20:06:18 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 20:14:26 发生异常：未将对象引用设置到对象的实例。
-2016/3/20 20:31:42 发生异常：未将对象引用设置到对象的实例。
-2016/3/24 17:04:30 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/24 17:04:53 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/24 17:05:28 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/24 17:22:20 发生异常：服务器无法在发送 HTTP 标头之后设置内容类型。
-2016/3/24 19:43:37 发生异常：未将对象引用设置到对象的实例。
-2016/3/27 21:09:45 发生异常：未将对象引用设置到对象的实例。
-2016/3/27 21:10:04 发生异常：未将对象引用设置到对象的实例。
-2016/3/27 21:10:41 发生异常：未将对象引用设置到对象的实例。
-2016/3/27 21:35:57 发生异常：未将对象引用设置到对象的实例。
-2016/3/27 21:37:12 发生异常：更新条目时出错。有关详细信息，请参阅内部异常。
-2016/3/30 22:31:40 发生异常：未将对象引用设置到对象的实例。
-2016/3/30 22:32:07 发生异常：未将对象引用设置到对象的实例。
-2016/3/30 22:44:42 发生异常：对于“JobOA.Controllers.PersonalInfoController”中方法“System.Web.Mvc.ActionResult Inbox(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
-参数名: parameters
-2016/3/30 22:44:52 发生异常：对于“JobOA.Controllers.PersonalInfoController”中方法“System.Web.Mvc.ActionResult Inbox(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
-参数名: parameters
-2016/3/30 22:47:31 发生异常：未将对象引用设置到对象的实例。
-2016/3/30 23:37:42 发生异常：仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”。
-2016/4/2 9:33:05 发生异常：未将对象引用设置到对象的实例。
-2016/4/2 9:33:57 发生异常：未将对象引用设置到对象的实例。
-2016/4/2 10:03:23 发生异常：值不能为 null。
-参数名: String
-2016-16-2 11:15:52 发生异常：未将对象引用设置到对象的实例。  异常堆栈：   在 JobOA.BLL.Implement.OAMessageManager.SearchAllOAMessage(Pager pager) 位置 f:\C#.Net\JobOA\JobOA.BLL\Implement\OAMessageManager.cs:行号 59
-2016-16-2 15:22:22 发生异常：没有为该对象定义无参数的构造函数。  异常堆栈：   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   在 System.Activator.CreateInstance(Type type, Boolean nonPublic)
-   在 System.Activator.CreateInstance(Type type)
-   在 System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   在 System.Web.Mvc.DefaultModelBinder.BindComplexModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   在 System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   在 System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
-   在 System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
-2016-16-2 15:30:29 发生异常：没有为该对象定义无参数的构造函数。  异常堆栈：   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   在 System.Activator.CreateInstance(Type type, Boolean nonPublic)
-   在 System.Activator.CreateInstance(Type type)
-   在 System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   在 System.Web.Mvc.DefaultModelBinder.BindComplexModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   在 System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   在 System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
-   在 System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
-2016-16-2 15:32:54 发生异常：没有为该对象定义无参数的构造函数。  异常堆栈：   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   在 System.Activator.CreateInstance(Type type, Boolean nonPublic)
-   在 System.Activator.CreateInstance(Type type)
-   在 System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   在 System.Web.Mvc.DefaultModelBinder.BindComplexModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   在 System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   在 System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
-   在 System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
-2016-16-2 15:59:53 发生异常：调用的目标发生了异常。  异常堆栈：   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   在 System.Web.SecurityUtils.MethodInfoInvoke(MethodInfo method, Object target, Object[] args)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:01:22 发生异常：调用的目标发生了异常。  异常堆栈：   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   在 System.Web.SecurityUtils.MethodInfoInvoke(MethodInfo method, Object target, Object[] args)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:02:31 发生异常：调用的目标发生了异常。  异常堆栈：   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   在 System.Web.SecurityUtils.MethodInfoInvoke(MethodInfo method, Object target, Object[] args)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:05:56 发生异常：调用的目标发生了异常。  异常堆栈：   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   在 System.Web.SecurityUtils.MethodInfoInvoke(MethodInfo method, Object target, Object[] args)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:08:50 发生异常：调用的目标发生了异常。  异常堆栈：   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   在 System.Web.SecurityUtils.MethodInfoInvoke(MethodInfo method, Object target, Object[] args)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:10:09 发生异常：序列化类型为“JobOA.Model.OAMessage”的对象时检测到循环引用。  异常堆栈：   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:11:03 发生异常：序列化类型为“JobOA.Model.OAMessage”的对象时检测到循环引用。  异常堆栈：   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
-   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
-   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-2016-16-2 16:30:02 发生异常：序列化类型为“JobOA.Model.OAMessage”的对象时检测到循环引用。  异常堆栈：   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
-   在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
    在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
    在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
    在 System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
@@ -774,6 +366,129 @@
 2016-16-4 14:14:33 发生异常：无法在发送 HTTP 标头之后进行重定向。  异常堆栈：   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
    在 System.Web.HttpResponseWrapper.Redirect(String url, Boolean endResponse)
    在 System.Web.Mvc.RedirectToRouteResult.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2016-16-4 22:26:02 发生异常：未找到视图“Create”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/AdminSubTask/Create.aspx
+~/Views/AdminSubTask/Create.ascx
+~/Views/Shared/Create.aspx
+~/Views/Shared/Create.ascx
+~/Views/AdminSubTask/Create.cshtml
+~/Views/AdminSubTask/Create.vbhtml
+~/Views/Shared/Create.cshtml
+~/Views/Shared/Create.vbhtml  异常堆栈：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2016-16-5 21:33:57 发生异常：指定的 Include 路径无效。EntityType“JobOA.Model.SubTask”未声明具有名称“ArrangeEmployee,ExeEmployee,CheckEmployee”的导航属性。  异常堆栈：   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.AddSpanPath(SpanPathInfo parentInfo, List`1 navPropNames)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 JobOA.DAL.Implement.SubTaskService.SearchSubTask(Int32 id, Pager pager) 位置 f:\C#.Net\JobOA\JobOA.DAL\Implement\SubTaskService.cs:行号 63
+   在 JobOA.BLL.Implement.SubTaskManager.SearchSubTask(Int32 id, Pager pager) 位置 f:\C#.Net\JobOA\JobOA.BLL\Implement\SubTaskManager.cs:行号 79
+2016-16-5 21:34:00 发生异常：未将对象引用设置到对象的实例。  异常堆栈：   在 ASP._Page_Views_AdminSubTask_Index_cshtml.Execute() 位置 f:\C#.Net\JobOA\JobOA\Views\AdminSubTask\Index.cshtml:行号 63
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.RunPage()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2016-16-5 23:53:56 发生异常：未找到视图“AddRecord”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/AdminSubTask/AddRecord.aspx
+~/Views/AdminSubTask/AddRecord.ascx
+~/Views/Shared/AddRecord.aspx
+~/Views/Shared/AddRecord.ascx
+~/Views/AdminSubTask/AddRecord.cshtml
+~/Views/AdminSubTask/AddRecord.vbhtml
+~/Views/Shared/AddRecord.cshtml
+~/Views/Shared/AddRecord.vbhtml  异常堆栈：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2016-16-5 23:54:05 发生异常：未找到视图“AddRecord”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/AdminSubTask/AddRecord.aspx
+~/Views/AdminSubTask/AddRecord.ascx
+~/Views/Shared/AddRecord.aspx
+~/Views/Shared/AddRecord.ascx
+~/Views/AdminSubTask/AddRecord.cshtml
+~/Views/AdminSubTask/AddRecord.vbhtml
+~/Views/Shared/AddRecord.cshtml
+~/Views/Shared/AddRecord.vbhtml  异常堆栈：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2016-16-5 23:56:54 发生异常：未找到视图“AddRecord”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/AdminSubTask/AddRecord.aspx
+~/Views/AdminSubTask/AddRecord.ascx
+~/Views/Shared/AddRecord.aspx
+~/Views/Shared/AddRecord.ascx
+~/Views/AdminSubTask/AddRecord.cshtml
+~/Views/AdminSubTask/AddRecord.vbhtml
+~/Views/Shared/AddRecord.cshtml
+~/Views/Shared/AddRecord.vbhtml  异常堆栈：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2016-16-10 12:48:02 发生异常：服务器无法在发送 HTTP 标头之后修改 cookie。  异常堆栈：   在 System.Web.HttpResponse.BeforeCookieCollectionChange()
+   在 System.Web.HttpCookieCollection.Set(HttpCookie cookie)
+   在 System.Web.Helpers.AntiXsrf.AntiForgeryTokenStore.SaveCookieToken(HttpContextBase httpContext, AntiForgeryToken token)
+   在 System.Web.Helpers.AntiXsrf.AntiForgeryWorker.GetFormInputElement(HttpContextBase httpContext)
+   在 System.Web.Helpers.AntiForgery.GetHtml()
+   在 System.Web.Mvc.HtmlHelper.AntiForgeryToken()
+   在 ASP._Page_Views_AdminSubTask_AddSubTask_cshtml.Execute() 位置 f:\C#.Net\JobOA\JobOA\Views\AdminSubTask\AddSubTask.cshtml:行号 25
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.RunPage()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
    在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
    在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
    在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)

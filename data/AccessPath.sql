@@ -2,25 +2,27 @@ USE JOB_OA
 GO
 --JOBOAÏµÍ³Êý¾Ý³õÊ¼»¯
 --¿É·ÃÎÊÂ·¾¶ÓëÈ¨ÏÞÓ¦¸ÃÊÇÒ»¶ÔÒ»µÄ¹ØÏµ
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminHome/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/AddProject');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/UpdateProject');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/DelProject');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/AddMajorTask');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Information');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/UpdateEmployeeInfo');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/AddDepartment');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/UpdateDepartment');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/DelDepartment');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/GetOaMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/DeleteMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/UpdateMajorTask');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/DelMajorTask');
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/Index');--1
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminHome/Index');--2
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/Index');--3
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/AddProject');--4
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/UpdateProject');--5
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/DelProject');--6
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/AddMajorTask');--7
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Information');--8
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/UpdateEmployeeInfo');--9
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/Index');--10
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/AddDepartment');--11
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/UpdateDepartment');--12
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/DelDepartment');--13
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');--14
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');--15
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/GetOaMess');--16
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/DeleteMess');--17
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/UpdateMajorTask');--18
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/DelMajorTask');--19
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminSubTask/Index');--20
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminSubTask/AddRecord');--21
 GO
 --È¨ÏÞ
 INSERT INTO Permission([Description],AccessPathId) VALUES('ÈÎÎñ¹ÜÀíÖ÷Ò³',1);
@@ -42,9 +44,11 @@ INSERT INTO Permission([Description],AccessPathId) VALUES('ÊÕ¼þÏäÀï½øÐÐÏûÏ¢Ò³ÃæÌ
 INSERT INTO Permission([Description],AccessPathId) VALUES('ÊÕ¼þÏäÀï½øÐÐÏûÏ¢É¾³ý²Ù×÷',17);
 INSERT INTO Permission([Description],AccessPathId) VALUES('½øÈëÒ³Ãæ²¢½øÐÐÐÞ¸ÄÖ÷ÈÎÎñ²Ù×÷',18);
 INSERT INTO Permission([Description],AccessPathId) VALUES('É¾³ýÖ÷ÈÎÎñ²Ù×÷',19);
+INSERT INTO Permission([Description],AccessPathId) VALUES('²é¿´×ÓÈÎÎñÁÐ±í',20);
+INSERT INTO Permission([Description],AccessPathId) VALUES('½øÈëÌí¼Ó×ÓÈÎÎñÒ³£¬²¢½øÐÐÌí¼Ó²Ù×÷',21);
 GO
 --½ÇÉ«
-INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('³¬¼¶¹ÜÀíÔ±',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19');
+INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('³¬¼¶¹ÜÀíÔ±',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21');
 --²¿ÃÅ
 INSERT INTO Department(Name) VALUES('Èí¼þ¿ª·¢²¿');
 --Ô±¹¤ÐÅÏ¢
@@ -62,3 +66,22 @@ VALUES('ÈÎÎñÌá½»','ÈÎÎñÒÑ¾­Íê³É£¬ÇëÓÚ2016-4-5Ç°½øÐÐÉóºË£¬²¢Ìá½»ÉóºË½á¹û¡£Ð»Ð»£¡'
 INSERT INTO OAMessage(Title,ExtraMessage,FromEmployeeId,ToEmployeeId,IsLookUp,SendDateTime)
 VALUES('¼Ä¶«Î÷','Çë°ïÃ¦¼ÄÊµÏ°¼ø¶¨ÆÀÓï±íµ½·ðÉ½£¬×îÍíºóÌì¼Ä¹ýÀ´Å¶¡£',1,1,0,'2016-03-31 10:36:32')
 GO
+--ÏîÄ¿
+INSERT INTO Project(Name, Description, IsSecrecy, [State])
+VALUES('JobOAÌá¸ß°ìÊÂÐ§ÂÊ','few·ÕÎ§·æ£¬åúÅ¶¼ÄËÍµÄfew¿§·ÈÀ´ÎÒ¼Ò·Öicdfefewfef',0,0)
+INSERT INTO Project(Name, Description, IsSecrecy, [State])
+VALUES('ÍøÉÏÊéµê','·ã¸ç¸çÈÈgreg¸öÈËÈÈÈÈ¸ègregÈË¶í¹úÈË¹ýÈÈ¸öÈËg',0,0)
+GO
+--Ö÷ÈÎÎñ
+INSERT INTO MajorTask(Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
+VALUES('¿ª·¢½çÃæ',1,1,1,1,'2016-02-07 05:12:23.000','2016-05-27 14:51:55.000','2016-04-04 10:01:36.643',0,0,1)
+INSERT INTO MajorTask(Id, Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
+VALUES('¿ª·¢½çÃæ',1,1,1,1,'2016-02-07 05:12:23.000','2016-04-04 10:01:52.000','2016-04-04 10:01:56.753',0,0,2)
+INSERT INTO MajorTask(Id, Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
+VALUES('¿ª·¢ºóÌ¨´úÂë',1,1,1,1,'2016-04-04 10:02:11.000','2016-04-06 10:02:13.000','2016-04-04 10:02:16.000',0,0,1)
+GO
+--×ÓÈÎÎñ
+INSERT INTO SubTask([No], Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, TaskId, [State], IsSecrecy, SubmissionThing, CompletionCriteria, WorkMethod, Progress)
+VALUES('1-1','¹¹Ë¼½çÃæ¿ò¼Ü',1,1,1,1,'2016-04-04 15:43:52.000','2016-04-05 15:43:57.000','2016-04-04 15:44:14.000',1,0,0,'½çÃæÉè¼ÆÍ¼Æ¬','Ô¤ÀÀÍ¼Æ¬Òªµ½´ïÒ»Ä¿ÁËÈ»Ð§¹û','ÓÃpsºÍDwÉè¼Æ',20)
+INSERT INTO SubTask(Id, [No], Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, TaskId, [State], IsSecrecy, SubmissionThing, CompletionCriteria, WorkMethod, Progress)
+VALUES('2-1','htmlºÍcssÉè¼Æ¾²Ì¬Ò³Ãæ',1,1,1,1,'2016-04-04 15:49:02.000','2016-04-02 15:49:07.000','2016-04-04 15:49:18.000',2,0,0,'¾²Ì¬ÍøÒ³Ô´ÂëÎÄ¼þ','Ìá¹©¸øºóÌ¨¿ª·¢ÈËÔ±Ê¹ÓÃ£¬»ù±¾²Ù×÷¼òÃ÷','ÓÃDwºÍBlend',15)

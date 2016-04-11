@@ -65,7 +65,7 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("开始时间")]
         [Required(ErrorMessage = "{0}是必须的")]
-        [RegularExpression(@"^\d{4}\D\d{1,2}\D\d{1,2}\D\d{1,2}\D\d{1,2}\D\d{1,2}$", ErrorMessage = "{0}的格式不正确")]
+        [RegularExpression(@"^\d{4}\S{1}\d{1,2}\S{1}\d{1,2}\s{1}\d{1,2}\:\d{1,2}\:\d{1,2}$", ErrorMessage = "{0}的格式不正确")]
         public DateTime StartTime { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("完成时间")]
         [Required(ErrorMessage = "{0}是必须的")]
-        [RegularExpression(@"^\d{4}\D\d{1,2}\D\d{1,2}\D\d{1,2}\D\d{1,2}\D\d{1,2}$", ErrorMessage = "{0}的格式不正确")]
+        [RegularExpression(@"^\d{4}\S{1}\d{1,2}\S{1}\d{1,2}\s{1}\d{1,2}\:\d{1,2}\:\d{1,2}$", ErrorMessage = "{0}的格式不正确")]
         public DateTime? CompleteTime { get; set; }
 
         /// <summary>

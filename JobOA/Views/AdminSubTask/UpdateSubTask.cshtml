@@ -1,0 +1,175 @@
+﻿@model JobOA.Model.SubTask
+
+@{
+    ViewBag.Title = "UpdateSubTask";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+}
+
+<h2>UpdateSubTask</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SubTask</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.No)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.No)
+            @Html.ValidationMessageFor(model => model.No)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArrangePersonId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ArrangePersonId)
+            @Html.ValidationMessageFor(model => model.ArrangePersonId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExePersonId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExePersonId)
+            @Html.ValidationMessageFor(model => model.ExePersonId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CheckPersonId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CheckPersonId)
+            @Html.ValidationMessageFor(model => model.CheckPersonId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Participator)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Participator)
+            @Html.ValidationMessageFor(model => model.Participator)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartTime)
+            @Html.ValidationMessageFor(model => model.StartTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompleteTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompleteTime)
+            @Html.ValidationMessageFor(model => model.CompleteTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreateTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreateTime)
+            @Html.ValidationMessageFor(model => model.CreateTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommitTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommitTime)
+            @Html.ValidationMessageFor(model => model.CommitTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TaskId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TaskId)
+            @Html.ValidationMessageFor(model => model.TaskId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.State)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.State)
+            @Html.ValidationMessageFor(model => model.State)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsSecrecy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsSecrecy)
+            @Html.ValidationMessageFor(model => model.IsSecrecy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubmissionThing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SubmissionThing)
+            @Html.ValidationMessageFor(model => model.SubmissionThing)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Attachment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Attachment)
+            @Html.ValidationMessageFor(model => model.Attachment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompletionCriteria)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompletionCriteria)
+            @Html.ValidationMessageFor(model => model.CompletionCriteria)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WorkMethod)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WorkMethod)
+            @Html.ValidationMessageFor(model => model.WorkMethod)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Progress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Progress)
+            @Html.ValidationMessageFor(model => model.Progress)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

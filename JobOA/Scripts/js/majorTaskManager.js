@@ -49,4 +49,8 @@
             $(this).attr("href", aHref);
         });
     });
+    $(".lookup-subtask").click(function () {
+        var id = $(this).parents("li:first").find(".majortask-id").text();
+        window.location.href = "/AdminSubTask/Index/" + id;
+    });
 });

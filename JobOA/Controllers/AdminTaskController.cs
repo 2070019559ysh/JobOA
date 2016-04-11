@@ -33,7 +33,7 @@ namespace JobOA.Controllers
         /// <param name="pageSize">每页最大记录数</param>
         /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
         /// <returns>主任务首页</returns>
-        public ActionResult Index(Nullable<int> pageIndex,int? pageSize,string search)
+        public ActionResult Index(Nullable<int> pageIndex,int? pageSize,string search,int? lookupType)
         {
             //查找所有项目
             List<Project> projectList=ProjectManager.SearchAllProject();
@@ -54,8 +54,22 @@ namespace JobOA.Controllers
                 searchCnds = new string[] { projectId, departmentId };
                 search = String.Join(",", searchCnds);
             }
-            List<MajorTask> majorTaskList = MajorTaskManager.SearchAllMajorTask(pageIndex.Value,pageSize.Value,search);
-            int count = MajorTaskManager.SearchAllMajorTaskCount(pageIndex.Value, pageSize.Value, search);
+            LookUpMethod lookmethod;
+            if (lookupType==0)
+            {
+                lookmethod = LookUpMethod.MineTask;
+            }
+            else if(lookupType==1)
+            {
+                lookmethod = LookUpMethod.ArrangeTask;
+            }
+            else
+            {
+                lookmethod = LookUpMethod.AllTask;
+            }
+            Employee emp = Session["user"] as Employee;
+            List<MajorTask> majorTaskList = MajorTaskManager.SearchAllMajorTask(pageIndex.Value, pageSize.Value, search, lookmethod,emp.Id);
+            int count = MajorTaskManager.SearchAllMajorTaskCount(pageIndex.Value, pageSize.Value, search, lookmethod, emp.Id);
             //视图数据
             Pager pager = new Pager(pageIndex.Value, pageSize.Value, count);
             pager.Remarks = search+",";//保存查询条件

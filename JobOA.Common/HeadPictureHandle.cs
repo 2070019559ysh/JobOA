@@ -61,5 +61,35 @@ namespace JobOA.Common
             }
             return headImg;
         }
+
+        /// <summary>
+        /// 获取多个图片名连接的字符串的第一个图片名,图片名包含目录
+        /// </summary>
+        /// <param name="headImg">多个图片名连接的字符串</param>
+        /// <returns>第一个图片名（包含目录字符串）的字符串</returns>
+        public static string GetFirstHeadPicture(string headImg)
+        {
+            if (String.IsNullOrEmpty(headImg))
+            {
+                //没有头像，使用默认头像
+                headImg = "/Content/images/oaui/default.jpg";
+            }
+            else
+            {
+                string[] headImgs = headImg.Split(',');
+                if (headImgs.Length > 0)
+                {
+                    if (headImgs[0].Contains("/Content/images"))
+                    {
+                        headImg = headImgs[0];
+                    }
+                    else
+                    {
+                        headImg = "/Content/images/userImg/" + headImgs[0];
+                    }
+                }
+            }
+            return headImg;
+        }
     }
 }

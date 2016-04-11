@@ -38,8 +38,27 @@ namespace JobOA.DAL.Implement
         {
             using (OaModel dbContext = new OaModel())
             {
+                dbContext.Configuration.LazyLoadingEnabled = false;
                 var majorTask = from m in dbContext.MajorTask.Include("ArrangeEmployee,CheckEmployee,ExeEmployee")
                                 where m.Name.Contains(name)
+                                orderby m.CreateTime descending
+                                select m;
+                return majorTask.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 查找指定部门下的所有主任务
+        /// </summary>
+        /// <param name="departmentId">部门id</param>
+        /// <returns>主任务集合</returns>
+        public List<MajorTask> SearchAllMajorTask(int departmentId)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                dbContext.Configuration.LazyLoadingEnabled = false;
+                var majorTask = from m in dbContext.MajorTask.Include("Project")
+                                where m.ExeEmployee.DepartmentId==departmentId
                                 orderby m.CreateTime descending
                                 select m;
                 return majorTask.ToList();
@@ -64,6 +83,14 @@ namespace JobOA.DAL.Implement
                                 && p.Id==searchCondition.ProjectId
                                 orderby m.CreateTime descending
                                 select m;
+                if (searchCondition.LookUpType == LookUpMethod.ArrangeTask)
+                {
+                    majorTask.Where(m => m.ArrangePersonId == searchCondition.EmployeeId);
+                }
+                else if (searchCondition.LookUpType == LookUpMethod.MineTask)
+                {
+                    majorTask.Where(m => m.ExePersonId == searchCondition.EmployeeId);
+                }
                 var majorTasks = majorTask.Skip((searchCondition.PageIndex - 1) 
                     * searchCondition.PageMax).Take(searchCondition.PageMax);
                 return majorTasks.ToList();
@@ -88,6 +115,14 @@ namespace JobOA.DAL.Implement
                                 && p.Id == searchCondition.ProjectId
                                 orderby m.CreateTime descending
                                 select m;
+                if (searchCondition.LookUpType == LookUpMethod.ArrangeTask)
+                {
+                    majorTask.Where(m => m.ArrangePersonId == searchCondition.EmployeeId);
+                }
+                else if (searchCondition.LookUpType == LookUpMethod.MineTask)
+                {
+                    majorTask.Where(m => m.ExePersonId == searchCondition.EmployeeId);
+                }
                 int count= majorTask.Count();
                 return count;
             }

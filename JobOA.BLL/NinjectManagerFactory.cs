@@ -34,6 +34,7 @@ namespace JobOA.BLL
             ninjectKernel.Bind<IMajorTaskService>().To<MajorTaskService>();
             ninjectKernel.Bind<IProjectService>().To<ProjectService>();
             ninjectKernel.Bind<IOAMessageService>().To<OAMessageService>();
+            ninjectKernel.Bind<ISubTaskService>().To<SubTaskService>();
         }
     }
 }
