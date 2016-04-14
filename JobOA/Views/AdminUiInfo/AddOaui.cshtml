@@ -2,11 +2,14 @@
 
 @{
     ViewBag.Title = "新增系统界面信息";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
 }
 @section scripts{
+    <script src="~/Scripts/plUpload/plupload.full.min.js" type="text/javascript"></script>
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
-    <script src="~/Scripts/js/alertMess.js"></script>
+    @Scripts.Render("~/bundles/fileupload")
+    <script src="~/Scripts/js/addOaUi.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/alertMess.js" type="text/javascript"></script>
 }
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增系统界面信息</strong> / <small>Add OaUi</small></div>
@@ -29,22 +32,22 @@
         </div>
         <div class="am-nbfc am-margin">
             <label for="IsSecrecy" class="am-fl">具体内容：</label>
-            @Html.TextAreaFor(m=>m.UiMess)
+            @Html.TextAreaFor(m=>m.UiMess, new {cols="50",rows="5" })
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.UiMess)</em>
         </div>
         <div class="am-margin">
             <label for="Description" class="am-block">显示图片：</label>
             @Html.HiddenFor(m=>m.UiImg)
-            @if (!String.IsNullOrEmpty(Model.UiImg))
+            @if (Model!=null&&!String.IsNullOrEmpty(Model.UiImg))
             {
                 <img src="~/Content/images/oaui/@Model.UiImg" hight="50" width="50"/>
             }
-            <button class="am-btn am-btn-success">上传图片</button>
+            <button type="button" class="oaui-upload am-btn am-btn-success am-btn-sm">上传图片</button>
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.UiImg)</em>
         </div>
         <div class="am-form-group am-margin">
-            <button type="submit" class="am-btn am-btn-secondary">创建项目</button>
-            <button type="reset" class="am-btn am-btn-default">重置输入</button>
+            <button type="submit" class="am-btn am-btn-secondary  am-btn-sm">创建项目</button>
+            <button type="reset" class="am-btn am-btn-default  am-btn-sm">重置输入</button>
         </div>
     }
 </div>

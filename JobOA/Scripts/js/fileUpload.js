@@ -162,10 +162,36 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                 return "文件过大错误";
         }
     }
+    //plupload中为我们提供了mOxie对象
+    //有关mOxie的介绍和说明请看：https://github.com/moxiecode/moxie/wiki/API
+    //如果你不想了解那么多的话，那就照抄本示例的代码来得到预览的图片吧
+    var previewImage=function(file, callback) {//file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
+        if (!file || !/image\//.test(file.type)) return; //确保文件是图片
+        if (file.type == 'image/gif') {//gif使用FileReader进行预览,因为mOxie.Image只支持jpg和png
+            var fr = new mOxie.FileReader();
+            fr.onload = function () {
+                callback(fr.result);
+                fr.destroy();
+                fr = null;
+            }
+            fr.readAsDataURL(file.getSource());
+        } else {
+            var preloader = new mOxie.Image();
+            preloader.onload = function () {
+                preloader.downsize(300, 300);//先压缩一下要预览的图片,宽300，高300
+                var imgsrc = preloader.type == 'image/jpeg' ? preloader.getAsDataURL('image/jpeg', 80) : preloader.getAsDataURL(); //得到图片src,实质为一个base64编码的数据
+                callback && callback(imgsrc); //callback传入的参数为预览图片的url
+                preloader.destroy();
+                preloader = null;
+            };
+            preloader.load(file.getSource());
+        }
+    }
+
     var self = this;
     if (typeof UploadFile._initMethod == "undefined") {
-        //给按钮绑定打开文件上传对话框事件，completeFunc是上传完一个文件时执行的回调函数
-        UploadFile.prototype.fileDialog = function (completeFunc) {
+        //给按钮绑定打开文件上传对话框事件，previewImageCallBack是预览图片回掉函数（src参数）,completeFunc是上传完一个文件时执行的回调函数
+        UploadFile.prototype.fileDialog = function (previewImageCallBack, completeFunc) {
             var uploadFileObj = function () {
                 //创建文件上传功能的对象
                 var uploader = new plupload.Uploader({
@@ -250,6 +276,12 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                 });
                 //文件添加到队列后触发
                 uploader.bind("FilesAdded", function (uploader, files) {
+                    //没添加一个文件时图片预览回掉
+                    if (previewImageCallBack) {
+                        for (var i in files) {
+                            previewImage(files[i], previewImageCallBack);
+                        }
+                    }
                 });
                 //文件从队列中移除后触发
                 uploader.bind("FilesRemoved", function (uploader, files) {
@@ -259,7 +291,7 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                     var $tr = $("#" + file.id).parents("tr:first");
                     if(file.percent===100)
                         $tr.find(".am-progress-bar").text("完成");
-                    completeFunc();
+                    if (completeFunc) { completeFunc(); }//执行上传完成回掉函数
                 });
                 //每一小片文件上传完成后触发
                 uploader.bind("ChunkUploaded", function (uploader, file, responseObj) {

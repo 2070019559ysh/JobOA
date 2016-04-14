@@ -1,9 +1,11 @@
-﻿using JobOA.BLL;
+﻿using JobOA.Auxiliary;
+using JobOA.BLL;
 using JobOA.Model;
 using JobOA.Model.ViewModel;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +16,11 @@ namespace JobOA.Controllers
     {
         [Inject]
         public IOAUiManager OAUiManager { get; set; }
+
+        /// <summary>
+        /// ajax请求时进行权限确认
+        /// </summary>
+        AjaxPermission ajaxPerm = new AjaxPermission();
         //
         // GET: /UiInfo/
 
@@ -27,7 +34,10 @@ namespace JobOA.Controllers
             return View(oaUiList);
         }
 
-        
+        /// <summary>
+        /// 进入oaui信息新增页面
+        /// </summary>
+        /// <returns>oaui信息新增页面</returns>
         [HttpGet]
         public ActionResult AddOaui()
         {
@@ -51,6 +61,38 @@ namespace JobOA.Controllers
                 }
             }
             return View();
+        }
+
+        /// <summary>
+        /// 上传系统图片
+        /// </summary>
+        /// <param name="file">文件对象</param>
+        /// <returns>是否上传成功</returns>
+        [AllowAnonymous]
+        public JsonResult UploadSystemImg(HttpPostedFileBase file)
+        {
+            string permResult = ajaxPerm.IsAuthenticated(HttpContext);
+            if (permResult.Equals("true")&&file != null)
+            {
+                string userImg = Server.MapPath("~/Content/images/oaui/");//用户上传图片路径
+                string fileName;
+                if (System.IO.File.Exists(userImg + file.FileName))
+                {
+                    string extension = Path.GetExtension(file.FileName);//上传文件的拓展名
+                    //如果存在同名文件则使用Guid生成的名字
+                    fileName = Guid.NewGuid().ToString() + extension;
+                }
+                else
+                {
+                    fileName = file.FileName;
+                }
+                file.SaveAs(userImg + fileName);//保存上传的图片
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
         }
 
         //
