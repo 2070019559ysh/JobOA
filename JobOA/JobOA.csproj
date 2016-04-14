@@ -145,6 +145,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminProjectController.cs" />
     <Compile Include="Controllers\PersonalInfoController.cs" />
+    <Compile Include="Controllers\AdminUiInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -298,6 +299,7 @@
     <Content Include="Scripts\js\adminDepartment.js" />
     <Content Include="Scripts\js\adminInbox.js" />
     <Content Include="Scripts\js\adminProject.js" />
+    <Content Include="Scripts\js\adminUiInfo.js" />
     <Content Include="Scripts\js\alertMess.js" />
     <Content Include="Scripts\js\majorTaskManager.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
@@ -349,7 +351,8 @@
     <Content Include="Views\PersonalInfo\Information.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\PersonalInfo\Inbox.cshtml" />
-    <Content Include="Views\UiInfo\Index.cshtml" />
+    <Content Include="Views\AdminUiInfo\Index.cshtml" />
+    <Content Include="Views\AdminUiInfo\AddOaui.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

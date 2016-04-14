@@ -1,4 +1,5 @@
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,25 @@ namespace JobOA.DAL.Implement
                                  where a.UiId == id
                                  select a;
                 return oaUi.SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 根据分页信息查找所有oa系统界面信息,分页信息里的Remarks指查询标题信息
+        /// </summary>
+        /// <param name="pager">分页信息对象</param>
+        /// <returns>oa系统界面信息集合</returns>
+        public List<OAUi> SearchOAUiByPager(Pager pager)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var oauiQuery = from ui in dbContext.OAUi
+                                where ui.UiTitle.Contains(pager.Remarks)
+                                orderby ui.UiId
+                                select ui;
+                pager.Total = oauiQuery.Count();//总记录数
+                List<OAUi> oauiList=oauiQuery.Skip((pager.PageIndex - 1) * pager.PageSize).Take(pager.PageSize).ToList();
+                return oauiList;
             }
         }
 

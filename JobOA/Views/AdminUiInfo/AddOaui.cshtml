@@ -1,0 +1,50 @@
+﻿@model JobOA.Model.OAUi
+
+@{
+    ViewBag.Title = "新增系统界面信息";
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
+    <script src="~/Scripts/js/alertMess.js"></script>
+}
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增系统界面信息</strong> / <small>Add OaUi</small></div>
+</div>
+
+<div style="margin:10px;">
+    <input type="hidden" id="mess" value="@ViewBag.mess" />
+    @using (Html.BeginForm("AddOaui", "AdminUiInfo", FormMethod.Post))
+    {
+        @Html.ValidationSummary()
+        <div class="am-nbfc am-margin">
+            <label for="Name" class="am-fl">标题：</label>
+            @Html.TextBoxFor(m => m.UiTitle, new { @class = "am-fl", placeholder = "输入标题" })
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.UiTitle)</em>
+        </div>
+        <div class="am-margin">
+            <label for="State">系统界面类型：</label>
+            <div class="am-inline-block">@Html.Editor("UiType", "ListBox", ViewData["list"])</div>
+            <em class="am-text-danger">@Html.ValidationMessage("UiType")</em>
+        </div>
+        <div class="am-nbfc am-margin">
+            <label for="IsSecrecy" class="am-fl">具体内容：</label>
+            @Html.TextAreaFor(m=>m.UiMess)
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.UiMess)</em>
+        </div>
+        <div class="am-margin">
+            <label for="Description" class="am-block">显示图片：</label>
+            @Html.HiddenFor(m=>m.UiImg)
+            @if (!String.IsNullOrEmpty(Model.UiImg))
+            {
+                <img src="~/Content/images/oaui/@Model.UiImg" hight="50" width="50"/>
+            }
+            <button class="am-btn am-btn-success">上传图片</button>
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.UiImg)</em>
+        </div>
+        <div class="am-form-group am-margin">
+            <button type="submit" class="am-btn am-btn-secondary">创建项目</button>
+            <button type="reset" class="am-btn am-btn-default">重置输入</button>
+        </div>
+    }
+</div>

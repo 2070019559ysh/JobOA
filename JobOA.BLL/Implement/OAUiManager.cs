@@ -2,6 +2,7 @@ using JobOA.Common;
 using JobOA.Common.Model;
 using JobOA.DAL;
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,26 @@ namespace JobOA.BLL.Implement
                 _exceptionLog.RecordLog(ex);
             }
             return oaUi;
+        }
+
+        /// <summary>
+        /// 根据分页信息查找所有oa系统界面信息,分页信息里的Remarks指查询标题信息
+        /// </summary>
+        /// <param name="pager">分页信息对象</param>
+        /// <returns>oa系统界面信息集合</returns>
+        public List<OAUi> SearchOAUiByPager(Pager pager)
+        {
+            List<OAUi> oauiList = null;
+            try
+            {
+                if (pager.Remarks == null) pager.Remarks = String.Empty;
+                oauiList=OAUiService.SearchOAUiByPager(pager);
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(ex);
+            }
+            return oauiList;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace JobOA.DAL
         /// <param name="title">标题名，不能模糊匹配</param>
         /// <returns>OA界面信息</returns>
         OAUi SearchOAUiByTitle(string title);
+
+        /// <summary>
+        /// 根据分页信息查找所有oa系统界面信息,分页信息里的Remarks指查询标题信息
+        /// </summary>
+        /// <param name="pager">分页信息对象</param>
+        /// <returns>oa系统界面信息集合</returns>
+        List<OAUi> SearchOAUiByPager(Pager pager);
 
         /// <summary>
         /// 添加OA界面信息
