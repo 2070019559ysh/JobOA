@@ -25,6 +25,11 @@ namespace JobOA
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
+            //文件上传js，前提是引入jquery及plupload
+            bundles.Add(new ScriptBundle("~/bundles/fileupload").Include(
+                        "~/Scripts/js/modal.js",
+                        "~/Scripts/js/fileUpload.js"));
+
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",

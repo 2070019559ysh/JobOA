@@ -2,24 +2,27 @@ USE JOB_OA
 GO
 --JOBOA系统数据初始化
 --可访问路径与权限应该是一对一的关系
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminHome/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/AddProject');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/UpdateProject');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/DelProject');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/AddMajorTask');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Information');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/UpdateEmployeeInfo');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/Index');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/AddDepartment');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/UpdateDepartment');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/DelDepartment');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/GetOaMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/DeleteMess');
-INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminUiInfo/Index');
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminTask/Index');--1
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminHome/Index');--2
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/Index');--3
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/AddProject');--4
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminProject/UpdateProject');--5
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminProject/DelProject');--6
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminTask/AddMajorTask');--7
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Information');--8
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/UpdateEmployeeInfo');--9
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/Index');--10
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/AddDepartment');--11
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/UpdateDepartment');--12
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/Administration/DelDepartment');--13
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/PersonalInfo/Inbox');--14
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/SendMess');--15
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/PersonalInfo/GetOaMess');--16
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/PersonalInfo/DeleteMess');--17
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminUiInfo/Index');--18
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminUiInfo/AddOaui');--19
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminUiInfo/UploadSystemImg');--20
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/AdminUiInfo/AddOaui');--21
 GO
 --权限
 INSERT INTO Permission([Description],AccessPathId) VALUES('任务管理主页',1);
@@ -40,9 +43,12 @@ INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里发送消息',15)
 INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里进行消息页面跳转，获取指定页消息数据',16);
 INSERT INTO Permission([Description],AccessPathId) VALUES('收件箱里进行消息删除操作',17);
 INSERT INTO Permission([Description],AccessPathId) VALUES('进入系统界面信息管理页',18);
+INSERT INTO Permission([Description],AccessPathId) VALUES('进入系统界面信息新增页',19);
+INSERT INTO Permission([Description],AccessPathId) VALUES('上传系统界面图片',20);
+INSERT INTO Permission([Description],AccessPathId) VALUES('执行新增系统界面信息',21);
 GO
 --角色
-INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18');
+INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('超级管理员',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21');
 --部门
 INSERT INTO Department(Name) VALUES('软件开发部');
 --员工信息
@@ -57,7 +63,7 @@ INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('u1832.jpg','joboa_System_PictureC
 INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('yuming.jpg','joboa_System_PictureCarousel*办公OA系统开发涉及内容甚多','基本员工信息维护，权限维护，工作任务管理，文件管理，消息管理');
 INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('foundation.png','joboa_System_InfoList*为移动而生','Amaze UI 以移动优先（Mobile first）为理念，从小屏逐步扩展到大屏，最终实现所有屏幕适配，适应移动互联潮流。');
 INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('web.png','joboa_System_InfoList*组件丰富，模块化','Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。');
-INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('chinese.png','joboa_System_InfoList*组件丰富，模块化	相比国外框架，Amaze UI 关注中文排版，根据用户代理调整字体，实现更好的中文排版效果；兼顾国内主流浏览器及 App 内置浏览器兼容支持。');
+INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('chinese.png','joboa_System_InfoList*组件丰富，模块化','相比国外框架，Amaze UI 关注中文排版，根据用户代理调整字体，实现更好的中文排版效果；兼顾国内主流浏览器及 App 内置浏览器兼容支持。');
 INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES('mobile.png','joboa_System_InfoList*轻量级，高性能','Amaze UI 面向 HTML5 开发，使用 CSS3 来做动画交互，平滑、高效，更适合移动设备，让 Web 应用更快速载入。');
 INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES(NULL,'joboa_System_FootHead*站在巨人的肩膀上','Amaze UI 汲取了很多优秀的社区资源，通过开源的形式来回馈社区。');
 INSERT INTO OAUi(UiImg,UiTitle,UiMess) VALUES(NULL,'joboa_System_FootContent*MIT License','Amaze UI 使用 <a href="#" target="_blank">MIT 许可证</a>发布，用户可以自由使用、复制、修改、合并、出版发行、散布、再授权及贩售 Amaze UI 及其副本。');
