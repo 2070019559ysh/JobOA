@@ -17,6 +17,13 @@ namespace JobOA.Controllers
         //
         // GET: /UiInfo/
 
+        /// <summary>
+        /// 进入系统界面信息管理首页
+        /// </summary>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageSize">每页最大记录数</param>
+        /// <param name="search">查询文本</param>
+        /// <returns></returns>
         public ActionResult Index(int? pageIndex,int? pageSize,string search)
         {
             pageIndex = pageIndex.HasValue ? pageIndex.Value : 1;
@@ -27,7 +34,10 @@ namespace JobOA.Controllers
             return View(oaUiList);
         }
 
-        
+        /// <summary>
+        /// 进入新增系统界面信息页
+        /// </summary>
+        /// <returns>新增系统界面信息页</returns>
         [HttpGet]
         public ActionResult AddOaui()
         {
@@ -36,6 +46,11 @@ namespace JobOA.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 执行新增系统界面信息
+        /// </summary>
+        /// <param name="oaui">新的系统界面信息</param>
+        /// <returns>新增系统界面信息，包含ViewBag.Mess</returns>
         [HttpPost]
         public ActionResult AddOaui(OAUi oaui)
         {
