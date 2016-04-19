@@ -296,6 +296,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\addMajorTask.js" />
+    <Content Include="Scripts\js\addOaUi.js" />
     <Content Include="Scripts\js\adminDepartment.js" />
     <Content Include="Scripts\js\adminInbox.js" />
     <Content Include="Scripts\js\adminProject.js" />
@@ -353,6 +354,7 @@
     <Content Include="Views\PersonalInfo\Inbox.cshtml" />
     <Content Include="Views\AdminUiInfo\Index.cshtml" />
     <Content Include="Views\AdminUiInfo\AddOaui.cshtml" />
+    <Content Include="Views\AdminUiInfo\UpdateOaui.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

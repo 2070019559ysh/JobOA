@@ -44,8 +44,9 @@ namespace JobOA.DAL
         /// 删除OA界面信息
         /// </summary>
         /// <param name="id">OA界面Id</param>
+        /// <param name="delOaui">删除的oaui对象</param>
         /// <returns>删除的记录数</returns>
-        int DeleteOAUi(int id);
+        int DeleteOAUi(int id,out OAUi delOaui);
 
         /// <summary>
         /// 更新OA界面信息

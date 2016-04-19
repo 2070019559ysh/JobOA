@@ -50,7 +50,7 @@ var UploadFile = function (selector, url,multiSelect, filters) {
         },
         multiSelect: {
             set: function(value){
-                if (!value) {
+                if (typeof(value)==="undefined") {
                     value = true;
                 }
                 multiSelect = value;
@@ -61,6 +61,8 @@ var UploadFile = function (selector, url,multiSelect, filters) {
     this.selector = selector;
     this.url = url;
     this.filters = filters;
+    this.multiSelect = multiSelect;
+    var modalId = "";//记录当前模特窗体的Id名称
     //给失去事件的元素添加事件
     var bindEvent = function (uploader) {
         //移除按钮的显示隐藏
@@ -77,14 +79,14 @@ var UploadFile = function (selector, url,multiSelect, filters) {
     }
     //显示文件上传总进度
     var totalUploadProgress = function (uploader) {
-        $("#joboa-modal").find(".state").text(stateTxt(uploader.state));
-        $("#joboa-modal").find(".size").text(sizeTxt(uploader.total.size));
-        $("#joboa-modal").find(".loaded").text(sizeTxt(uploader.total.loaded));
-        $("#joboa-modal").find(".uploaded").text(uploader.total.uploaded);
-        $("#joboa-modal").find(".failed").text(uploader.total.failed);
-        $("#joboa-modal").find(".total").text(uploader.total.uploaded + uploader.total.failed + uploader.total.queued);
-        $("#joboa-modal").find(".perSec").text(sizeTxt(uploader.total.bytesPerSec));
-        $("#joboa-modal").find(".percent").css("width", uploader.total.percent + "%").text(uploader.total.percent + "%");
+        $("#" + modalId).find(".state").text(stateTxt(uploader.state));
+        $("#" + modalId).find(".size").text(sizeTxt(uploader.total.size));
+        $("#" + modalId).find(".loaded").text(sizeTxt(uploader.total.loaded));
+        $("#" + modalId).find(".uploaded").text(uploader.total.uploaded);
+        $("#" + modalId).find(".failed").text(uploader.total.failed);
+        $("#" + modalId).find(".total").text(uploader.total.uploaded + uploader.total.failed + uploader.total.queued);
+        $("#" + modalId).find(".perSec").text(sizeTxt(uploader.total.bytesPerSec));
+        $("#" + modalId).find(".percent").css("width", uploader.total.percent + "%").text(uploader.total.percent + "%");
     }
     //对文件或进度值处理后返回合适的单位值
     var sizeTxt = function (value) {
@@ -190,12 +192,17 @@ var UploadFile = function (selector, url,multiSelect, filters) {
 
     var self = this;
     if (typeof UploadFile._initMethod == "undefined") {
-        //给按钮绑定打开文件上传对话框事件，previewImageCallBack是预览图片回掉函数（src参数）,completeFunc是上传完一个文件时执行的回调函数
-        UploadFile.prototype.fileDialog = function (previewImageCallBack, completeFunc) {
+        /*
+        * 给按钮绑定打开文件上传对话框事件
+        * @param browse_btn_id 触发浏览添加文件的按钮id名称，请给每个dialog都起个独有的id
+        * @param previewImageCallBack 是预览图片回掉函数（src参数）
+        * @param completeFunc是上传完一个文件时执行的回调函数(responseObj服务器返回的数据)
+        */
+        UploadFile.prototype.fileDialog = function (browse_btn_id,previewImageCallBack, completeFunc) {
             var uploadFileObj = function () {
                 //创建文件上传功能的对象
                 var uploader = new plupload.Uploader({
-                    browse_button: "browseFile",
+                    browse_button: browse_btn_id,
                     url: self.url,
                     filters: self.filters,
                     multipart: true, //使用multipart/form-data上传
@@ -207,7 +214,7 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                         preserve_headers: true //保留元数据
                     },
                     drop_element: "joboa-modal",
-                    multi_selection: true,
+                    multi_selection: self.multiSelect,
                     unique_names: false,
                     file_data_name:"file",
                     flash_swf_url: "../plUpload/Moxie.swf",
@@ -216,10 +223,10 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                 uploader.init();
                 bindEvent(uploader);//绑定事件
                 //文件上传按钮事件
-                $("#start").bind("click", function () {
+                $("#" + browse_btn_id + "_start").bind("click", function () {
                     uploader.start();
                 });
-                $("#stop").bind("click", function () {
+                $("#" + browse_btn_id + "_stop").bind("click", function () {
                     uploader.stop();
                 })
                 //文件停止上传按钮事件
@@ -272,11 +279,15 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                     $tr.find(".file-status").text(fileStatus(file.status));
                 });
                 //文件被添加到上传队列前触发，可进行文件过滤
-                uploader.bind("FileFiltered", function (uploader,file) {
+                uploader.bind("FileFiltered", function (uploader, file) {
+                    if (self.multiSelect === false && uploader.files.length > 1) {
+                        uploader.removeFile(file);
+                        alert("此处只能上传一张图片！");
+                    }
                 });
                 //文件添加到队列后触发
                 uploader.bind("FilesAdded", function (uploader, files) {
-                    //没添加一个文件时图片预览回掉
+                    //每添加一个文件时图片预览回掉
                     if (previewImageCallBack) {
                         for (var i in files) {
                             previewImage(files[i], previewImageCallBack);
@@ -291,7 +302,7 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                     var $tr = $("#" + file.id).parents("tr:first");
                     if(file.percent===100)
                         $tr.find(".am-progress-bar").text("完成");
-                    if (completeFunc) { completeFunc(); }//执行上传完成回掉函数
+                    if (completeFunc) { completeFunc(responseObj); }//执行上传完成回掉函数
                 });
                 //每一小片文件上传完成后触发
                 uploader.bind("ChunkUploaded", function (uploader, file, responseObj) {
@@ -306,7 +317,8 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                 });
 
             }
-            var modal = new Modal("文件上传");
+            modalId = browse_btn_id + "_modal";
+            var modal = new Modal("文件上传", modalId);
             var first = true;
             //绑定打开文件上传窗口事件
             $(this.selector).click(function () {
@@ -314,9 +326,9 @@ var UploadFile = function (selector, url,multiSelect, filters) {
                 if (first) {
                     var html = [
                        "<div class=\"am-center am-btn-group-xs am-margin-bottom-xs\">",
-               "<button id=\"browseFile\" class=\"am-btn am-btn-success am-margin-right-xs\">选择文件</button>",
-               "<button id=\"start\" class=\"am-btn am-btn-primary am-margin-right-xs\">开始上传</button>",
-               "<button id=\"stop\" class=\"am-btn am-btn-danger\">停止上传</button>",
+               "<button id=\""+browse_btn_id+"\" class=\"am-btn am-btn-success am-margin-right-xs\">选择文件</button>",
+               "<button id=\"" + browse_btn_id + "_start\" class=\"am-btn am-btn-primary am-margin-right-xs\">开始上传</button>",
+               "<button id=\"" + browse_btn_id + "_stop\" class=\"am-btn am-btn-danger\">停止上传</button>",
                "</div>",
                        "<table class=\"am-table am-table-bordered  am-table-compact\">",
            "    <tr>",

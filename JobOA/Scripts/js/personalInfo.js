@@ -81,7 +81,7 @@
     }
     eventFunc();
     //每上传完一个图片就重新请求图片进行显示出来
-    var callbackFunc = function () {
+    var callbackFunc = function (responseObj) {
         $.ajax({
             url: "GetHeadPicture",
             type: "POST",
@@ -101,7 +101,7 @@
             async: true
         });
     }
-    uploadFile.fileDialog(callbackFunc);
+    uploadFile.fileDialog("browseFile",null,callbackFunc);
 
     $("form").submit(function () {
         var src=$("#headImg").attr("src");

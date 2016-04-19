@@ -23,6 +23,9 @@ INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminUiInfo/Index');--1
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminUiInfo/AddOaui');--19
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminUiInfo/UploadSystemImg');--20
 INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/AdminUiInfo/AddOaui');--21
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('POST','/AdminUiInfo/UploadSystemImg');--22
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET','/AdminUiInfo/DelOaui');--23
+INSERT INTO AccessPath(HttpMethod,[Path]) VALUES('GET,POST','/AdminUiInfo/UpdateOaui');--24
 GO
 --»®œﬁ
 INSERT INTO Permission([Description],AccessPathId) VALUES('»ŒŒÒπ‹¿Ì÷˜“≥',1);
@@ -46,9 +49,12 @@ INSERT INTO Permission([Description],AccessPathId) VALUES('Ω¯»ÎœµÕ≥ΩÁ√Ê–≈œ¢π‹¿Ì“
 INSERT INTO Permission([Description],AccessPathId) VALUES('Ω¯»ÎœµÕ≥ΩÁ√Ê–≈œ¢–¬‘ˆ“≥',19);
 INSERT INTO Permission([Description],AccessPathId) VALUES('…œ¥´œµÕ≥ΩÁ√ÊÕº∆¨',20);
 INSERT INTO Permission([Description],AccessPathId) VALUES('÷¥–––¬‘ˆœµÕ≥ΩÁ√Ê–≈œ¢',21);
+INSERT INTO Permission([Description],AccessPathId) VALUES('÷¥––œµÕ≥ΩÁ√ÊµƒÕº∆¨…œ¥´',22);
+INSERT INTO Permission([Description],AccessPathId) VALUES('…æ≥˝œµÕ≥ΩÁ√Ê–≈œ¢',23);
+INSERT INTO Permission([Description],AccessPathId) VALUES('Ω¯»ÎΩÁ√Ê≤¢÷¥––œµÕ≥ΩÁ√Ê–≈œ¢–ﬁ∏ƒ≤Ÿ◊˜',24);
 GO
 --Ω«…´
-INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('≥¨º∂π‹¿Ì‘±',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21');
+INSERT INTO Role(Name,IsEnabled,PermissionIds) VALUES('≥¨º∂π‹¿Ì‘±',1,'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24');
 --≤ø√≈
 INSERT INTO Department(Name) VALUES('»Ìº˛ø™∑¢≤ø');
 --‘±π§–≈œ¢

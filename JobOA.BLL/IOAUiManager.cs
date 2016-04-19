@@ -62,8 +62,9 @@ namespace JobOA.BLL
         /// 删除OA界面信息
         /// </summary>
         /// <param name="id">OA界面Id</param>
+        /// <param name="delOaui">删除的oaui对象</param>
         /// <returns>删除是否成功</returns>
-        bool DeleteOAUi(int id);
+        bool DeleteOAUi(int id,out OAUi delOaui);
 
         /// <summary>
         /// 更新OA界面信息

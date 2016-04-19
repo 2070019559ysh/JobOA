@@ -12,14 +12,15 @@
     <script src="~/Scripts/js/alertMess.js" type="text/javascript"></script>
 }
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增系统界面信息</strong> / <small>Add OaUi</small></div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">修改系统界面信息</strong> / <small>Update OaUi</small></div>
 </div>
 
 <div style="margin:10px;">
     <input type="hidden" id="mess" value="@ViewBag.Mess" />
-    @using (Html.BeginForm("AddOaui", "AdminUiInfo", FormMethod.Post))
+    @using (Html.BeginForm("UpdateOaui", "AdminUiInfo", FormMethod.Post))
     {
         @Html.ValidationSummary()
+        @Html.HiddenFor(m=>m.UiId)
         <div class="am-nbfc am-margin">
             <label for="UiTitle" class="am-fl">标题：</label>
             @Html.TextBoxFor(m => m.UiTitle, new { @class = "am-fl", placeholder = "输入标题" })
@@ -48,7 +49,7 @@
             <em class="am-text-danger">@Html.ValidationMessageFor(m => m.UiImg)</em>
         </div>
         <div class="am-form-group am-margin">
-            <button type="submit" class="am-btn am-btn-secondary  am-btn-sm">创建项目</button>
+            <button type="submit" class="am-btn am-btn-secondary  am-btn-sm">更新系统信息</button>
             <button type="reset" class="am-btn am-btn-default  am-btn-sm">重置输入</button>
         </div>
         <div class="am-form-group am-margin">

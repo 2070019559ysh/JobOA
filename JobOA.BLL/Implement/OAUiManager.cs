@@ -206,13 +206,15 @@ namespace JobOA.BLL.Implement
         /// 删除OA界面信息
         /// </summary>
         /// <param name="id">OA界面Id</param>
+        /// <param name="delOaui">删除的oaui对象</param>
         /// <returns>删除是否成功</returns>
-        public bool DeleteOAUi(int id)
+        public bool DeleteOAUi(int id,out OAUi delOaui)
         {
             bool success = false;//是否成功执行
+            delOaui = null;
             try
             {
-                int row = OAUiService.DeleteOAUi(id);
+                int row = OAUiService.DeleteOAUi(id,out delOaui);
                 if (row > 0)
                 {
                     success = true;
@@ -236,7 +238,7 @@ namespace JobOA.BLL.Implement
             try
             {
                 int row = OAUiService.UpdateOAUi(oaUi);
-                if (row > 0)
+                if (row >= 0)
                 {
                     success = true;
                 }

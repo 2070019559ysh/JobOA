@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<JobOA.Model.OAUi>
 
+@using JobOA.Model.ViewModel
 @{
     ViewBag.Title = "系统界面信息管理";
     Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+    Pager pager=ViewBag.Pager;
 }
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/js/modal.js"></script>
     <script type="text/javascript" src="~/Scripts/js/adminUiInfo.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/alertMess.js"></script>
 }
 
 <div class="am-cf am-padding">
@@ -24,7 +27,7 @@
     </div>
     <div class="am-u-sm-12 am-u-md-3">
         <div class="am-input-group am-input-group-sm">
-            <input id="search-text" type="text" class="am-form-field">
+            <input id="search-text" type="text" class="am-form-field" placeholder="按标题模糊搜索" value="@pager.Remarks"/>
             <span class="am-input-group-btn">
                 <button id="search-btn" class="am-btn am-btn-default" type="button">搜索</button>
             </span>
@@ -35,6 +38,7 @@
 <div class="am-g">
     <div class="am-u-sm-12">
         <form class="am-form">
+            <input type="hidden" id="mess" value="@TempData["Mess"]" />
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                     <tr>
@@ -47,8 +51,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model == null) { 
-                        <tr><td colspan="6">暂无数据</td></tr>
+                    @if (Model == null||Model.Count()==0) { 
+                        <tr><td colspan="6">无数据</td></tr>
                     }
                     else
                     {
@@ -105,14 +109,14 @@
                                     }
                                     else
                                     {
-                                        <img src="~/Content/images/oaui/@oaui.UiImg" height="50" width="50" alt="@oaui.UiImg" /><a href="#">下载</a>
+                                        <img src="~/Content/images/oaui/@oaui.UiImg" height="50" width="50" alt="@oaui.UiImg" />
                                     }
                                 </td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <button class="update-oaui am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                            <button class="del-oaui am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                                            <button type="button" class="update-oaui am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                            <button type="button" class="del-oaui am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
                                         </div>
                                     </div>
                                 </td>

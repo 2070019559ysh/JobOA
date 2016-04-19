@@ -36,6 +36,7 @@ namespace JobOA.Controllers
             pageIndex = pageIndex.HasValue ? pageIndex.Value : 1;
             pageSize = pageSize.HasValue ? pageSize.Value : 10;
             Pager pager = new Pager(pageIndex.Value,pageSize.Value);
+            pager.Remarks = search;
             List<OAUi> oaUiList=OAUiManager.SearchOAUiByPager(pager);
             ViewBag.Pager = pager;
             return View(oaUiList);
@@ -58,11 +59,14 @@ namespace JobOA.Controllers
         /// </summary>
         /// <param name="oaui">新的系统界面信息</param>
         /// <returns>新增系统界面信息，包含ViewBag.Mess</returns>
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult AddOaui(OAUi oaui)
+        public ActionResult AddOaui(OAUi oaui,string uiType)
         {
+            string selectVal = String.Empty;
             if (ModelState.IsValid)
             {
+                oaui.UiTitle = uiType + "*" + oaui.UiTitle;
                 if (OAUiManager.AddOAUi(oaui))
                 {
                     ViewBag.Mess = "新增成功。";
@@ -70,8 +74,16 @@ namespace JobOA.Controllers
                 else
                 {
                     ViewBag.Mess = "新增失败！";
+                    if (oaui != null)
+                    {
+                        int splitIndex = oaui.UiTitle.IndexOf('*');
+                        selectVal = oaui.UiTitle.Substring(0, splitIndex);
+                        oaui.UiTitle = oaui.UiTitle.Substring(splitIndex + 1);
+                    }
                 }
             }
+            Dictionary<string, string> uiTypes = StateData.UiType;
+            ViewData["list"] = new SelectList(uiTypes, "Key", "Value", selectVal);
             return View();
         }
 
@@ -99,72 +111,122 @@ namespace JobOA.Controllers
                     fileName = file.FileName;
                 }
                 file.SaveAs(userImg + fileName);//保存上传的图片
-                return Json(true);
+                return Json(new { result = true, fileName = fileName });
             }
             else
             {
-                return Json(false);
+                return Json(new { result = false, reason = permResult });
             }
         }
 
-        //
-        // GET: /UiInfo/Details/5
+        /// <summary>
+        /// 进入系统信息修改页面，GET: /AdminUiInfo/UpdateOaUi/5
+        /// </summary>
+        /// <param name="id">系统新id</param>
+        /// <returns>系统信息修改页面</returns>
         [HttpGet]
-        public ActionResult UpdateOaui(int id)
+        public ActionResult UpdateOaui(int? id)
         {
-            OAUi oaui=OAUiManager.SearchOAUiById(id);
+            if (!id.HasValue) { return Redirect("~/AdminUiInfo/Index"); }
+            OAUi oaui=OAUiManager.SearchOAUiById(id.Value);
+            string selectVal = String.Empty;
+            if (oaui != null)
+            {
+                TempData["OriginImg"] = oaui.UiImg;
+                int splitIndex = oaui.UiTitle.IndexOf('*');
+                if (splitIndex > -1)
+                {
+                    selectVal = oaui.UiTitle.Substring(0, splitIndex);
+                    oaui.UiTitle = oaui.UiTitle.Substring(splitIndex + 1);
+                }
+                else
+                {
+                    oaui.UiTitle = String.Empty;
+                }
+            }
+            Dictionary<string, string> uiType = StateData.UiType;
+            ViewData["list"] = new SelectList(uiType, "Key", "Value",selectVal);
             return View(oaui);
         }
 
+        /// <summary>
+        /// 执行更新系统界面信息操作
+        /// </summary>
+        /// <param name="oaui">新的oa界面信息</param>
+        /// <param name="uiType">系统界面信息类型</param>
+        /// <returns>系统信息修改页面</returns>
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult UpdateOaui(OAUi oaui)
+        public ActionResult UpdateOaui(OAUi oaui,string uiType)
         {
+            string selectVal = String.Empty;
             if (ModelState.IsValid)
             {
+                oaui.UiTitle = uiType + "*" + oaui.UiTitle;
                 if (OAUiManager.UpdateOAUi(oaui))
                 {
                     ViewBag.Mess = "修改成功。";
+                    string originImg = TempData["OriginImg"] as string;
+                    //删除旧图片
+                    if (!String.IsNullOrEmpty(originImg)&&!oaui.UiImg.Equals(originImg))
+                    {
+                        string oaImgPath = Server.MapPath("~/Content/images/oaui/");//系统图片路径
+                        if (System.IO.File.Exists(oaImgPath + originImg))
+                        {
+                            System.IO.File.Delete(oaImgPath + originImg);
+                        }
+                    }
                 }
                 else
                 {
                     ViewBag.Mess = "修改失败！";
+                    if (oaui != null)
+                    {
+                        int splitIndex = oaui.UiTitle.IndexOf('*');
+                        if (splitIndex > -1)
+                        {
+                            selectVal = oaui.UiTitle.Substring(0, splitIndex);
+                            oaui.UiTitle = oaui.UiTitle.Substring(splitIndex + 1);
+                        }
+                    }
                 }
             }
+            Dictionary<string, string> uiTypes = StateData.UiType;
+            ViewData["list"] = new SelectList(uiTypes, "Key", "Value", selectVal);
             return View();
         }
 
-        //
-        // GET: /UiInfo/Delete/5
-
-        public ActionResult Delete(int id)
+        /// <summary>
+        /// 根据id删除一条系统界面信息
+        /// </summary>
+        /// <param name="id">系统界面信息id</param>
+        /// <returns>是否删除成功</returns>
+        [HttpGet]
+        public ActionResult DelOaui(int id)
         {
-            if (OAUiManager.DeleteOAUi(id))
+            string permResult=ajaxPerm.IsAuthenticated(HttpContext);
+            if (permResult.Equals("true"))
             {
-                ViewBag.Mess = "删除成功。";
+                OAUi delOaui = null;
+                if (OAUiManager.DeleteOAUi(id,out delOaui))
+                {
+                    TempData["Mess"] = "删除成功。";
+                    if (delOaui != null&&!String.IsNullOrEmpty(delOaui.UiImg))
+                    {
+                        //删除旧图片
+                        string oaImgPath = Server.MapPath("~/Content/images/oaui/");//系统图片路径
+                        if (System.IO.File.Exists(oaImgPath + delOaui.UiImg))
+                        {
+                            System.IO.File.Delete(oaImgPath + delOaui.UiImg);
+                        }
+                    }
+                }
+                else
+                {
+                    TempData["Mess"] = "删除失败！";
+                }
             }
-            else
-            {
-                ViewBag.Mess = "删除失败！";
-            }
-            return View();
-        }
-
-        //
-        // POST: /UiInfo/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return Redirect("/AdminUiInfo/Index");
         }
     }
 }

@@ -82,14 +82,14 @@ namespace JobOA.DAL.Implement
         /// 删除OA界面信息
         /// </summary>
         /// <param name="id">OA界面Id</param>
+        /// <param name="delOaui">删除的oaui对象</param>
         /// <returns>删除的记录数</returns>
-        public int DeleteOAUi(int id)
+        public int DeleteOAUi(int id,out OAUi delOaui)
         {
             using (OaModel dbContext = new OaModel())
             {
-                OAUi oaUi = new OAUi() { UiId = id };
-                dbContext.OAUi.Attach(oaUi);
-                dbContext.OAUi.Remove(oaUi);
+                delOaui=dbContext.OAUi.Find(id);
+                dbContext.OAUi.Remove(delOaui);
                 int rows = dbContext.SaveChanges();
                 return rows;
             }
