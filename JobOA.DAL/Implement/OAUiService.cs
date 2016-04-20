@@ -119,5 +119,29 @@ namespace JobOA.DAL.Implement
                 }
             }
         }
+
+        /// <summary>
+        /// 根据类型查找系统界面信息
+        /// </summary>
+        /// <param name="type">系统界面信息类型：{"joboa_System_sms","系统短信配置信息"},
+        /// {"joboa_System_email","系统邮箱配置信息"},
+        /// {"joboa_System_PictureCarousel","系统图片轮播"},
+        /// {"joboa_System_FootHead","系统脚部标题"},
+        /// {"joboa_System_FootContent","系统脚部内容"},
+        /// {"joboa_System_Notice","系统公告"},
+        /// {"joboa_System_InfoList","系统信息列表"}</param>
+        /// <param name="limit">限制获取的数量,默认是4条记录</param>
+        /// <returns>系统界面信息集合</returns>
+        public List<OAUi> SearchOauiByType(string type,int limit=4)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                var oauiQueryable = from oaui in dbContext.OAUi
+                        where oaui.UiTitle.StartsWith(type + "*")
+                        select oaui;
+                List<OAUi> oauiList=oauiQueryable.Take(limit).ToList();
+                return oauiList;
+            }
+        }
     }
 }

@@ -1,12 +1,16 @@
-﻿@model JobOA.Model.OAUi
+﻿
+@model JobOA.Model.OAUi
 
 @using JobOA.Model
 @using JobOA.BLL
 
 @{
     Layout = null;
+    
+    List<OAUi> infoOauiList= ViewBag.infoOauiList;
+    List<OAUi> footHeadOauiList=ViewBag.footHeadOauiList;
+    List<OAUi> footContentOauiList=ViewBag.footContentOauiList;
 }
-
 <!DOCTYPE html>
 <!--[if lte IE 7 ]><html class="no-js ie lte7 lte8 lte9 "><![endif]-->
 <!--[if IE 8 ]><html class="no-js ie ie8 lte8 lte9 "><![endif]-->
@@ -61,7 +65,7 @@
                 <p><input id="userName" type="tel" name="phone" placeholder="手机号码/用户名" /></p>
                 <p><input id="password" type="password" name="password" placeholder="密码" /></p>
                 <div class="am-nbfc">
-                    <input id="goLogin" type="button" class="am-btn am-btn-success am-fl" value="登录"/>
+                    <input id="goLogin" type="button" class="am-btn am-btn-success am-fl" value="登录" />
                     <p class="am-fl" style="margin:10px 10px;">
                         <input id="remember" type="checkbox" name="remember" value="1" style="width:15px;height:15px;" />保持登录
                     </p>
@@ -79,7 +83,7 @@
                     @{
                         //获取已登录的员工信息
                         Employee employee = Session["user"] as Employee;
-                        if (User.Identity.IsAuthenticated&&employee!=null)
+                        if (User.Identity.IsAuthenticated && employee != null)
                         {
                             string[] headPic;
                             headPic = employee.HeadPicture.Split(',');
@@ -109,7 +113,7 @@
                             </li>
                         }
                     }
-                    
+
                     <li><a href="/Account/Register"><span class="am-icon-pencil"></span> 注册</a> </li>
                     <li class="nav-react"><a href="/AdminHome/Index"><strong>开始工作</strong><span class="am-badge am-badge-warning">New</span></a></li>
                     <li class="am-show-lg-only"><a href="javascript:" id="searchBtn" target="_blank">搜索工作任务：</a></li>
@@ -131,39 +135,49 @@
             @Html.Display("slider", "Slider")
         </section>
         <section class="amz-features">
-            <div class="am-g am-g-fixed">
-                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation: &#x27;slide-top&#x27;, delay: 500}">
-                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/foundation.png")" alt="foundation" />
-                    <h2>为移动而生</h2>
-                    <p>Amaze UI 以移动优先（Mobile first）为理念，从小屏逐步扩展到大屏，最终实现所有屏幕适配，适应移动互联潮流。</p>
-                </div>
-                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation:&#x27;slide-top&#x27;, delay: 500}">
-                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/web.png")" alt="web" />
-                    <h2>组件丰富，模块化</h2>
-                    <p>Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。</p>
-                </div>
-            </div>
-            <div class="am-g am-g-fixed">
-                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation:&#x27;slide-right&#x27;, delay: 1000}">
-                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/chinese.png")" alt="chinese" />
-                    <h2>本地化支持</h2>
-                    <p>相比国外框架，Amaze UI 关注中文排版，根据用户代理调整字体，实现更好的中文排版效果；兼顾国内主流浏览器及 App 内置浏览器兼容支持。</p>
-                </div>
-                <div class="col-md-6 am-u-md-6" data-scrollspy="{animation:&#x27;slide-bottom&#x27;, delay: 1500}">
-                    <img class="am-img-responsive img" src="@Url.Content("~/Content/images/oaui/mobile.png")" alt="mobile" />
-                    <h2>轻量级，高性能</h2>
-                    <p>Amaze UI 面向 HTML5 开发，使用 CSS3 来做动画交互，平滑、高效，更适合移动设备，让 Web 应用更快速载入。</p>
-                </div>
-            </div>
+            @if (infoOauiList != null)
+            {
+                for (int i = 0; i < infoOauiList.Count()-1; i += 2)
+                {
+                    var info = infoOauiList[i];
+                    var info2 = infoOauiList[i + 1];
+                    <div class="am-g am-g-fixed">
+                        <div class="col-md-6 am-u-md-6" data-scrollspy="{animation: &#x27;slide-top&#x27;, delay: 500}">
+                            <img class="am-img-responsive img" src="/Content/images/oaui/@info.UiImg" alt="foundation" />
+                            <h2>@Html.Raw(info.UiTitle)</h2>
+                            <p>@Html.Raw(info.UiMess)</p>
+                        </div>
+                        <div class="col-md-6 am-u-md-6" data-scrollspy="{animation: &#x27;slide-top&#x27;, delay: 500}">
+                            <img class="am-img-responsive img" src="/Content/images/oaui/@info2.UiImg" alt="foundation" />
+                            <h2>@Html.Raw(info2.UiTitle)</h2>
+                            <p>@Html.Raw(info2.UiMess)</p>
+                        </div>
+                    </div>
+                }
+            }
         </section>
         <section class="amz-credits">
             <div class="amz-container">
+                @if (footHeadOauiList != null)
+                {
+                    foreach (var footHead in footHeadOauiList)
+                    {
+                        <header>
+                            <h1 data-am-scrollspy="{animation:'fade'}">@Html.Raw(footHead.UiTitle)</h1>
+                            <h2 data-scrollspy="{animation:'slide-bottom', delay: 500}">@Html.Raw(footHead.UiMess)</h2>
+                        </header>
+                    }
+                }
+                else
+                {
                 <header>
                     <h1 data-am-scrollspy="{animation:'fade'}">站在巨人的肩膀上</h1>
                     <h2 data-scrollspy="{animation:'slide-bottom', delay: 500}">Amaze UI 汲取了很多优秀的社区资源，通过开源的形式来回馈社区。</h2>
                 </header>
+                }
             </div>
             <div class="am-g am-g-fixed amz-credits-list">
+                @if (footContentOauiList == null) { 
                 <div class="col-md-4 am-u-md-4" data-scrollspy="{animation:'scale-up', delay: 1000}">
                     <h2>MIT License</h2>
                     <p>Amaze UI 使用 <a href="#" target="_blank">MIT 许可证</a>发布，用户可以自由使用、复制、修改、合并、出版发行、散布、再授权及贩售 Amaze UI 及其副本。</p>
@@ -176,6 +190,17 @@
                     <h2>Credits</h2>
                     <p>我们追求卓越，然时间、经验、能力有限。Amaze UI 有很多不足的地方，希望大家包容、不吝赐教，给我们提意见、建议。<a href="#" target="_blank">感谢你们</a>！</p>
                 </div>
+                }
+                else
+                {
+                    foreach (var footContent in footContentOauiList)
+                    {
+                        <div class="col-md-4 am-u-md-4" data-scrollspy="{animation:'scale-up', delay: 1000}">
+                            <h2>@Html.Raw(footContent.UiTitle)</h2>
+                            <p>@Html.Raw(footContent.UiMess)</p>
+                        </div>
+                    }
+                }
             </div>
         </section>
     </div>
@@ -193,7 +218,7 @@
                 <ul class="amz-links">
                     <li href="javascript:void(0)" class="am-icon-heart">&nbsp;利用技术手段提高办公效率</li>
                 </ul>
-                <p class="amz-cp">&copy; 2015 AllMobilize, Inc. Licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. Developed with <a href="http://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a>.</p>
+                <p class="amz-cp">&copy; 2016 杨尚洪,YSH, Inc. Licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. Developed with <a href="http://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a>.</p>
             </div>
         </div>
     </footer>
@@ -207,8 +232,8 @@
         </div>
     </div>
     <div class="amz-toolbar" id="amz-toolbar">
-     <a href="#top" data-am-smooth-scroll title="回到顶部" class="am-icon-btn am-icon-arrow-up" id="amz-go-top"></a>
-     <a href="#" title="常见问题" class="am-icon-faq am-icon-btn am-icon-question-circle"></a> 
+        <a href="#top" data-am-smooth-scroll title="回到顶部" class="am-icon-btn am-icon-arrow-up" id="amz-go-top"></a>
+        <a href="#" title="常见问题" class="am-icon-faq am-icon-btn am-icon-question-circle"></a>
     </div>
     <script src="@Url.Content("~/Scripts/js/homeIndex.js")"></script>
     <script>
@@ -248,3 +273,4 @@
     </script>
 </body>
 </html>
+
