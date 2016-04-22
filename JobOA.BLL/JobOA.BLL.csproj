@@ -63,10 +63,12 @@
     <Compile Include="Implement\OAUiManager.cs" />
     <Compile Include="Implement\ProjectManager.cs" />
     <Compile Include="Implement\RoleManager.cs" />
+    <Compile Include="Implement\SubTaskManager.cs" />
     <Compile Include="IOAMessageManager.cs" />
     <Compile Include="IOAUiManager.cs" />
     <Compile Include="IProjectManager.cs" />
     <Compile Include="IRoleManager.cs" />
+    <Compile Include="ISubTaskManager.cs" />
     <Compile Include="NinjectManagerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

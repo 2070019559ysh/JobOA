@@ -1,0 +1,223 @@
+﻿@model JobOA.Model.SubTask
+
+@using JobOA.Model
+@{
+    ViewBag.Title = "AddSubTask";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+    List<Department> departmentList = ViewBag.departmentList;
+    List<Employee> employeeList = ViewBag.employeeList;
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/datePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/modal.js")"></script>
+    <script type="text/javascript" src="~/Scripts/js/alertMess.js"></script>
+<script type="text/javascript" src="~/Scripts/plUpload/plupload.full.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/fileUpload.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/addSubTask.js"></script>
+}
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新增子任务</strong> / <small>Add SubTask</small></div>
+</div>
+
+<div style="margin:10px;">
+    <input type="hidden" id="mess" value="@ViewBag.mess" />
+    @using (Html.BeginForm("AddRecord", "AdminSubTask", FormMethod.Post))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(model => model.Id, new { value="0"})
+        @Html.HiddenFor(model => model.No)
+        <div class="am-nbfc am-margin">
+            <label for="Name" class="am-fl">子任务名：</label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "am-fl", placeholder = "输入子任务名" })
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Name)</em>
+        </div>
+        <div class="am-margin">
+            <label for="State">子任务状态：</label>
+            <div class="am-inline-block">@Html.EditorFor(m => m.State, "ListBox", ViewData["list"])</div>
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.State)</em>
+        </div>
+        <div class="am-nbfc am-margin">
+            <label for="IsSecrecy" class="am-fl">是否对非参与人员保密：</label>
+            @Html.CheckBoxFor(m => m.IsSecrecy, new { @class = "am-fl" })
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.IsSecrecy)</em>
+        </div>
+    <div class="am-margin">
+        <label for="ArrangePersonId">安排人：</label>
+        @{
+        if (departmentList != null && departmentList.Count > 0)
+        {
+            var selectDepId=departmentList[0].Id;
+            if(Model!=null&&Model.ArrangeEmployee!=null){
+                selectDepId = Model.ArrangeEmployee.DepartmentId;
+            }
+            ViewData["list"] = new SelectList(departmentList, "Id", "Name", selectDepId);
+        }
+        }
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
+        @{
+        if (employeeList != null && employeeList.Count > 0)
+        {
+            var selectEmpId = employeeList[0].Id;
+            if (Model != null)
+            {
+                selectEmpId = Model.ArrangePersonId;
+            }
+            ViewData["list"] = new SelectList(employeeList, "Id", "RealName", selectEmpId);
+        }
+        }
+        <div class="am-inline-block">@Html.EditorFor(m => m.ArrangePersonId, "ListBox")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.ArrangePersonId)</em>
+    </div>
+    <div class="am-margin">
+        <label for="ExePersonId">执行人：</label>
+        @{
+        if (departmentList != null && departmentList.Count > 0)
+        {
+            var selectDepId = departmentList[0].Id;
+            if (Model != null && Model.ExeEmployee != null)
+            {
+                selectDepId = Model.ExeEmployee.DepartmentId;
+            }
+            ViewData["list"] = new SelectList(departmentList, "Id", "Name", selectDepId);
+        }
+        }
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
+        @{
+        if (employeeList != null && employeeList.Count > 0)
+        {
+            var selectEmpId = employeeList[0].Id;
+            if (Model != null)
+            {
+                selectEmpId = Model.ExePersonId;
+            }
+            ViewData["list"] = new SelectList(employeeList, "Id", "RealName", selectEmpId);
+        }
+        }
+        <div class="am-inline-block">@Html.EditorFor(m => m.ExePersonId, "ListBox")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.ExePersonId)</em>
+    </div>
+    <div class="am-margin">
+        <label for="CheckPersonId">检查（验收）人：</label>
+        @{
+        if (departmentList != null && departmentList.Count > 0)
+        {
+            var selectDepId = departmentList[0].Id;
+            if (Model != null && Model.CheckEmployee != null)
+            {
+                selectDepId = Model.CheckEmployee.DepartmentId;
+            }
+            ViewData["list"] = new SelectList(departmentList, "Id", "Name", selectDepId);
+        }
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
+        if (employeeList != null && employeeList.Count > 0)
+        {
+            var selectEmpId = employeeList[0].Id;
+            if (Model != null)
+            {
+                selectEmpId = Model.CheckPersonId;
+            }
+            ViewData["list"] = new SelectList(employeeList, "Id", "RealName", selectEmpId);
+        }
+        }
+        <div class="am-inline-block">@Html.EditorFor(m => m.CheckPersonId, "ListBox")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.CheckPersonId)</em>
+    </div>
+    <div class="am-margin">
+        <label for="CheckPersonId">参与人（可以多人）：</label>
+        @{
+        if (departmentList != null && departmentList.Count > 0)
+        {
+            var selectDepId = departmentList[0].Id;
+            if (Model != null && Model.ExeEmployee != null)
+            {
+                selectDepId = Model.ExeEmployee.DepartmentId;
+            }
+            ViewData["list"] = new SelectList(departmentList, "Id", "Name", selectDepId);
+        }
+        }
+        <div class="department am-inline-block">@Html.Editor("department", "ListBox")</div>
+        @{
+        if (employeeList != null && employeeList.Count > 0)
+        {
+            List<int> selectId = new List<int>();
+            if (Model != null && Model.Participator != null)
+            {
+                var participators = Model.Participator.Split(',');
+                foreach (var partId in participators)
+                {
+                    selectId.Add(Convert.ToInt32(partId));
+                }
+            }
+            var participatorList= new SelectList(employeeList, "Id", "RealName", selectId);
+            ViewData["list"] = participatorList;
+        }
+        }
+        <div class="am-inline-block">@Html.EditorFor(m => m.Participator, "Selected")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Participator)</em>
+    </div>
+    <div class="am-margin">
+        @Html.LabelFor(model => model.StartTime)
+        <div class="am-inline-block">
+            @Html.EditorFor(model => model.StartTime, "DatePicker")
+        </div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(model => model.StartTime)</em>
+    </div>
+    <div class="am-margin">
+        @Html.LabelFor(model => model.CompleteTime)
+        <div class="am-inline-block">
+            @Html.EditorFor(model => model.CompleteTime, "DatePicker")
+        </div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(model => model.CompleteTime)</em>
+    </div>
+    <div class="am-margin">
+        @Html.LabelFor(m => m.TaskId)：
+        @{
+        List<MajorTask> recordList = ViewBag.TaskList;
+        if (recordList != null && recordList.Count > 0)
+        {
+            int selectTaskId = recordList[0].Id;
+            if (Model != null)
+            {
+                selectTaskId = Model.TaskId;
+            }
+            ViewData["list"] = new SelectList(recordList, "Id", "Name", selectTaskId);
+        }
+        }
+        <div class="am-inline-block">@Html.EditorFor(m => m.TaskId, "ListBox")</div>
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.TaskId)</em>
+    </div>
+        <div class="am-margin">
+            <label for="SubmissionThing" class="am-block">交付物说明：</label>
+            @Html.TextAreaFor(m => m.SubmissionThing, new { cols = "50", rows = "5" })
+            <em class="am-text-danger">@Html.ValidationMessageFor(m => m.SubmissionThing)</em>
+        </div>
+    <div class="am-margin">
+        <label for="CompletionCriteria" class="am-block">完成标准：</label>
+        @Html.TextAreaFor(m => m.CompletionCriteria, new { cols = "50", rows = "5" })
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.CompletionCriteria)</em>
+    </div>
+    <div class="am-margin">
+        <label for="WorkMethod" class="am-block">完成的思路/方法：</label>
+        @Html.TextAreaFor(m => m.WorkMethod, new { cols = "50", rows = "5" })
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.WorkMethod)</em>
+    </div>
+    <div class="am-margin">
+        <label for="Attachment" class="am-block">附件：</label>
+        <button type="button" id="upload-file" class="am-btn am-btn-secondary">上传附件</button>
+        @Html.HiddenFor(m=>m.Attachment)
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Attachment)</em>
+    </div>
+        
+    <div class="am-margin">
+        <label for="Progress" class="am-block">子任务进度：</label>
+        @Html.EditorFor(model => model.Progress, "Progress")
+        <em class="am-text-danger">@Html.ValidationMessageFor(m => m.Progress)</em>
+    </div>
+        <div class="am-form-group am-margin">
+            <button type="submit" class="am-btn am-btn-secondary">创建项目</button>
+            <button type="reset" class="am-btn am-btn-default">重置输入</button>
+        </div>
+    }
+</div>

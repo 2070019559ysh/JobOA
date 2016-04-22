@@ -140,6 +140,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\AdminSubTaskController.cs" />
     <Compile Include="Controllers\AdminTaskController.cs" />
     <Compile Include="Controllers\ErrorCatchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -295,10 +296,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\addSubTask.js" />
     <Content Include="Scripts\js\addMajorTask.js" />
     <Content Include="Scripts\js\addOaUi.js" />
     <Content Include="Scripts\js\adminDepartment.js" />
     <Content Include="Scripts\js\adminInbox.js" />
+    <Content Include="Scripts\js\adminRecord.js" />
     <Content Include="Scripts\js\adminProject.js" />
     <Content Include="Scripts\js\adminUiInfo.js" />
     <Content Include="Scripts\js\alertMess.js" />
@@ -356,6 +359,12 @@
     <Content Include="Views\AdminUiInfo\Index.cshtml" />
     <Content Include="Views\AdminUiInfo\AddOaui.cshtml" />
     <Content Include="Views\AdminUiInfo\UpdateOaui.cshtml" />
+    <Content Include="Views\AdminTask\UpdateMajorTask.cshtml" />
+    <Content Include="Views\AdminSubTask\Index.cshtml" />
+    <Content Include="Views\AdminSubTask\UpdateSubTask.cshtml" />
+    <Content Include="Views\AdminSubTask\AddSubTask.cshtml" />
+    <Content Include="Views\AdminSubTask\ParticipatorView.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Progress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

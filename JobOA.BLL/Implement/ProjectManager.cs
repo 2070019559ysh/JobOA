@@ -46,6 +46,44 @@ namespace JobOA.BLL.Implement
         }
 
         /// <summary>
+        /// 通过子任务Id查找项目信息
+        /// </summary>
+        /// <param name="subTaskId">子任务Id</param>
+        /// <returns>项目信息</returns>
+        public Project SearchProjectBySubTaskId(int subTaskId)
+        {
+            Project project = null;
+            try
+            {
+                project = ProjectService.SearchProjectBySubTaskId(subTaskId);
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(ex);
+            }
+            return project;
+        }
+
+        /// <summary>
+        /// 通过主任务Id查找项目信息
+        /// </summary>
+        /// <param name="taskId">主任务Id</param>
+        /// <returns>项目信息</returns>
+        public Project SearchProjectByTaskId(int taskId)
+        {
+            Project project = null;
+            try
+            {
+                project = ProjectService.SearchProjectByTaskId(taskId);
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(ex);
+            }
+            return project;
+        }
+
+        /// <summary>
         /// 查找所有项目
         /// </summary>
         /// <returns>所有项目的集合</returns>

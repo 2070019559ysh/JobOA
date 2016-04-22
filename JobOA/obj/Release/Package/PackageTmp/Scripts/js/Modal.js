@@ -65,6 +65,7 @@ function Modal(title,id) {
                 relatedTarget: this,
                 onConfirm: confirmFun
             });
+            $('#' + this.id).click();
         }
         /*模拟confirm
          content是内容支持html格式
@@ -91,6 +92,7 @@ function Modal(title,id) {
                 closeOnConfirm: isClose,
                 onCancel: cancelFun
             });
+            $('#' + this.id).click();
         }
         /*模拟prompt
          content是提示内容支持html格式

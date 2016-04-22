@@ -28,6 +28,13 @@ namespace JobOA.DAL
         List<MajorTask> SearchMajorTaskByName(string name);
 
         /// <summary>
+        /// 查找指定部门下的所有主任务
+        /// </summary>
+        /// <param name="departmentId">部门id</param>
+        /// <returns>主任务集合</returns>
+        List<MajorTask> SearchAllMajorTask(int departmentId);
+
+        /// <summary>
         /// 根据查询任务条件查找所有主任务
         /// </summary>
         /// <param name="searchCondition">查询任务条件</param>

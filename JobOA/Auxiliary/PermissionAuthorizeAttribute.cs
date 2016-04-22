@@ -64,7 +64,7 @@ namespace JobOA.Auxiliary
             if (passRole==null)
             {
                 // 登录但没权限
-                filterContext.HttpContext.Response.Redirect(NoAuthority);
+                filterContext.HttpContext.Response.Redirect(NoAuthority,true);
             }
         }
 

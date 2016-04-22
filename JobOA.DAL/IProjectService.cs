@@ -16,8 +16,23 @@ namespace JobOA.DAL
         /// <summary>
         /// 通过Id查找项目信息
         /// </summary>
+        /// <param name="id">项目Id</param>
         /// <returns>项目信息</returns>
         Project SearchProjectById(int id);
+
+        /// <summary>
+        /// 通过子任务Id查找项目信息
+        /// </summary>
+        /// <param name="subTaskId">子任务Id</param>
+        /// <returns>项目信息</returns>
+        Project SearchProjectBySubTaskId(int subTaskId);
+
+        /// <summary>
+        /// 通过主任务Id查找项目信息
+        /// </summary>
+        /// <param name="taskId">主任务Id</param>
+        /// <returns>项目信息</returns>
+        Project SearchProjectByTaskId(int taskId);
 
         /// <summary>
         /// 查找所有项目

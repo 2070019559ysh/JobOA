@@ -49,6 +49,11 @@ namespace JobOA.Controllers
             List<Employee> offLineEmp = new List<Employee>();//离线员工
             employeeList.ForEach(emp =>
             {
+                string[] pictures=emp.HeadPicture.Split(',');
+                if (pictures.Length > 0)
+                {
+                    emp.HeadPicture = pictures[0];
+                }
                 if (emp.OnlineState == (int)OnlineState.onLine)
                 {
                     onLineEmp.Add(emp);

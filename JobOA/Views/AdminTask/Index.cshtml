@@ -17,13 +17,12 @@
     string nowDepartment = String.Empty;//当前部门名
 }
 
-@section css{
-}
+
 @section scripts{
-    <!--<script src="@Url.Content("~/Scripts/js/modal.js")"></script>-->
+    <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
     <script src="@Url.Content("~/Scripts/js/majorTaskManager.js")"></script>
 }
-
+<input type="hidden" id="mess" value="@TempData["Mess"]"/>
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">所有主任务</strong> / <small>All Primary Task</small></div>
 </div>
@@ -65,9 +64,9 @@
     </div>
     <div class="am-u-sm-12 am-u-md-6 am-u-lg-4 am-margin-top-sm am-margin-bottom-sm">
         <div class="am-input-group  am-input-group-sm">
-            <input id="search-text" type="text" class="am-form-field" placeholder="请输入任务名">
+            <input id="search-text" type="text" value="@search" class="am-form-field" placeholder="请输入任务名">
             <span class="am-input-group-btn">
-                <button class="am-btn am-btn-success" type="button">搜索</button>
+                <button id="search-btn" class="am-btn am-btn-success" type="button">搜索</button>
             </span>
         </div>
     </div>
@@ -75,7 +74,7 @@
 
 <div class="am-g">
     <div class="am-u-sm-12">
-        <button onclick="javascript:location.href='AddMajorTask';" type="button" class="am-btn am-btn-secondary am-btn-sm"><span class="am-icon-plus"></span> 新增主任务</button>
+        <button onclick="javascript: location.href = '/AdminTask/AddMajorTask';" type="button" class="am-btn am-btn-secondary am-btn-sm"><span class="am-icon-plus"></span> 新增主任务</button>
     </div>
 </div>
 
@@ -91,14 +90,18 @@
                 {
                     <li class="am-padding">
                         <h4>@majorTask.Name</h4>
-                        <em>ID:1</em>
+                        <em>ID:<span class="majortask-id">@majorTask.Id</span></em>
                         <section class="am-g">
                             <span class="am-u-sm-12 am-u-lg-4">执行人：
                             <img src="@majorTask.ExeEmployee.HeadPicture" width="20" height="20"/>
                             @majorTask.ExeEmployee.RealName
                             </span>
-                            <span class="am-u-sm-12 am-u-lg-4">安排人：@majorTask.ArrangeEmployee.RealName</span>
-                            <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：@majorTask.CheckEmployee.RealName</span>
+                            <span class="am-u-sm-12 am-u-lg-4">安排人：
+                                <img src="@majorTask.ArrangeEmployee.HeadPicture" width="20" height="20" />
+                            @majorTask.ArrangeEmployee.RealName</span>
+                            <span class="am-u-sm-12 am-u-lg-4">检查（验收）人：
+                                <img src="@majorTask.CheckEmployee.HeadPicture" width="20" height="20" />
+                            @majorTask.CheckEmployee.RealName</span>
                             <span class="am-u-sm-12 am-u-lg-12">
                                 参与人：
                                 @{
@@ -116,15 +119,21 @@
                         <section class="am-g">
                             <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
                                 附件：@majorTask.Attachment
-                                <button type="button" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-download"></span>下载附件</button>
+                                @if (majorTask.Attachment == null)
+                                {
+                                    <span>暂无附件</span>
+                                }
+                                else { 
+                                    <button type="button" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-download"></span>下载附件</button>
+                                }
                             </div>
                             <div class="am-u-sm-12 am-u-lg-6 am-margin-top-xs">
                                 <span class="am-block am-fl">操作：</span>
                                 <div class="am-btn-toolbar am-fl">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                        <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-tasks"></span> 子任务</button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                        <button class="update-record am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                        <button class="lookup-subtask am-btn am-btn-default am-btn-xs"><span class="am-icon-tasks"></span> 子任务</button>
+                                        <button class="del-record am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,11 +1,10 @@
-#����.sln��Ŀ�ļ�
+﻿#����.sln��Ŀ�ļ�
 *.sln
 *.suo
 *.dll
 *.pdb
 *.cache
 *.log
-/obj
 JobOA/obj/
 JobOA.BLL/obj/
 JobOA.DAL/obj/
@@ -14,3 +13,4 @@ JobOA.BLL.Tests/obj/
 JobOA.DAL.Tests/obj/
 JobOA.Model/obj/
 .vs/
+*.force
