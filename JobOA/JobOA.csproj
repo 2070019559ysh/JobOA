@@ -302,6 +302,7 @@
     <Content Include="Scripts\js\adminProject.js" />
     <Content Include="Scripts\js\adminUiInfo.js" />
     <Content Include="Scripts\js\alertMess.js" />
+    <Content Include="Scripts\js\cookie.js" />
     <Content Include="Scripts\js\majorTaskManager.js" />
     <Content Include="Scripts\js\chineseToPinYin.js" />
     <Content Include="Scripts\js\adminHome.js" />

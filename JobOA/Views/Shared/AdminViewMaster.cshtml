@@ -77,7 +77,7 @@
                     <li><a href="/AdminProject/Index"><span class="am-icon-pencil-square-o"></span>公司项目管理</a></li>
                     <li class="admin-parent">
                         <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>任务管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
                             <li><a href="/AdminTask/Index" class="am-cf"><span class="am-icon-check"></span>所有任务<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
                             <li><a href="/AdminTask/Mine"><span class="am-icon-puzzle-piece"></span>我的任务<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
                             <li><a href="/AdminTask/Arrange"><span class="am-icon-th"></span>安排的任务</a></li>
@@ -111,20 +111,7 @@
                     <li><a href="admin-form.html"><span class="am-icon-pencil-square-o"></span>附件管理</a></li>
                     <li><a href="/Account/SignOut"><span class="am-icon-sign-out"></span>注销</a></li>
                 </ul>
-
-                <div class="am-panel am-panel-default admin-sidebar-panel">
-                    <div class="am-panel-bd">
-                        <p><span class="am-icon-bookmark"></span> 公告</p>
-                        <p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
-                    </div>
-                </div>
-
-                <div class="am-panel am-panel-default admin-sidebar-panel">
-                    <div class="am-panel-bd">
-                        <p><span class="am-icon-tag"></span> wiki</p>
-                        <p>Welcome to the Amaze UI wiki!</p>
-                    </div>
-                </div>
+                @Html.Action("LoadRemark", "AdminHome")
             </div>
         </div>
         <!-- sidebar end -->
@@ -150,6 +137,7 @@
         <script src="@Url.Content("~/Scripts/assets/js/amazeui.ie8polyfill.min.js")"></script>
     <![endif]-->
     <script src="@Url.Content("~/Scripts/assets/js/amazeui.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/js/cookie.js")"></script>
     <script src="@Url.Content("~/Scripts/assets/js/app.js")"></script>
     <script src="@Url.Content("~/Scripts/js/masterHeadPicture.js")"></script>
     @RenderSection("scripts", required: false)
