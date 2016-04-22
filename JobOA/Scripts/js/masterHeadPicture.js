@@ -21,7 +21,10 @@
     //使用本地存储记录当前选择的菜单
     var liMenuIndex = window.localStorage.getItem("liIndex");
     var openMenuId = window.localStorage.getItem("amIn");
-    if (liMenuIndex) {
+    if (window.location.href.indexOf("/AdminHome/Index") > 0) {
+        $("#admin-offcanvas").find("li:eq(0)").css("background-color", "#3bb4f2");
+
+    }else if (liMenuIndex) {
         $("#admin-offcanvas").find("li:eq(" + liMenuIndex + ")").css("background-color", "#3bb4f2");
     } else {
         $("#admin-offcanvas").find("li:eq(0)").css("background-color", "#3bb4f2");
