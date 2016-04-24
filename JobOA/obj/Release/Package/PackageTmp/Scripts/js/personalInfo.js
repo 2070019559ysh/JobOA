@@ -29,7 +29,7 @@
     var uploadFile = new UploadFile(".oa-upload", "/PersonalInfo/UploadImg", true, {
         mime_types: [{
             title: 'image files',
-            extensions: 'gif,png,jpg,ico'
+            extensions: 'gif,png,jpg,ico,jpeg'
         }],
         max_file_size: '4096kb',//不能大于4mb
         prevent_duplicates: true //不允许选取重复文件，大小和名字相同
@@ -81,7 +81,7 @@
     }
     eventFunc();
     //每上传完一个图片就重新请求图片进行显示出来
-    var callbackFunc = function () {
+    var callbackFunc = function (responseObj) {
         $.ajax({
             url: "GetHeadPicture",
             type: "POST",
@@ -101,7 +101,7 @@
             async: true
         });
     }
-    uploadFile.fileDialog(callbackFunc);
+    uploadFile.fileDialog("browseFile",null,callbackFunc);
 
     $("form").submit(function () {
         var src=$("#headImg").attr("src");

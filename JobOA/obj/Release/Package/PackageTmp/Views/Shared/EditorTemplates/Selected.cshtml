@@ -1,7 +1,7 @@
 ﻿@{
     SelectList selectList = ViewData["list"] as SelectList;
 }
-<select name="@ViewData.ModelMetadata.PropertyName" multiple data-am-selected="{btnSize: 'sm', btnStyle: 'secondary',maxHeight: 150,searchBox: 1}">
+<select name="@ViewData.TemplateInfo.HtmlFieldPrefix" multiple data-am-selected="{btnSize: 'sm', btnStyle: 'secondary',maxHeight: 150,searchBox: 1}">
     @if (selectList != null)
     {
         foreach (var item in selectList)

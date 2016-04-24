@@ -1,4 +1,4 @@
-﻿
+﻿@using JobOA.Model
 @{
     //随机选择一种显示方式
     Random rand = new Random();
@@ -15,10 +15,12 @@
     {
         amSlider = "'controlNav':'thumbnails',";
     }
+    List<OAUi> pictureOauiList = ViewBag.PictureOauiList;
 }
-<div data-am-widget="slider" class="am-slider am-slider-@sliders[num]" data-am-slider='{@amSlider"directionn":false}'>
+<div data-am-widget="slider" class="am-slider am-slider-@sliders[num]" data-am-slider='{@amSlider"directionn":false}' data-am-flexslider="{playAfterPaused: 8000}">
     <ul class="am-slides">
         @{
+            if (pictureOauiList == null) { 
             for (var i = 1; i <= 4; i++)
             {
                 string minImg = String.Empty;
@@ -36,7 +38,7 @@
                     }
                     else if (sliders[num].Equals("c3"))
                     {
-                        <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>远方 有一个地方 那里种有我们的梦想</div>
+                        <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">@i</span>/4</div>远方 有一个地方 那里种有我们的梦想</div>
                     }
                     else if (sliders[num].Equals("d1"))
                     {
@@ -56,7 +58,47 @@
                     }
                 </li>
             }
-        }
+            }
+            else
+            {
+                for (var i = 0; i < 4; i++)
+                {
+                    string minImg = String.Empty;
+                    string img = "/Content/images/oaui/"+pictureOauiList[i].UiImg;
+                    if (sliders[num].Equals("d3"))
+                    {
+                        minImg = "data-thumb='/Content/images/oaui/" + pictureOauiList[i].UiImg+"'";
+                    }
+                    <li @minImg>
+                        <img src="@img" title="@pictureOauiList[i].UiTitle">
+                        @if (sliders[num].Equals("c1") || sliders[num].Equals("c2") || sliders[num].Equals("c4"))
+                        {
+                            <div class="am-slider-desc">@pictureOauiList[i].UiMess</div>
+                        }
+                        else if (sliders[num].Equals("c3"))
+                        {
+                            <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">@(i+1)</span>/4</div>@pictureOauiList[i].UiMess</div>
+                        }
+                        else if (sliders[num].Equals("d1"))
+                        {
+                            <div class="am-slider-desc"><h2 class="am-slider-title">@pictureOauiList[i].UiMess</h2><span class="am-slider-more">了解更多</span></div>
+                        }
+                        else if (sliders[num].Equals("d2"))
+                        {
+                            <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">@pictureOauiList[i].UiTitle</h2><p>@pictureOauiList[i].UiMess</p></div><a class="am-slider-more">了解更多</a></div>
+                        }
+                        else if (sliders[num].Equals("d2"))
+                        {
+                            <div class="am-slider-desc"><div class="am-slider-content"><h2 class="am-slider-title">@pictureOauiList[i].UiTitle</h2><p>@pictureOauiList[i].UiMess</p></div><a class="am-slider-more">了解更多</a></div>
+                        }
+                        else if (sliders[num].Equals("d3"))
+                        {
+                            <div class="am-slider-desc"><h2 class="am-slider-title">@pictureOauiList[i].UiTitle</h2><p>@pictureOauiList[i].UiMess</p></div>
+                        }
+                    </li>
+                }
+            }
+}
     </ul>
 </div>
 

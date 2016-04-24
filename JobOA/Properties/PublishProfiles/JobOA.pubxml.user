@@ -19,19 +19,19 @@
       <publishTime>12/27/2015 21:03:40</publishTime>
     </File>
     <File Include="bin/JobOA.BLL.dll">
-      <publishTime>04/04/2016 14:47:36</publishTime>
+      <publishTime>04/24/2016 08:23:55</publishTime>
     </File>
     <File Include="bin/JobOA.Common.dll">
-      <publishTime>04/04/2016 14:47:35</publishTime>
+      <publishTime>04/24/2016 08:23:54</publishTime>
     </File>
     <File Include="bin/JobOA.DAL.dll">
-      <publishTime>04/04/2016 14:47:36</publishTime>
+      <publishTime>04/24/2016 08:23:54</publishTime>
     </File>
     <File Include="bin/JobOA.dll">
-      <publishTime>04/04/2016 14:47:37</publishTime>
+      <publishTime>04/24/2016 08:23:55</publishTime>
     </File>
     <File Include="bin/JobOA.Model.dll">
-      <publishTime>04/04/2016 14:47:35</publishTime>
+      <publishTime>04/24/2016 08:23:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>12/27/2015 21:03:41</publishTime>
@@ -97,7 +97,7 @@
       <publishTime>12/27/2015 21:03:41</publishTime>
     </File>
     <File Include="Content/css/adminHome.css">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Content/css/homeIndex.css">
       <publishTime>12/05/2015 16:54:57</publishTime>
@@ -166,7 +166,7 @@
       <publishTime>11/28/2015 22:22:59</publishTime>
     </File>
     <File Include="Content/images/userImg/mytou.jpg">
-      <publishTime>11/07/2015 20:42:58</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/07/2015 20:41:24</publishTime>
@@ -526,13 +526,19 @@
       <publishTime>11/07/2015 20:41:27</publishTime>
     </File>
     <File Include="Scripts/js/addMajorTask.js">
-      <publishTime>04/04/2016 13:16:33</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
+    <File Include="Scripts/js/addOaUi.js">
+      <publishTime>04/23/2016 00:09:08</publishTime>
+    </File>
+    <File Include="Scripts/js/addSubTask.js">
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Scripts/js/adminDepartment.js">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Scripts/js/adminHome.js">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Scripts/js/adminInbox.js">
       <publishTime>04/04/2016 09:51:46</publishTime>
@@ -540,8 +546,14 @@
     <File Include="Scripts/js/adminProject.js">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
+    <File Include="Scripts/js/adminRecord.js">
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
+    <File Include="Scripts/js/adminUiInfo.js">
+      <publishTime>04/23/2016 00:09:08</publishTime>
+    </File>
     <File Include="Scripts/js/alertMess.js">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Scripts/js/allMajorTaskIndex.js">
       <publishTime>03/06/2016 23:02:54</publishTime>
@@ -549,23 +561,26 @@
     <File Include="Scripts/js/ChineseToPinYin.js">
       <publishTime>11/21/2015 20:27:26</publishTime>
     </File>
+    <File Include="Scripts/js/cookie.js">
+      <publishTime>04/23/2016 00:09:08</publishTime>
+    </File>
     <File Include="Scripts/js/fileUpload.js">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Scripts/js/homeIndex.js">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Scripts/js/majorTaskManager.js">
-      <publishTime>04/04/2016 13:40:12</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Scripts/js/masterHeadPicture.js">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:23:20</publishTime>
     </File>
     <File Include="Scripts/js/Modal.js">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Scripts/js/personalInfo.js">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Scripts/js/register.js">
       <publishTime>12/06/2015 13:23:27</publishTime>
@@ -592,13 +607,13 @@
       <publishTime>11/07/2015 20:41:28</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/AdminHome/Index.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/Administration/Index.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>
@@ -607,22 +622,43 @@
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Views/AdminProject/Index.cshtml">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/AdminProject/UpdateProject.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
+    <File Include="Views/AdminSubTask/AddSubTask.cshtml">
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
+    <File Include="Views/AdminSubTask/Index.cshtml">
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
+    <File Include="Views/AdminSubTask/ParticipatorView.cshtml">
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
+    <File Include="Views/AdminSubTask/UpdateSubTask.cshtml">
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
     <File Include="Views/AdminTask/AddMajorTask.cshtml">
-      <publishTime>04/04/2016 13:17:40</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/AdminTask/Index.cshtml">
-      <publishTime>04/04/2016 14:20:56</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/AdminTask/ParticipatorView.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Views/AdminTask/UpdateMajorTask.cshtml">
-      <publishTime>04/04/2016 13:07:43</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
+    </File>
+    <File Include="Views/AdminUiInfo/AddOaui.cshtml">
+      <publishTime>04/23/2016 00:09:08</publishTime>
+    </File>
+    <File Include="Views/AdminUiInfo/Index.cshtml">
+      <publishTime>04/23/2016 00:09:08</publishTime>
+    </File>
+    <File Include="Views/AdminUiInfo/UpdateOaui.cshtml">
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Views/ErrorCatch/Error.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>
@@ -634,37 +670,40 @@
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Views/PersonalInfo/Inbox.cshtml">
       <publishTime>04/04/2016 09:51:46</publishTime>
     </File>
     <File Include="Views/PersonalInfo/Information.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/Shared/AdminViewMaster.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/Shared/DisplayTemplates/Pager.cshtml">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Views/Shared/DisplayTemplates/ProgressState.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Views/Shared/DisplayTemplates/Slider.cshtml">
-      <publishTime>11/13/2015 00:16:07</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/DatePicker.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/ListBox.cshtml">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/Progress.cshtml">
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Selected.cshtml">
-      <publishTime>03/06/2016 23:02:54</publishTime>
+      <publishTime>04/23/2016 00:09:08</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>04/04/2016 09:51:46</publishTime>
+      <publishTime>04/23/2016 00:09:32</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>03/06/2016 23:02:54</publishTime>

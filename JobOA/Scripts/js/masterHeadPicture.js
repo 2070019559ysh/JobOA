@@ -18,6 +18,22 @@
         });
     }
 
+    //加载公告信息
+    $.ajax({
+        url: "/AdminHome/LoadRemark",
+        type: "GET",
+        error: function (xhr,statusText,thrown) {
+            if (xhr.status !== 200) {
+                $("#head-picture").append("<div class=\"am-panel am-panel-default admin-sidebar-panel\"><div class=\"am-panel-bd\"><p><span class=\"am-icon-bookmark\"></span> &nbsp;公告</p><p>加载公告信息失败" + xhr.status + " " + statusText + " " + thrown + "</p></div></div>");
+            }
+        },
+        success: function (data) {
+            $("#admin-offcanvas .am-offcanvas-bar").append(data);
+        },
+        async: true,
+        dataType: "html"
+    });
+
     //使用本地存储记录当前选择的菜单
     var liMenuIndex = window.localStorage.getItem("liIndex");
     var openMenuId = window.localStorage.getItem("amIn");
