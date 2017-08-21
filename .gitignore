@@ -14,3 +14,4 @@ JobOA.Model/obj/
 .vs/
 *.force
 JobOA/bin/
+*/bin/*

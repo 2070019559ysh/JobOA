@@ -85,7 +85,8 @@ namespace JobOA.DAL.Tests
         [Test]
         public void DeleteOAUiTest()
         {
-            int actual = _oaUiService.DeleteOAUi(_deleteId[0]);
+            OAUi oaui;
+            int actual = _oaUiService.DeleteOAUi(_deleteId[0],out oaui);
             _deleteId[0] = 0;//标志已经删除，测试完成时不要再重复删除此记录
             Assert.AreEqual(1, actual);
         }
