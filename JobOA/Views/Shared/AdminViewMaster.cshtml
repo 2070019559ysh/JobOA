@@ -1,4 +1,6 @@
 ﻿@using JobOA.Model
+@using JobOA.Common
+
 <!DOCTYPE html>
 <!--[if lte IE 7 ]><html class="no-js ie lte7 lte8 lte9 "><![endif]-->
 <!--[if IE 8 ]><html class="no-js ie ie8 lte8 lte9 "><![endif]-->
@@ -22,6 +24,11 @@
     <link rel="stylesheet" href="@Url.Content("~/Scripts/assets/css/amazeui.min.css")">
     <link rel="stylesheet" href="@Url.Content("~/Scripts/assets/css/amaze.min.css")">
     <link rel="stylesheet" href="@Url.Content("~/Scripts/assets/css/admin.css")">
+    <style type="text/css">
+        .background{
+            background-color: rgb(59, 180, 242) !important;
+        }
+    </style>
     @RenderSection("css", required: false)
 </head>
 <body class="amz-index" data-amui="2.x">
@@ -67,44 +74,50 @@
             </ul>
         </div>
     </header>
-
+    @{
+        string requestUrl=Request.Url.ToString();
+        int httpEnd = requestUrl.IndexOf("//");
+        requestUrl = requestUrl.Substring(httpEnd + 2);
+        int domainEnd = requestUrl.IndexOf("/");
+        requestUrl = requestUrl.Substring(domainEnd);
+    }
     <div class="am-cf admin-main">
         <!-- sidebar start -->
         <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
             <div class="am-offcanvas-bar admin-offcanvas-bar">
                 <ul class="am-list admin-sidebar-list">
-                    <li><a href="/AdminHome/Index"><span class="am-icon-home"></span>首页</a></li>
-                    <li><a href="/AdminProject/Index"><span class="am-icon-pencil-square-o"></span>公司项目管理</a></li>
+                    <li class="@requestUrl.IsNowUrl("/AdminHome/Index")"><a href="/AdminHome/Index"><span class="am-icon-home"></span>首页</a></li>
+                    <li class="@requestUrl.IsNowUrl("/AdminProject/Index")"><a href="/AdminProject/Index"><span class="am-icon-pencil-square-o"></span>公司项目管理</a></li>
                     <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>任务管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
-                            <li><a href="/AdminTask/Index" class="am-cf"><span class="am-icon-check"></span>所有任务<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-                            <li><a href="/AdminTask/Index?lookupType=0"><span class="am-icon-puzzle-piece"></span>我的任务<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
-                            <li><a href="/AdminTask/Index?lookupType=1"><span class="am-icon-th"></span>安排的任务</a></li>
+                        <a class="am-cf @requestUrl.IsAmCollapsed("AdminTask")" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>任务管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub @requestUrl.IsAmIn("AdminTask")" id="collapse-nav">
+                            <li class="@requestUrl.IsNowUrl("/AdminTask/Index")"><a href="/AdminTask/Index" class="am-cf"><span class="am-icon-check"></span>所有任务<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                            <li class="@requestUrl.IsNowUrl("/AdminTask/Index?lookupType=0")"><a href="/AdminTask/Index?lookupType=0"><span class="am-icon-puzzle-piece"></span>我的任务<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+                            <li class="@requestUrl.IsNowUrl("/AdminTask/Index?lookupType=1")"><a href="/AdminTask/Index?lookupType=1"><span class="am-icon-th"></span>安排的任务</a></li>
                         </ul>
                     </li>
                     <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span>个人信息管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
-                            <li><a href="/PersonalInfo/Information" class="am-cf"><span class="am-icon-check"></span>个人资料</a></li>
-                            <li><a href="/PersonalInfo/UpdatePassword"><span class="am-icon-puzzle-piece"></span>修改密码</a></li>
-                            <li><a href="/PersonalInfo/Inbox"><span class="am-icon-puzzle-piece"></span>收件箱</a></li>
+                        <a class="am-cf @requestUrl.IsAmCollapsed("PersonalInfo")" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span>个人信息管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub @requestUrl.IsAmIn("PersonalInfo")" id="collapse-nav1">
+                            <li class="@requestUrl.IsNowUrl("/PersonalInfo/Information")"><a href="/PersonalInfo/Information" class="am-cf"><span class="am-icon-check"></span>个人资料</a></li>
+                            <li class="@requestUrl.IsNowUrl("/PersonalInfo/UpdatePassword")"><a href="/PersonalInfo/UpdatePassword"><span class="am-icon-puzzle-piece"></span>修改密码</a></li>
+                            <li class="@requestUrl.IsNowUrl("/PersonalInfo/Inbox")"><a href="/PersonalInfo/Inbox"><span class="am-icon-puzzle-piece"></span>收件箱</a></li>
                         </ul>
                     </li>
                     <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span>行政管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-                            <li><a href="/Administration/Index" class="am-cf"><span class="am-icon-check"></span>部门信息</a></li>
-                            <li><a href="/Administration/Mine"><span class="am-icon-puzzle-piece"></span>员工信息</a></li>
+                        <a class="am-cf @requestUrl.IsAmCollapsed("Administration")" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span>行政管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub @requestUrl.IsAmIn("Administration")" id="collapse-nav2">
+                            <li class="@requestUrl.IsNowUrl("/Administration/Index")"><a href="/Administration/Index" class="am-cf"><span class="am-icon-check"></span>部门信息</a></li>
+                            <li class="@requestUrl.IsNowUrl("/Administration/Mine")"><a href="/Administration/Mine"><span class="am-icon-puzzle-piece"></span>员工信息</a></li>
                             <li><a href="/Administration/Mine"><span class="am-icon-puzzle-piece"></span>角色信息</a></li>
-                            <li><a href="/Administration/Arrange"><span class="am-icon-th"></span>报表统计</a></li>
+                            <li class="@requestUrl.IsNowUrl("/Administration/Arrange")"><a href="/Administration/Arrange"><span class="am-icon-th"></span>报表统计</a></li>
                         </ul>
                     </li>
                     <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span>系统管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+                        <a class="am-cf @requestUrl.IsAmCollapsed("AdminUiInfo")" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span>系统管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub @requestUrl.IsAmIn("AdminUiInfo")" id="collapse-nav3">
                             <li><a href="/AdminTask/Index" class="am-cf"><span class="am-icon-bug"></span>系统日志</a></li>
-                            <li><a href="/AdminUiInfo/Index"><span class="am-icon-puzzle-piece"></span>系统界面信息</a></li>
+                            <li class="@requestUrl.IsNowUrl("/AdminUiInfo/Index")"><a href="/AdminUiInfo/Index"><span class="am-icon-puzzle-piece"></span>系统界面信息</a></li>
                             <li><a href="/AdminTask/Arrange"><span class="am-icon-calendar"></span>信息发送维护</a></li>
                         </ul>
                     </li>

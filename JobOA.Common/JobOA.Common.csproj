@@ -46,6 +46,7 @@
     <Compile Include="MD5Encrypt.cs" />
     <Compile Include="Model\SmsInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestUrl.cs" />
     <Compile Include="SendingEmail.cs" />
     <Compile Include="SendingSMS.cs" />
     <Compile Include="VerificationCode.cs" />

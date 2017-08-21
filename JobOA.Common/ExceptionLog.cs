@@ -116,7 +116,7 @@ namespace JobOA.Common
         /// <param name="ex">异常对象</param>
         public void RecordLog(Exception ex)
         {
-            StringBuilder exmessBuilder = new StringBuilder(DateTime.Now.ToString("yyyy-y-d HH:mm:ss"));
+            StringBuilder exmessBuilder = new StringBuilder(DateTime.Now.ToString("yyyy-M-d HH:mm:ss"));
             exmessBuilder.Append(" 发生异常：");
             exmessBuilder.Append(ex.Message);
             exmessBuilder.Append("  异常堆栈：");

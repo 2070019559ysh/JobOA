@@ -1,5 +1,4 @@
 ﻿#����.sln��Ŀ�ļ�
-*.sln
 *.suo
 *.dll
 *.pdb
@@ -14,3 +13,4 @@ JobOA.DAL.Tests/obj/
 JobOA.Model/obj/
 .vs/
 *.force
+JobOA/bin/

@@ -20,7 +20,8 @@ namespace JobOA.Common.Tests
         public void SendMessageWithAttachmentTest()
         {
             //SendingEmail sendEmail = new SendingEmail("smtp.qq.com", "2070019559@qq.com", "503104plkj");
-            SendingEmail sendEmail = new SendingEmail("smtp.163.com", "tow070019559@163.com", "503104plkj");
+            //SendingEmail sendEmail = new SendingEmail("smtp.163.com", "tow070019559@163.com", "503104plkj");
+            SendingEmail sendEmail = new SendingEmail("192.168.1.10", "ysh@develop.com", "503104plkj");
             sendEmail.ToList.Add("2070019559@qq.com");//2756161282@qq.com//smtp.163.com
             sendEmail.Subject = "早来的光棍节祝贺";
             sendEmail.Body = "<h4>今天是2016年11月11日，祝单身的我们：光棍节快乐！</h4>";

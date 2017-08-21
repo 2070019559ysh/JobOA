@@ -103,13 +103,13 @@ GO
 --主任务
 INSERT INTO MajorTask(Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
 VALUES('开发界面',1,1,1,1,'2016-02-07 05:12:23.000','2016-05-27 14:51:55.000','2016-04-04 10:01:36.643',0,0,1)
-INSERT INTO MajorTask(Id, Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
+INSERT INTO MajorTask(Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
 VALUES('开发界面',1,1,1,1,'2016-02-07 05:12:23.000','2016-04-04 10:01:52.000','2016-04-04 10:01:56.753',0,0,2)
-INSERT INTO MajorTask(Id, Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
+INSERT INTO MajorTask(Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, [State], IsSecrecy, ProjectId)
 VALUES('开发后台代码',1,1,1,1,'2016-04-04 10:02:11.000','2016-04-06 10:02:13.000','2016-04-04 10:02:16.000',0,0,1)
 GO
 --子任务
 INSERT INTO SubTask([No], Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, TaskId, [State], IsSecrecy, SubmissionThing, CompletionCriteria, WorkMethod, Progress)
 VALUES('1-1','构思界面框架',1,1,1,1,'2016-04-04 15:43:52.000','2016-04-05 15:43:57.000','2016-04-04 15:44:14.000',1,0,0,'界面设计图片','预览图片要到达一目了然效果','用ps和Dw设计',20)
-INSERT INTO SubTask(Id, [No], Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, TaskId, [State], IsSecrecy, SubmissionThing, CompletionCriteria, WorkMethod, Progress)
+INSERT INTO SubTask([No], Name, ArrangePersonId, ExePersonId, CheckPersonId, Participator, StartTime, CompleteTime, CreateTime, TaskId, [State], IsSecrecy, SubmissionThing, CompletionCriteria, WorkMethod, Progress)
 VALUES('2-1','html和css设计静态页面',1,1,1,1,'2016-04-04 15:49:02.000','2016-04-02 15:49:07.000','2016-04-04 15:49:18.000',2,0,0,'静态网页源码文件','提供给后台开发人员使用，基本操作简明','用Dw和Blend',15)
