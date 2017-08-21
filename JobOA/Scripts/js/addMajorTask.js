@@ -58,6 +58,8 @@
         $.ajax({
             url: "AddMajorTask",
             data: {
+                "Id": $("#Id").val(),
+                "CreateTime":$("#CreateTime").val(),
                 "Name": taskName,
                 "ArrangePersonId": arrangePersonId,
                 "ExePersonId": exePersonId,
@@ -79,7 +81,7 @@
             success: function (data) {
                 if (data.result) {
                     modal.alert(data.text, function () {
-                        window.location.href = "Index";
+                        window.location.href = "/AdminTask";
                     });
                 } else {
                     modal.alert(data.text);

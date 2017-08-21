@@ -1,0 +1,13 @@
+JobOA系统配置了Session服务器端信息存储在ASPState数据库，请用一下方式创建：
+
+ASP.NET 2.0版本后微软提供了aspnet_regsql.exe工具可以方便的配置Session数据库，该工具位于 Web 服务器上的"系统根目录\Microsoft.NET\Framework\版本号"文件夹中.
+使用举例:
+aspnet_regsql.exe -S . -U session_user -P Session@Pwd -ssadd -sstype p
+-S参数:
+表示数据库实例名称. 可以用"."表示本机，你也可以指定机器，如10.7.11.110等
+-U和-P参数:
+表示用户名和密码.
+-E参数:
+可以再-U –P 与 -E中选择一组. –E表示以当前系统用户通过windows身份验证登录数据库, -U -P则是使用SqlServer用户登录数据库.
+-ssadd / –ssremove 参数:
+-ssadd表示是添加Session数据库, -ssremove表示移除Session数据库.

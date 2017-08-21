@@ -280,5 +280,16 @@ namespace JobOA.Controllers
             Employee employee=EmployeeManager.SearchEmployeeByUserName(User.Identity.Name);
             return Json(employee, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 退出账号，注销
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public void SignOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Response.Redirect("/Home/Index", true);
+        }
     }
 }

@@ -13,6 +13,21 @@ namespace JobOA.DAL.Implement
     public class EmployeeService : IEmployeeService
     {
         /// <summary>
+        /// 查找所有员工信息
+        /// </summary>
+        /// <returns>所有员工信息</returns>
+        public List<Employee> SearchAllEmployee()
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                dbContext.Configuration.ProxyCreationEnabled = false;
+                string sql = "SELECT Id,UserName,RealName,Password,HeadPicture,Introduction,LastLoginTime,Email,IsEnabled,RoleIds,DepartmentId,OnlineState FROM Employee";
+                var empList=dbContext.Employee.SqlQuery(sql).ToList();
+                return empList;
+            }
+        }
+
+        /// <summary>
         /// 通过手机号码Id查找员工信息
         /// </summary>
         /// <returns>员工信息</returns>

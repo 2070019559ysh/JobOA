@@ -1,0 +1,24 @@
+﻿<section class="am-g">
+    @{
+        var metaData = ViewData.ModelMetadata;
+        string value = "0";
+        int i=0;
+        if (ViewData.ModelState.Values.Count > 0) { 
+        foreach (var key in ViewData.ModelState.Keys)
+        {
+            if(key.Equals(metaData.PropertyName)){
+                break;
+            }
+            i++;
+        }
+        ModelState modelState = ViewData.ModelState.Values.ElementAt(i);
+        value = modelState.Value.AttemptedValue;
+        }
+    }
+    <div class="am-u-sm-12 am-u-md-4">
+        <input name="@metaData.PropertyName" type="range" step="1" min="0" max="100" value="@value" class="text-box single-line valid" data-val="true" data-val-number="字段 任务进度 必须是一个数字。" data-val-range="任务进度的范围是0~100" data-val-range-max="100" data-val-range-min="0" data-val-regex="任务进度的输入不正确" data-val-regex-pattern="^1?\d{1,2}$" data-val-required="任务进度是必须的" id="Progress" />
+    </div>
+    <div class="am-u-md-8 am-progress am-progress-striped am-active" style="margin:0px;padding:0px">
+        <div class="am-progress-bar am-progress-bar-success" style="width: @(value+"%")">@(value + "%")</div>
+    </div>
+</section>

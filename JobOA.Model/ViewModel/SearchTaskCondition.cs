@@ -35,5 +35,34 @@ namespace JobOA.Model.ViewModel
         /// 项目Id
         /// </summary>
         public int ProjectId { get; set; }
+
+        /// <summary>
+        /// 当前在线员工id
+        /// </summary>
+        public int EmployeeId { get; set; }
+
+        /// <summary>
+        /// 查看类型枚举，0是所有任务，1是我的任务，2是安排的任务
+        /// </summary>
+        public LookUpMethod LookUpType { get; set; }
+    }
+
+    /// <summary>
+    /// 查看的方式，0是所有任务，1是我的任务，2是安排的任务
+    /// </summary>
+    public enum LookUpMethod
+    {
+        /// <summary>
+        /// 所有任务
+        /// </summary>
+        AllTask=0,
+        /// <summary>
+        /// 我的任务
+        /// </summary>
+        MineTask=1,
+        /// <summary>
+        /// 安排的任务
+        /// </summary>
+        ArrangeTask=2
     }
 }

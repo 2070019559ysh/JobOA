@@ -2,6 +2,7 @@ using JobOA.Common;
 using JobOA.Common.Model;
 using JobOA.DAL;
 using JobOA.Model;
+using JobOA.Model.ViewModel;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return oaUi;
         }
@@ -61,9 +62,29 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return oaUi;
+        }
+
+        /// <summary>
+        /// 根据分页信息查找所有oa系统界面信息,分页信息里的Remarks指查询标题信息
+        /// </summary>
+        /// <param name="pager">分页信息对象</param>
+        /// <returns>oa系统界面信息集合</returns>
+        public List<OAUi> SearchOAUiByPager(Pager pager)
+        {
+            List<OAUi> oauiList = null;
+            try
+            {
+                if (pager.Remarks == null) pager.Remarks = String.Empty;
+                oauiList=OAUiService.SearchOAUiByPager(pager);
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(ex);
+            }
+            return oauiList;
         }
 
         /// <summary>
@@ -84,7 +105,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -125,13 +146,13 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
 
         /// <summary>
-        /// 发送邮箱信息
+        /// 发送邮箱信息，使用了joboa_System_email标志的短信账号
         /// </summary>
         /// <param name="toSb">发送给谁的邮箱</param>
         /// <param name="subject">主题</param>
@@ -176,7 +197,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -185,13 +206,15 @@ namespace JobOA.BLL.Implement
         /// 删除OA界面信息
         /// </summary>
         /// <param name="id">OA界面Id</param>
+        /// <param name="delOaui">删除的oaui对象</param>
         /// <returns>删除是否成功</returns>
-        public bool DeleteOAUi(int id)
+        public bool DeleteOAUi(int id,out OAUi delOaui)
         {
             bool success = false;//是否成功执行
+            delOaui = null;
             try
             {
-                int row = OAUiService.DeleteOAUi(id);
+                int row = OAUiService.DeleteOAUi(id,out delOaui);
                 if (row > 0)
                 {
                     success = true;
@@ -199,7 +222,7 @@ namespace JobOA.BLL.Implement
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
         }
@@ -215,16 +238,49 @@ namespace JobOA.BLL.Implement
             try
             {
                 int row = OAUiService.UpdateOAUi(oaUi);
-                if (row > 0)
+                if (row >= 0)
                 {
                     success = true;
                 }
             }
             catch (Exception ex)
             {
-                _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + ex.Message);
+                _exceptionLog.RecordLog(ex);
             }
             return success;
+        }
+
+        /// <summary>
+        /// 根据类型查找系统界面信息
+        /// </summary>
+        /// <param name="type">系统界面信息类型：{"joboa_System_sms","系统短信配置信息"},
+        /// {"joboa_System_email","系统邮箱配置信息"},
+        /// {"joboa_System_PictureCarousel","系统图片轮播"},
+        /// {"joboa_System_FootHead","系统脚部标题"},
+        /// {"joboa_System_FootContent","系统脚部内容"},
+        /// {"joboa_System_Notice","系统公告"},
+        /// {"joboa_System_InfoList","系统信息列表"}</param>
+        /// <param name="limit">限制获取的数量,默认是4条记录</param>
+        /// <returns>系统界面信息集合</returns>
+        public List<OAUi> SearchOauiByType(string type, int limit = 4)
+        {
+            List<OAUi> oauiList = null;
+            try
+            {
+                oauiList = OAUiService.SearchOauiByType(type, limit);
+                oauiList.ForEach(uiInfo=>{
+                    if (!String.IsNullOrEmpty(uiInfo.UiTitle)&&uiInfo.UiTitle.Contains("*"))
+                    {
+                        int splitIndex = uiInfo.UiTitle.IndexOf("*");
+                        uiInfo.UiTitle = uiInfo.UiTitle.Substring(splitIndex + 1);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                _exceptionLog.RecordLog(ex);
+            }
+            return oauiList;
         }
     }
 }

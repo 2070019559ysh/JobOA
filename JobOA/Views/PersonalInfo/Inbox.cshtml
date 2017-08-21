@@ -1,0 +1,258 @@
+﻿@model List<JobOA.Model.OAMessage>
+
+@using JobOA.Model;
+@using JobOA.Model.ViewModel;
+
+@{
+    ViewBag.Title = "JobOA—个人收件箱";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+    Pager pager = ViewBag.Pager;
+}
+
+@section css{
+    <style type="text/css">
+        .mess-title span.am-badge{
+            border-right:1px solid green;
+            height:24px;line-height:19px;
+        }
+        #messages .am-badge{
+            color:#000000;
+            background-color:transparent;
+            text-overflow:ellipsis;
+            overflow:hidden;
+            border-right:1px solid green;
+            height:24px;line-height:19px;
+        }
+        #messages div{
+            overflow:hidden;
+            background-color:transparent;
+        }
+        #messages div:hover{
+            background-color:#CCC;
+        }
+    </style>
+<link href="@Url.Content("~/Content/css/adminHome.css")" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/modal.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/adminInbox.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/adminHome.js")"></script>
+}
+
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表单</strong> / <small>form</small></div>
+</div>
+
+<div class="am-tabs am-margin" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+        @{
+            Employee toEmp = ViewBag.ToEmp;
+            //记录是收消息还是写消息处于活动状态
+            string tab1Active = String.Empty, tab2Active = String.Empty;
+            if (toEmp == null)
+            {
+                tab1Active = "am-active";
+            }
+            else
+            {
+                tab2Active = "am-active";
+            }
+}
+        <li class="@tab1Active"><a href="#tab1">收信</a></li>
+        <li class="@tab2Active"><a href="#tab2">写信</a></li>
+        <li><a href="#tab3">员工在线状态</a></li>
+    </ul>
+
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in @tab1Active" id="tab1">
+            <div class="am-g">
+                <section class="am-u-md-4 am-u-sm-12">
+                    <input type="hidden" id="mess" value="@TempData["Mess"]"/>
+                    <form name="deleteMess" id="delmess-form" action="/PersonalInfo/DeleteMess/@Request.RequestContext.RouteData.Values["id"]" method="post">
+                        <input type="submit" class="am-btn am-btn-danger am-btn-xs" value="删除" />
+                    </form>  
+                </section>
+                <section class="am-u-md-8 am-u-sm-12">
+                    第<span class="index-page">@pager.PageIndex</span>页&nbsp;&nbsp;共<span class="all-page">@pager.PageCount</span>页&nbsp;&nbsp;&nbsp;共<span class="total-record">@pager.Total</span>条消息记录
+                    <buton id="previous-page" class="am-btn am-btn-xs am-btn-secondary @(pager.HasPrev?"":"am-disabled")" onclick="perviousPage()">上一页</buton>  <button id="next-page" class="am-btn am-btn-xs am-btn-secondary @(pager.HasNext?"":"am-disabled")" onclick="nextPage()">下一页</button>&nbsp;&nbsp;
+                    跳转到：
+                    <div class="am-inline-block am-vertical-align-middle" style="width:100px;">
+                        <div class="am-input-group am-input-group-sm">
+                            <input id="page-number" type="text" class="am-form-field" placeholder="页码" value="@pager.PageIndex" />
+                            <span class="am-input-group-btn">
+                                <button id="search-btn" class="am-btn am-btn-secondary" onclick="jumpPage()" style="border:#3bb4f2" type="button">GO</button>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section class="mess-title am-u-sm-12 am-margin-top">
+                    <span class="am-badge am-u-sm-2 am-u-md-1"><input name="messId" type="checkbox" value="all" /></span>
+                    <span class="am-badge am-u-sm-2 am-u-md-1"><i class="am-icon-envelope"></i></span>
+                    <span class="am-badge am-u-sm-3 am-u-md-2">发件人</span>
+                    <span class="am-badge am-u-sm-5 am-u-md-3">标题</span>
+                    <span class="am-badge am-hide-sm-only am-u-md-3">内容</span>
+                    <span class="am-badge am-hide-sm-only am-u-md-2">时间</span>
+                </section>
+                <section id="messages" class="am-u-sm-12">
+                    <form name="deleteMess">
+                        @if (Model == null || Model.Count() < 1)
+                        {
+                            <div>暂无记录</div>
+                        }
+                        else
+                        {
+                            foreach (var oaMess in Model)
+                            {
+                                <div>
+                                    <span class="am-badge am-u-sm-2 am-u-md-1"><input type="checkbox" name="messId" value="@oaMess.Id" form="delmess-form"/></span>
+                                    <a class="oamess-row" href="javascript:;" title="点击查看">
+                                        @{
+                                var envelopeClass = "class=am-icon-envelope title=未查看";
+                                if (oaMess.IsLookUp) { envelopeClass = "class=am-icon-envelope-o title=已查看"; }
+                                        }
+                                        <span class="am-badge am-u-sm-2 am-u-md-1"><i @envelopeClass></i></span>
+                                        <span class="am-badge am-u-sm-3 am-u-md-2">
+                                            <img src="@oaMess.FromEmployee.HeadPicture" alt="发件人头像" width="20" height="20" style="margin-right:5px" />@oaMess.FromEmployee.RealName
+                                        </span>
+                                        <span class="am-badge am-u-sm-5 am-u-md-3">@oaMess.Title</span>
+                                        <span class="am-badge am-hide-sm-only am-u-md-3">@oaMess.ExtraMessage</span>
+                                        <span class="am-badge am-hide-sm-only am-u-md-2">@oaMess.SendDateTime</span>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </form>
+                    <i class="am-text-warning"></i>
+                </section>
+            </div>
+</div>
+
+        <div class="am-tab-panel am-fade am-in @tab2Active" id="tab2">
+            <form class="am-form">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        收件人：
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        @if (toEmp != null)
+                        {
+                            @Html.Hidden("ToEmployeeId",toEmp.Id)
+                            @Html.Hidden("Email", toEmp.Email)
+                            @Html.TextBox("UserName", toEmp.UserName, new { id = "to-emp",style="display:none", @class = "am-input-sm", placeholder = "请输入员工账号" })
+                            <section class="am-badge am-badge-success">
+                                <img src="@toEmp.HeadPicture" alt="头像" width="20" height="20" />
+                                <span class="am-inline-block am-margin-xs">@toEmp.UserName</span>
+                                <span class="am-inline-block am-margin-xs">@toEmp.RealName</span>
+                                <a href="javascripts:;" onclick="reEnterUserName()" class="am-icon am-icon-close" title="重新输入"></a>
+                            </section>
+                        }else{
+                            @Html.Hidden("ToEmployeeId")
+                            @Html.Hidden("Email")
+                            @Html.TextBox("UserName", null, new { id = "to-emp",@class="am-input-sm",placeholder="请输入员工账号" })
+                            <section class="am-badge am-badge-success" style="display:none">
+                                <img src="/Content/images/oaui/default.jpg" alt="头像" width="20" height="20" />
+                                <span class="am-inline-block am-margin-xs"></span>
+                                <span class="am-inline-block am-margin-xs"></span>
+                                <a href="javascripts:;" onclick="reEnterUserName()" class="am-icon am-icon-close" title="重新输入"></a>
+                            </section>
+                        }
+                        <div class="am-text-xs am-text-danger">&nbsp;@Html.ValidationMessage("UserName", new { id="valid-username"})</div>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        消息标题：
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        @Html.TextBox("Title", "", new {@class="am-input-sm",placeholder="明确的标题可引起更大的关注" })
+                        <div class="am-text-danger">&nbsp;@Html.ValidationMessage("Title", new { id="valid-title" })</div>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        消息发送方式：
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        <section>
+                            <input name="messtype" id="messtype1" type="radio" checked class="am-input-sm" value="alert" />
+                            <label for="messtype1">仅弹窗提示</label>
+                        </section>
+                        <section>
+                            <input name="messtype" id="messtype2" type="radio" class="am-input-sm" value="sms" />
+                            <label for="messtype2">弹窗提示和发送短信</label>
+                        </section>
+                        <section>
+                            <input name="messtype" id="messtype3" type="radio" @(toEmp!=null&&toEmp.Email!=null?"":"disabled") class="am-input-sm" value="email" />
+                            <label for="messtype3">弹窗提示和发送邮件</label>
+                        </section>
+                        <div class="am-text-warning">&nbsp;@Html.ValidationMessage("MessType")</div>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-2 am-md-text-right">
+                        消息内容：
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-4 am-u-end">
+                        <textarea id="extra-message" name="ExtraMessage" rows="8"></textarea>
+                        <div class="am-text-danger">&nbsp;@Html.ValidationMessage("ExtraMessage", new { id = "valid-extramess" })</div>
+                    </div>
+                </div>
+                <div class="am-margin" style="padding-left:10%;">
+                    <button id="submit-mess" type="button" class="am-btn am-btn-primary am-btn-xs" onclick="sendMess()">提交发送</button>
+                    <button type="reset" class="am-btn am-btn-primary am-btn-xs">重新填写</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="am-tab-panel am-fade am-in" id="tab3">
+                <div class="am-g am-margin-top">
+                    <div class="am-g userstate">
+                        <div class="am-u-sm-12 am-btn-group-xs"><button id="refresh-emp" type="button" class="am-btn am-btn-secondary" title="刷新员工在线状态"><i class="am-icon-refresh"></i></button></div>
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-panel am-panel-danger">
+                                <div class="am-panel-hd am-nbfc">
+                                    <div class="am-fl">
+                                        <span class="am-icon-user"></span>
+                                        在线员工列表
+                                    </div>
+                                    <div class="am-input-group am-input-group-sm am-fr" style="width:200px;">
+                                        <input id="online-emp" type="text" placeholder="员工名" class="am-form-field">
+                                        <span class="am-input-group-btn">
+                                            <button id="search-online" class="am-btn am-btn-danger" type="button">搜索</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul id="online-user" class="am-list">
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-panel am-panel-default">
+                                <div class="am-panel-hd am-nbfc">
+                                    <div class="am-fl">
+                                        <span class="am-icon-user"></span>
+                                        离线员工列表
+                                    </div>
+                                    <div class="am-input-group am-input-group-sm am-fr" style="width:200px;">
+                                        <input id="offline-emp" type="text" placeholder="员工名" class="am-form-field">
+                                        <span class="am-input-group-btn">
+                                            <button id="search-offline" class="am-btn am-btn-default" type="button">搜索</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul id="offline-user" class="am-list">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+        </div>
+
+    </div>
+</div>

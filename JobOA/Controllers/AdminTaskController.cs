@@ -1,4 +1,5 @@
-﻿using JobOA.BLL;
+﻿using JobOA.Auxiliary;
+using JobOA.BLL;
 using JobOA.Model;
 using JobOA.Model.ViewModel;
 using Ninject;
@@ -32,7 +33,7 @@ namespace JobOA.Controllers
         /// <param name="pageSize">每页最大记录数</param>
         /// <param name="search">查询任务条件,格式：projectId,departmentId,name</param>
         /// <returns>主任务首页</returns>
-        public ActionResult Index(Nullable<int> pageIndex,int? pageSize,string search)
+        public ActionResult Index(Nullable<int> pageIndex,int? pageSize,string search,int? lookupType)
         {
             //查找所有项目
             List<Project> projectList=ProjectManager.SearchAllProject();
@@ -53,8 +54,22 @@ namespace JobOA.Controllers
                 searchCnds = new string[] { projectId, departmentId };
                 search = String.Join(",", searchCnds);
             }
-            List<MajorTask> majorTaskList = MajorTaskManager.SearchAllMajorTask(pageIndex.Value,pageSize.Value,search);
-            int count = MajorTaskManager.SearchAllMajorTaskCount(pageIndex.Value, pageSize.Value, search);
+            LookUpMethod lookmethod;
+            if (lookupType==0)
+            {
+                lookmethod = LookUpMethod.MineTask;
+            }
+            else if(lookupType==1)
+            {
+                lookmethod = LookUpMethod.ArrangeTask;
+            }
+            else
+            {
+                lookmethod = LookUpMethod.AllTask;
+            }
+            Employee emp = Session["user"] as Employee;
+            List<MajorTask> majorTaskList = MajorTaskManager.SearchAllMajorTask(pageIndex.Value, pageSize.Value, search, lookmethod,emp.Id);
+            int count = MajorTaskManager.SearchAllMajorTaskCount(pageIndex.Value, pageSize.Value, search, lookmethod, emp.Id);
             //视图数据
             Pager pager = new Pager(pageIndex.Value, pageSize.Value, count);
             pager.Remarks = search+",";//保存查询条件
@@ -95,13 +110,18 @@ namespace JobOA.Controllers
         {
             //查找所有部门
             List<Department> departmentList = DepartmentManager.SearchAllDepartment();
-            ViewData["departmentList"] = new SelectList(departmentList,"Id","Name",departmentList[0].Id);
-            List<Employee> employeeList=EmployeeManager.SearchEmployeeByDeparementId(departmentList[0].Id);
-            ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
+            if (departmentList != null && departmentList.Count > 0)
+            {
+                ViewData["departmentList"] = new SelectList(departmentList, "Id", "Name", departmentList[0].Id);
+                List<Employee> employeeList = EmployeeManager.SearchEmployeeByDeparementId(departmentList[0].Id);
+                if(employeeList!=null&&employeeList.Count>0)
+                    ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
+            }
             Dictionary<int, string> process = StateData.ProState;
             ViewData["state"] = new SelectList(process, "Key", "Value");
             List<Project> projectList=ProjectManager.SearchAllProject();
-            ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
+            if(projectList!=null&&projectList.Count>0)
+                ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
             return View();
         }
 
@@ -137,9 +157,87 @@ namespace JobOA.Controllers
             }
             else
             {
-                mess = "输入的值验证不通过，请求重新输入!";
+                mess = "输入的值验证不通过，请重新输入!";
             }
             return Json(new { result=isSuccess,text=mess });
+        }
+
+        /// <summary>
+        /// 进入修改主任务页面
+        /// </summary>
+        /// <returns>修改主任务页面</returns>
+        [HttpGet]
+        public ActionResult UpdateMajorTask(int? id)
+        {
+            //查找所有部门
+            List<Department> departmentList = DepartmentManager.SearchAllDepartment();
+            if (departmentList != null && departmentList.Count > 0)
+            {
+                ViewData["departmentList"] = new SelectList(departmentList, "Id", "Name", departmentList[0].Id);
+                List<Employee> employeeList = EmployeeManager.SearchEmployeeByDeparementId(departmentList[0].Id);
+                if (employeeList != null && employeeList.Count > 0)
+                    ViewData["employeeList"] = new SelectList(employeeList, "Id", "RealName", employeeList[0].Id);
+            }
+            Dictionary<int, string> process = StateData.ProState;
+            ViewData["state"] = new SelectList(process, "Key", "Value");
+            List<Project> projectList = ProjectManager.SearchAllProject();
+            if (projectList != null && projectList.Count > 0)
+                ViewData["projectList"] = new SelectList(projectList, "Id", "Name", projectList[0].Id);
+            if (id.HasValue)
+            {
+                MajorTask majorTask = MajorTaskManager.SearchMajorTaskById(id.Value);
+                return View(majorTask);
+            }
+            else
+            {
+                return View("AddMajorTask");
+            }
+        }
+
+        /// <summary>
+        /// 执行修改主任务
+        /// </summary>
+        /// <param name="majorTask">新的主任务信息</param>
+        /// <returns>修改主任务页面</returns>
+        [HttpPost]
+        public JsonResult UpdateMajorTask(MajorTask majorTask)
+        {
+            string mess = String.Empty;
+            bool isSuccess = false;
+            if (ModelState.IsValid)
+            {
+                if (MajorTaskManager.UpdateMajorTask(majorTask))
+                {
+                    mess = "修改主任务成功。";
+                    isSuccess = true;
+                }
+                else
+                {
+                    mess = "修改主任务失败！";
+                }
+            }
+            else
+            {
+                mess = "输入的值验证不通过，请重新输入!";
+            }
+            return Json(new { result = isSuccess, text = mess });
+        }
+
+        [HttpGet]
+        public ActionResult DelMajorTask(int? id)
+        {
+            if (id.HasValue&&(new AjaxPermission()).IsAuthenticated(HttpContext).Equals("true"))
+            {
+                if (MajorTaskManager.DeleteMajorTask(id.Value))
+                {
+                    TempData["Mess"] = "删除成功。";
+                }
+                else
+                {
+                    TempData["Mess"] = "删除失败！";
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

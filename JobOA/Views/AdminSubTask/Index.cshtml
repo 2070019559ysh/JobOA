@@ -1,0 +1,158 @@
+﻿@model IEnumerable<JobOA.Model.SubTask>
+
+@using JobOA.Model
+@using JobOA.Model.ViewModel;
+
+@{
+    ViewBag.Title = "SubTaskList";
+    Layout = "~/Views/Shared/AdminViewMaster.cshtml";
+    Pager pager = ViewData["Pager"] as Pager;
+}
+
+@section css{
+    <link href="@Url.Content("~/Content/css/adminHome.css")" rel="stylesheet" type="text/css" />
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/js/modal.js")"></script>
+    <script src="@Url.Content("~/Scripts/js/adminRecord.js")"></script>
+    <script src="~/Scripts/js/alertMess.js"></script>
+}
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">子任务</strong> / <small>SubTask</small></div>
+</div>
+
+<div class="am-g">
+    <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <button id="add-record" type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-3">
+        <div class="am-input-group am-input-group-sm">
+            <input id="search-text" type="text" class="am-form-field" placeholder="按名称模糊搜索" value="@pager.Remarks" />
+            <span class="am-input-group-btn">
+                <button id="search-btn" class="am-btn am-btn-default" type="button">搜索</button>
+            </span>
+        </div>
+    </div>
+</div>
+<input id="mess" type="hidden" value="@TempData["mess"]" />
+<div class="am-g">
+    <div class="am-u-sm-12">
+        <div style="overflow-x:auto">
+            <table class="am-table am-table-bordered am-table-bd am-table-striped admin-content-table" style="width:2050px">
+                <caption>的子任务</caption>
+                <thead>
+                    <tr>
+                        <th class="am-hide-sm-up">ID</th>
+                        <th style="width:100px">任务名</th>
+                        <th style="width:100px">编号</th>
+                        <th style="width:250px">相关人员</th>
+                        <th style="width:300px">时间安排</th>
+                        <th style="width:200px">交付物说明</th>
+                        <th style="width:100px">附件</th>
+                        <th style="width:200px">完成标准</th>
+                        <th style="width:200px">工作思路、方法</th>
+                        <th style="width:100px">完成状态</th>
+                        <th style="width:200px">实时进度</th>
+                        <th style="width:200px">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var subTask in Model)
+                        {
+                            <tr>
+                                <td class="am-hide-sm-up">@subTask.Id</td>
+                                <td>@subTask.Name</td>
+                                <td>@subTask.No</td>
+                                <td>
+                                    <div class="am-g">
+                                        <section class="am-u-sm-12">
+                                            安排人：
+                                            <span>
+                                                <img src="@subTask.ArrangeEmployee.HeadPicture" width="20" height="20" />
+                                                @subTask.ArrangeEmployee.RealName
+                                            </span>
+                                        </section>
+                                        <section class="am-u-sm-12">
+                                            执行人：
+                                            <span>
+                                                <img src="@subTask.ExeEmployee.HeadPicture" width="20" height="20" />
+                                                @subTask.ExeEmployee.RealName
+                                            </span>
+                                        </section>
+                                        <section class="am-u-sm-12">
+                                            检查（验收）人：
+                                            <span>
+                                                <img src="@subTask.CheckEmployee.HeadPicture" width="20" height="20" />
+                                                @subTask.CheckEmployee.RealName
+                                            </span>
+                                        </section>
+                                        <section class="am-u-sm-12">
+                                            参与人：
+                                            @{
+                            Html.RenderAction("GetParticipatorInfo", new { employeeIds = subTask.Participator });
+                                            }
+                                        </section>
+                                    </div>
+                                </td>
+                                <td>
+                                    <section class="am-g">
+                                        <span class="am-u-sm-12 am-u-lg-4">创建时间：@subTask.CreateTime</span>
+                                        <span class="am-u-sm-12 am-u-lg-4">开始时间：@subTask.StartTime</span>
+                                        <span class="am-u-sm-12 am-u-lg-4">结束时间：@subTask.CompleteTime</span>
+                                        <span class="am-u-sm-12 am-u-lg-4 am-u-end">实际完成时间：@subTask.CommitTime</span>
+                                    </section>
+                                </td>
+                                <td>@subTask.SubmissionThing</td>
+                                <td>
+                                    @subTask.Attachment
+                                    @if (subTask.Attachment == null)
+                                    {
+                                        <span>暂无附件</span>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-download"></span>下载附件</button>
+                                    }
+                                </td>
+                                <td>@subTask.CompletionCriteria</td>
+                                <td>@subTask.WorkMethod</td>
+                                <td>
+                                    @{ViewData["state"] = subTask.State;}
+                                    @Html.Partial("DisplayTemplates/ProgressState")
+                                </td>
+                                <td>
+                                    <div class="am-progress am-progress-striped am-progress-sm am-active">
+                                        <div class="am-progress-bar am-progress-bar-warning" style="width: @(subTask.Progress)%">@(subTask.Progress)%</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="am-btn-toolbar">
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <button class="update-record am-btn am-btn-default am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                            <button class="del-record am-btn am-btn-default am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="11">无法加载到数据</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @Html.Partial("DisplayTemplates/Pager")
+        <hr />
+        <p>注：.....</p>
+    </div>
+
+</div>

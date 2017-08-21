@@ -12,6 +12,7 @@
 <div style="margin:10px;">
     @using (Html.BeginForm("AddMajorTask", "AdminTask", FormMethod.Post))
     {
+        @Html.ValidationSummary()
         <div class="am-nbfc am-margin">
             @Html.LabelFor(model => model.Name, new {@class="am-fl" })
             @Html.TextBoxFor(m => m.Name, new { @class = "am-fl", placeholder = "输入主任务名" })

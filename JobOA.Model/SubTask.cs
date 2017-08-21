@@ -68,10 +68,7 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("开始时间")]
         [Required(ErrorMessage = "{0}是必须的")]
-        [RegularExpression(@"/^(?:(?:(?:(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|"
-            + @"(?:(?:16|[2468][048]|[3579][26])00)))(\/|-)(?:0?2\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\d)?\d{2})(\/|-)"
-            + @"(?:(?:(?:0?[13578]|1[02])\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\2"
-            + @"(?:0?[1-9]|1\d|2[0-8])))))\s(?:([0-1]\d|2[0-3]):[0-5]\d:[0-5]\d)$/m", ErrorMessage = "{0}的格式不正确")]
+        [RegularExpression(@"^\d{4}\S{1}\d{1,2}\S{1}\d{1,2}\s{1}\d{1,2}\:\d{1,2}\:\d{1,2}$", ErrorMessage = "{0}的格式不正确")]
         public DateTime StartTime { get; set; }
 
         /// <summary>
@@ -79,10 +76,7 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("完成时间")]
         [Required(ErrorMessage = "{0}是必须的")]
-        [RegularExpression(@"/^(?:(?:(?:(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|"
-            + @"(?:(?:16|[2468][048]|[3579][26])00)))(\/|-)(?:0?2\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\d)?\d{2})(\/|-)"
-            + @"(?:(?:(?:0?[13578]|1[02])\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\2"
-            + @"(?:0?[1-9]|1\d|2[0-8])))))\s(?:([0-1]\d|2[0-3]):[0-5]\d:[0-5]\d)$/m", ErrorMessage = "{0}的格式不正确")]
+        [RegularExpression(@"^\d{4}\S{1}\d{1,2}\S{1}\d{1,2}\s{1}\d{1,2}\:\d{1,2}\:\d{1,2}$", ErrorMessage = "{0}的格式不正确")]
         public DateTime? CompleteTime { get; set; }
 
         /// <summary>
@@ -105,14 +99,9 @@ namespace JobOA.Model
         /// <summary>
         /// 任务状态
         /// </summary>
-        [DisplayName("主任务状态")]
+        [DisplayName("任务状态")]
         [Required(ErrorMessage = "{0}是必须的")]
         public int State { get; set; }
-
-        /// <summary>
-        /// 是否已经短信通知
-        /// </summary>
-        public bool IsNotice { get; set; }
 
         /// <summary>
         /// 是否对外保密
@@ -151,7 +140,7 @@ namespace JobOA.Model
         /// </summary>
         [DisplayName("任务进度")]
         [Required(ErrorMessage = "{0}是必须的")]
-        [RegularExpression(@"^1?\d{2}$", ErrorMessage = "{0}的输入不正确")]
+        [RegularExpression(@"^1?\d{1,2}$", ErrorMessage = "{0}的输入不正确")]
         [Range(0, 100, ErrorMessage = "{0}的范围是{1}~{2}")]
         public decimal Progress { get; set; }
 

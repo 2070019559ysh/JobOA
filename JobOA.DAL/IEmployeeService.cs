@@ -13,8 +13,15 @@ namespace JobOA.DAL
     public interface IEmployeeService
     {
         /// <summary>
+        /// 查找所有员工信息
+        /// </summary>
+        /// <returns>所有员工信息</returns>
+        List<Employee> SearchAllEmployee();
+
+        /// <summary>
         /// 通过Id查找员工信息
         /// </summary>
+        /// <param name="id">员工id</param>
         /// <returns>员工信息</returns>
         Employee SearchEmployeeById(int id);
         

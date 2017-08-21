@@ -24,7 +24,7 @@ namespace JobOA.Auxiliary
         /// <param name="filterContext">异常过滤器上下文对象</param>
         public void OnException(ExceptionContext filterContext)
         {
-            _exceptionLog.RecordLog(_exceptionLog.LogFileName, DateTime.Now + " 发生异常：" + filterContext.Exception.Message);
+            _exceptionLog.RecordLog(filterContext.Exception);
             UrlHelper url = new UrlHelper(filterContext.RequestContext);
             filterContext.ExceptionHandled = true;
             filterContext.Result = new RedirectResult(url.Action("Error","ErrorCatch"));

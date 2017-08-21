@@ -16,6 +16,7 @@ namespace JobOA.DAL.Implement
         /// <summary>
         /// 通过Id查找项目信息
         /// </summary>
+        /// <param name="id">项目Id</param>
         /// <returns>项目信息</returns>
         public Project SearchProjectById(int id)
         {
@@ -25,6 +26,46 @@ namespace JobOA.DAL.Implement
                 var project = from p in dbContext.Project
                            where p.Id == id
                            select p;
+                return project.SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 通过主任务Id查找项目信息
+        /// </summary>
+        /// <param name="taskId">主任务Id</param>
+        /// <returns>项目信息</returns>
+        public Project SearchProjectByTaskId(int taskId)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                dbContext.Configuration.ProxyCreationEnabled = false;
+                var project = from p in dbContext.Project
+                              join task in dbContext.MajorTask
+                              on p.Id equals task.ProjectId
+                              where task.Id==taskId
+                              select p;
+                return project.SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 通过子任务Id查找项目信息
+        /// </summary>
+        /// <param name="subTaskId">子任务Id</param>
+        /// <returns>项目信息</returns>
+        public Project SearchProjectBySubTaskId(int subTaskId)
+        {
+            using (OaModel dbContext = new OaModel())
+            {
+                dbContext.Configuration.ProxyCreationEnabled = false;
+                var project = from p in dbContext.Project
+                              join task in dbContext.MajorTask
+                              on p.Id equals task.ProjectId
+                              join subTask in dbContext.SubTask
+                              on task.Id equals subTask.TaskId
+                              where subTask.Id==subTaskId
+                              select p;
                 return project.SingleOrDefault();
             }
         }

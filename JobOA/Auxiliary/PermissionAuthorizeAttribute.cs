@@ -21,12 +21,6 @@ namespace JobOA.Auxiliary
         private const string NoAuthority = "/ErrorCatch/NoPermission";
         private bool _isLogin;
 
-        [Inject]
-        public IRoleManager RoleManager { get; set; }
-
-        [Inject]
-        public IEmployeeManager EmployeeManager { get; set; }
-
         /// <summary>
         /// 确定当前用户是否已经登录授权
         /// </summary>
@@ -34,7 +28,7 @@ namespace JobOA.Auxiliary
         /// <returns>总是返回false,目的是执行HandleUnauthorizedRequest，确定访问权限</returns>
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            if (base.AuthorizeCore(httpContext))//如果用户已经过授权，则为 true；否则为 false。
+            if (base.AuthorizeCore(httpContext)&&(httpContext.Session["user"] as Employee) != null)//如果用户已经过授权，则为 true；否则为 false。
             {
                 // 已经登录授权
                 _isLogin = true;
@@ -70,7 +64,7 @@ namespace JobOA.Auxiliary
             if (passRole==null)
             {
                 // 登录但没权限
-                filterContext.HttpContext.Response.Redirect(NoAuthority);
+                filterContext.HttpContext.Response.Redirect(NoAuthority,true);
             }
         }
 

@@ -5,11 +5,11 @@
     $(".update-project").click(function () {
         var projectId=$(this).parents("tr:first").children("td:first").text();
         window.location.href = "UpdateProject?projectId=" + projectId;
-    }); 
+    });
+    var modal = new Modal("delete-project");
     $(".del-project").click(function () {
         var projectId = $(this).parents("tr:first").children("td:first").text();
         var projectName = $(this).parents("tr:first").children("td:eq(1)").text();
-        var modal = new Modal();
         var text = "<span class=\"am-icon-warning am-icon-lg\"></span><span>确认要删除“" + projectName + "”项目吗？</span>";
         var confirmFun=function(){
             window.location.href = "DelProject?projectId=" + projectId;

@@ -13,6 +13,12 @@ namespace JobOA.BLL
     public interface IEmployeeManager
     {
         /// <summary>
+        /// 查找所有员工信息
+        /// </summary>
+        /// <returns>所有员工信息</returns>
+        List<Employee> SearchAllEmployee();
+
+        /// <summary>
         /// 通过Id查找员工信息
         /// </summary>
         /// <returns>员工信息</returns>

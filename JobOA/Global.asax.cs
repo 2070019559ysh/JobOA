@@ -28,5 +28,20 @@ namespace JobOA
             // MVC 依赖
             DependencyResolver.SetResolver(new NinjectControllerFactory());
         }
+
+        /// <summary>
+        /// 自定义404页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            if (ex is HttpException && ((HttpException)ex).GetHttpCode() == 404)
+            {
+                //重定向到找不到文件页面
+                Response.Redirect("/ErrorCatch/FileNotFound");
+            }
+        }
     }
 }
